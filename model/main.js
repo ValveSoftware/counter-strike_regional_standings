@@ -10,8 +10,12 @@ function run()
     if ( process.argv[2] !== undefined )
         regions = JSON.parse(process.argv[2]);
 
+    let filename = '../data/matchdata.json';
+    if ( process.argv[3] !== undefined )
+        filename = process.argv[3];
+
     // Parse matches and generate standings
-    let [matches,teams] = Ranking.generateRanking( );
+    let [matches,teams] = Ranking.generateRanking( -1, filename );
 
     // Get date of most recent match
     let mostRecentMatch = Math.max( ...matches.map( m => m.matchStartTime ) );

@@ -157,9 +157,9 @@ class DataLoader
     // with the nth most prize winnings.
     setNthHighest( nth ) { this.rankingContext.setOutlierCount( nth ); }
 
-    loadData( versionTimestamp = -1 )
+    loadData( versionTimestamp = -1, filename = '../data/matchdata.json' )
     {
-        const data = fs.readFileSync( '../data/matchdata.json' );
+        const data = fs.readFileSync( filename );
         const dataJson = JSON.parse( data );
 
         // initialize match list
