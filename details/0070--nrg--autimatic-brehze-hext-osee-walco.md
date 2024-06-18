@@ -5,22 +5,22 @@ Region: [Americas]( ../standings_americas.md)<br />
 <br />
 Global Rank: [70](../standings_global.md)<br />
 Regional Rank: [17]( ../standings_americas.md)<br />
-Final Rank Value:  999.2<br />
+Final Rank Value:  1000.1<br />
 <br />
-Final Rank Value (999.2) = Starting Rank Value (879.7) + Head To Head Adjustments (119.5)<br />
+Final Rank Value (1000.1) = Starting Rank Value (880.2) + Head To Head Adjustments (119.9)<br />
 
 #### Starting Rank Value<br />
 To figure out a rosters's Starting Rank Value, first take the average of these four factors:<br />
 - Bounty Offered: 0.381[<sup>1</sup>](#table2)
-- Bounty Collected: 0.366[<sup>2</sup>](#table1)
-- Opponent Network: 0.215[<sup>2</sup>](#table1)
+- Bounty Collected: 0.376[<sup>2</sup>](#table1)
+- Opponent Network: 0.188[<sup>2</sup>](#table1)
 - LAN Wins: 0.000[<sup>2</sup>](#table1)
 
-The average of these factors is 0.241<br />
+The average of these factors is 0.236<br />
 <br />
 Next, take the maximum and minimum average across all teams and compute the following:<br />
-- 400 + ( ( Roster_Average - Min_Average ) / ( Max_Average - Min_Average ) ) * 1600 = 879.7
-- 400 + ( ( 0.241 - 0.000 ) / ( 0.803 - 0.000 ) ) * 1600 = 879.7
+- 400 + ( ( Roster_Average - Min_Average ) / ( Max_Average - Min_Average ) ) * 1600 = 880.2
+- 400 + ( ( 0.236 - 0.000 ) / ( 0.787 - 0.000 ) ) * 1600 = 880.2
 
 
 #### Factors<br />
@@ -36,92 +36,90 @@ Note:<br />
 
 | Match Played | Match ID | Date       | Opponent         | W/L | Age Weight | Event Weight | Bounty Collected | Opponent Network | LAN Wins  | H2H Adj. | Roster                               |
 | -: | -: | :- | :- | :- | :- | :- | :- | :- | :- | -: | :- |
-|           79 |       41 | 2024-06-09 | M80              | W   | 1.000      | 0.143        | 0.206 (0.029)    | -                | 0 (0.000) |    26.38 | autimatic, Brehze, HexT, oSee, Walco |
-|           78 |      103 | 2024-06-08 | Party Astronauts | W   | 1.000      | -            | -                | -                | 0 (0.000) |    18.98 | autimatic, Brehze, HexT, oSee, Walco |
-|           77 |      159 | 2024-06-07 | Party Astronauts | L   | 1.000      | -            | -                | -                | -         |   -12.28 | autimatic, Brehze, HexT, oSee, Walco |
-|           76 |      202 | 2024-06-06 | Party Astronauts | L   | 1.000      | -            | -                | -                | -         |   -14.14 | autimatic, Brehze, HexT, oSee, Walco |
-|           75 |      214 | 2024-06-06 | Wildcard         | W   | 1.000      | 0.143        | 0.060 (0.009)    | -                | 0 (0.000) |    18.23 | autimatic, Brehze, HexT, oSee, Walco |
-|           74 |      216 | 2024-06-06 | FLUFFY AIMERS    | W   | 1.000      | -            | -                | -                | 0 (0.000) |     7.70 | autimatic, Brehze, HexT, oSee, Walco |
-|           73 |      237 | 2024-06-06 | Wildcard         | L   | 1.000      | -            | -                | -                | -         |   -12.41 | autimatic, Brehze, HexT, oSee, Walco |
-|           72 |      270 | 2024-06-05 | LAG              | W   | 1.000      | 0.477        | 0.021 (0.010)    | 0.484 (0.231)    | 0 (0.000) |    12.03 | autimatic, Brehze, HexT, oSee, Walco |
-|           71 |      282 | 2024-06-05 | FLUFFY AIMERS    | W   | 1.000      | -            | -                | -                | 0 (0.000) |     8.27 | autimatic, Brehze, HexT, oSee, Walco |
-|           70 |      320 | 2024-06-04 | Nouns            | L   | 1.000      | -            | -                | -                | -         |   -11.45 | autimatic, Brehze, HexT, oSee, Walco |
-|           69 |      617 | 2024-05-23 | Nouns            | L   | 1.000      | -            | -                | -                | -         |   -12.32 | autimatic, Brehze, HexT, oSee, Walco |
-|           68 |      634 | 2024-05-22 | Elevate          | L   | 1.000      | -            | -                | -                | -         |   -14.98 | autimatic, Brehze, HexT, oSee, Walco |
-|           67 |      639 | 2024-05-22 | Elevate          | L   | 1.000      | -            | -                | -                | -         |   -16.36 | autimatic, Brehze, HexT, oSee, Walco |
-|           66 |      662 | 2024-05-22 | Legacy           | W   | 1.000      | 0.384        | 0.087 (0.034)    | 0.461 (0.177)    | 0 (0.000) |    18.84 | autimatic, Brehze, HexT, oSee, Walco |
-|           65 |      685 | 2024-05-21 | Take Flyte       | L   | 1.000      | -            | -                | -                | -         |   -23.79 | autimatic, Brehze, HexT, oSee, Walco |
-|           64 |      687 | 2024-05-21 | Take Flyte       | W   | 1.000      | 0.477        | -                | 0.348 (0.166)    | 0 (0.000) |     7.21 | autimatic, Brehze, HexT, oSee, Walco |
-|           63 |      718 | 2024-05-20 | M80              | L   | 1.000      | -            | -                | -                | -         |    -5.84 | autimatic, Brehze, HexT, oSee, Walco |
-|           62 |      723 | 2024-05-20 | M80              | L   | 1.000      | -            | -                | -                | -         |    -6.17 | autimatic, Brehze, HexT, oSee, Walco |
-|           61 |      781 | 2024-05-18 | Nouns            | L   | 1.000      | -            | -                | -                | -         |   -16.85 | autimatic, Brehze, HexT, oSee, Walco |
-|           60 |      786 | 2024-05-18 | Party Astronauts | W   | 1.000      | 0.303        | 0.048 (0.015)    | 0.677 (0.205)    | 0 (0.000) |    14.08 | autimatic, Brehze, HexT, oSee, Walco |
-|           59 |      820 | 2024-05-17 | BOSS             | W   | 1.000      | -            | -                | -                | 0 (0.000) |     8.42 | autimatic, Brehze, HexT, oSee, Walco |
-|           58 |      888 | 2024-05-15 | LAG              | W   | 1.000      | 0.477        | 0.021 (0.010)    | 0.484 (0.231)    | -         |     9.56 | autimatic, Brehze, HexT, oSee, Walco |
-|           57 |      896 | 2024-05-15 | LAG              | W   | 1.000      | 0.477        | 0.021 (0.010)    | 0.484 (0.231)    | -         |    10.32 | autimatic, Brehze, HexT, oSee, Walco |
-|           56 |      941 | 2024-05-14 | One More         | W   | 1.000      | -            | -                | -                | -         |     5.79 | autimatic, Brehze, HexT, oSee, Walco |
-|           55 |      947 | 2024-05-14 | One More         | W   | 1.000      | -            | -                | -                | -         |     6.11 | autimatic, Brehze, HexT, oSee, Walco |
-|           54 |     1011 | 2024-05-12 | Take Flyte       | W   | 1.000      | -            | -                | -                | -         |     9.23 | autimatic, Brehze, HexT, oSee, Walco |
-|           53 |     1013 | 2024-05-12 | Elevate          | W   | 1.000      | -            | -                | -                | -         |    15.67 | autimatic, Brehze, HexT, oSee, Walco |
-|           52 |     1043 | 2024-05-11 | Take Flyte       | W   | 1.000      | -            | -                | -                | -         |     9.14 | autimatic, Brehze, HexT, oSee, Walco |
-|           51 |     1045 | 2024-05-11 | BOSS             | W   | 1.000      | -            | -                | -                | -         |    11.95 | autimatic, Brehze, HexT, oSee, Walco |
-|           50 |     1147 | 2024-05-06 | Party Astronauts | W   | 0.969      | 0.477        | 0.048 (0.022)    | 0.677 (0.313)    | -         |    18.63 | autimatic, Brehze, HexT, oSee, Walco |
-|           49 |     1148 | 2024-05-06 | Party Astronauts | L   | 0.968      | -            | -                | -                | -         |   -11.64 | autimatic, Brehze, HexT, oSee, Walco |
-|           48 |     1383 | 2024-04-25 | Wildcard         | L   | 0.895      | -            | -                | -                | -         |   -12.42 | autimatic, Brehze, HexT, oSee, Walco |
-|           47 |     1385 | 2024-04-25 | Wildcard         | W   | 0.895      | 0.477        | 0.060 (0.026)    | 0.591 (0.252)    | -         |    16.04 | autimatic, Brehze, HexT, oSee, Walco |
-|           46 |     1621 | 2024-04-17 | OMiT             | L   | 0.841      | -            | -                | -                | -         |   -18.99 | autimatic, Brehze, HexT, oSee, Walco |
-|           45 |     1680 | 2024-04-15 | Mythic           | W   | 0.828      | 0.477        | -                | 0.391 (0.155)    | -         |     9.10 | autimatic, Brehze, HexT, oSee, Walco |
-|           44 |     1681 | 2024-04-15 | Mythic           | W   | 0.828      | -            | -                | -                | -         |     9.73 | autimatic, Brehze, HexT, oSee, Walco |
-|           43 |     1767 | 2024-04-10 | BOSS             | W   | 0.795      | -            | -                | -                | -         |    11.26 | autimatic, Brehze, HexT, oSee, Walco |
-|           42 |     1772 | 2024-04-10 | BOSS             | L   | 0.795      | -            | -                | -                | -         |   -14.06 | autimatic, Brehze, HexT, oSee, Walco |
-|           41 |     1826 | 2024-04-09 | Carpe Diem       | W   | 0.789      | -            | -                | -                | -         |     6.57 | autimatic, Brehze, HexT, oSee, Walco |
-|           40 |     1829 | 2024-04-09 | Carpe Diem       | W   | 0.788      | -            | -                | -                | -         |     6.94 | autimatic, Brehze, HexT, oSee, Walco |
-|           39 |     2130 | 2024-03-27 | Nouns            | W   | 0.703      | 0.477        | 0.064 (0.021)    | 0.567 (0.190)    | -         |    14.52 | autimatic, Brehze, HexT, oSee, Walco |
-|           38 |     2135 | 2024-03-27 | Nouns            | L   | 0.702      | -            | -                | -                | -         |    -7.60 | autimatic, Brehze, HexT, oSee, Walco |
-|           37 |     2182 | 2024-03-26 | MIGHT            | W   | 0.696      | -            | -                | -                | -         |     3.64 | autimatic, Brehze, HexT, oSee, Walco |
-|           36 |     2187 | 2024-03-26 | MIGHT            | W   | 0.695      | -            | -                | -                | -         |     3.77 | autimatic, Brehze, HexT, oSee, Walco |
-|           35 |     2353 | 2024-03-15 | FLUFFY AIMERS    | W   | 0.622      | -            | -                | -                | -         |     8.83 | autimatic, Brehze, HexT, oSee, Walco |
-|           34 |     2355 | 2024-03-15 | FLUFFY AIMERS    | L   | 0.622      | -            | -                | -                | -         |   -11.03 | autimatic, Brehze, HexT, oSee, Walco |
-|           33 |     2373 | 2024-03-14 | Limitless        | W   | 0.616      | -            | -                | -                | -         |     4.28 | autimatic, Brehze, HexT, oSee, Walco |
-|           32 |     2378 | 2024-03-14 | Limitless        | W   | 0.615      | -            | -                | -                | -         |     4.45 | autimatic, Brehze, HexT, oSee, Walco |
-|           31 |     2451 | 2024-03-12 | Carpe Diem       | L   | 0.602      | -            | -                | -                | -         |   -12.29 | autimatic, Brehze, HexT, oSee, Walco |
-|           30 |     2706 | 2024-03-02 | MIBR             | L   | 0.533      | -            | -                | -                | -         |    -0.40 | Brehze, daps, FaNg, HexT, oSee       |
-|           29 |     2725 | 2024-03-01 | Imperial         | L   | 0.527      | -            | -                | -                | -         |    -0.57 | Brehze, daps, FaNg, HexT, oSee       |
-|           28 |     2831 | 2024-02-24 | Wildcard         | L   | 0.489      | -            | -                | -                | -         |    -5.87 | Brehze, daps, FaNg, HexT, oSee       |
-|           27 |     2834 | 2024-02-24 | Limitless        | W   | 0.488      | -            | -                | -                | -         |     3.56 | Brehze, daps, FaNg, HexT, oSee       |
-|           26 |     2840 | 2024-02-24 | Mythic           | W   | 0.488      | -            | -                | -                | -         |     7.04 | Brehze, daps, FaNg, HexT, oSee       |
-|           25 |     2876 | 2024-02-22 | Party Astronauts | L   | 0.475      | -            | -                | -                | -         |    -6.02 | Brehze, daps, FaNg, HexT, oSee       |
-|           24 |     2880 | 2024-02-22 | Wildcard         | W   | 0.475      | -            | -                | -                | -         |     9.36 | Brehze, daps, FaNg, HexT, oSee       |
-|           23 |     2928 | 2024-02-20 | Party Astronauts | L   | 0.463      | -            | -                | -                | -         |    -5.98 | Brehze, daps, FaNg, HexT, oSee       |
-|           22 |     2953 | 2024-02-19 | Party Astronauts | W   | 0.456      | -            | -                | -                | -         |     8.57 | Brehze, daps, FaNg, HexT, oSee       |
-|           21 |     2955 | 2024-02-19 | Mythic           | W   | 0.455      | -            | -                | -                | -         |     6.97 | Brehze, daps, FaNg, HexT, oSee       |
-|           20 |     3256 | 2024-02-03 | Elevate          | L   | 0.348      | -            | -                | -                | -         |    -5.35 | Brehze, daps, FaNg, HexT, oSee       |
-|           19 |     3282 | 2024-02-02 | Party Astronauts | W   | 0.342      | -            | -                | -                | -         |     6.61 | Brehze, daps, FaNg, HexT, oSee       |
-|           18 |     3286 | 2024-02-02 | Wildcard         | L   | 0.341      | -            | -                | -                | -         |    -3.87 | Brehze, daps, FaNg, HexT, oSee       |
-|           17 |     3288 | 2024-02-02 | Party Astronauts | W   | 0.341      | -            | -                | -                | -         |     6.68 | Brehze, daps, FaNg, HexT, oSee       |
-|           16 |     3664 | 2024-01-18 | Wildcard         | L   | 0.241      | -            | -                | -                | -         |    -2.85 | Brehze, daps, FaNg, HexT, oSee       |
-|           15 |     3668 | 2024-01-18 | Elevate          | W   | 0.241      | -            | -                | -                | -         |     3.89 | Brehze, daps, FaNg, HexT, oSee       |
-|           14 |     3714 | 2024-01-17 | squids           | W   | 0.235      | -            | -                | -                | -         |     0.48 | Brehze, daps, FaNg, HexT, oSee       |
-|           13 |     3765 | 2024-01-16 | Elevate          | L   | 0.228      | -            | -                | -                | -         |    -3.56 | Brehze, daps, FaNg, HexT, oSee       |
-|           12 |     3771 | 2024-01-16 | regain           | W   | 0.228      | -            | -                | -                | -         |     0.47 | Brehze, daps, FaNg, HexT, oSee       |
-|           11 |     3811 | 2024-01-15 | TSM Shimmer      | W   | 0.222      | -            | -                | -                | -         |     2.07 | Brehze, daps, FaNg, HexT, oSee       |
-|           10 |     3840 | 2024-01-14 | Rocket           | L   | 0.216      | -            | -                | -                | -         |    -5.96 | Brehze, daps, FaNg, HexT, oSee       |
-|            9 |     3850 | 2024-01-14 | LOS              | W   | 0.214      | -            | -                | -                | -         |     0.43 | Brehze, daps, FaNg, HexT, oSee       |
-|            8 |     3866 | 2024-01-13 | Nouns            | L   | 0.208      | -            | -                | -                | -         |    -2.65 | Brehze, daps, FaNg, HexT, oSee       |
-|            7 |     3905 | 2024-01-12 | Complexity       | L   | 0.203      | -            | -                | -                | -         |    -0.09 | Brehze, daps, FaNg, HexT, oSee       |
-|            6 |     3914 | 2024-01-12 | Elevate          | W   | 0.202      | -            | -                | -                | -         |     3.08 | Brehze, daps, FaNg, HexT, oSee       |
-|            5 |     3996 | 2024-01-09 | Liquid           | L   | 0.183      | -            | -                | -                | -         |    -0.06 | Brehze, daps, FaNg, HexT, oSee       |
-|            4 |     3997 | 2024-01-09 | Akimbo           | W   | 0.183      | -            | -                | -                | -         |     1.58 | Brehze, daps, FaNg, HexT, oSee       |
-|            3 |     4000 | 2024-01-09 | MagicLight       | W   | 0.183      | -            | -                | -                | -         |     0.37 | Brehze, daps, FaNg, HexT, oSee       |
-|            2 |     4148 | 2023-12-16 | LAG              | W   | 0.022      | -            | -                | -                | -         |     0.39 | Brehze, daps, FaNg, HexT, oSee       |
-|            1 |     4176 | 2023-12-15 | Revenge Nation   | W   | 0.015      | -            | -                | -                | -         |     0.13 | Brehze, daps, FaNg, HexT, oSee       |
+|           77 |      236 | 2024-06-09 | M80              | W   | 1.000      | 0.143        | 0.205 (0.029)    | -                | 0 (0.000) |    26.30 | autimatic, Brehze, HexT, oSee, Walco |
+|           76 |      298 | 2024-06-08 | Party Astronauts | W   | 1.000      | -            | -                | -                | 0 (0.000) |    19.19 | autimatic, Brehze, HexT, oSee, Walco |
+|           75 |      354 | 2024-06-07 | Party Astronauts | L   | 1.000      | -            | -                | -                | -         |   -12.08 | autimatic, Brehze, HexT, oSee, Walco |
+|           74 |      397 | 2024-06-06 | Party Astronauts | L   | 1.000      | -            | -                | -                | -         |   -13.92 | autimatic, Brehze, HexT, oSee, Walco |
+|           73 |      409 | 2024-06-06 | Wildcard         | W   | 1.000      | 0.143        | 0.068 (0.010)    | -                | 0 (0.000) |    18.26 | autimatic, Brehze, HexT, oSee, Walco |
+|           72 |      411 | 2024-06-06 | FLUFFY AIMERS    | W   | 1.000      | -            | -                | -                | 0 (0.000) |     7.70 | autimatic, Brehze, HexT, oSee, Walco |
+|           71 |      432 | 2024-06-06 | Wildcard         | L   | 1.000      | -            | -                | -                | -         |   -12.38 | autimatic, Brehze, HexT, oSee, Walco |
+|           70 |      465 | 2024-06-05 | LAG              | W   | 1.000      | 0.477        | 0.021 (0.010)    | 0.421 (0.201)    | 0 (0.000) |    12.09 | autimatic, Brehze, HexT, oSee, Walco |
+|           69 |      477 | 2024-06-05 | FLUFFY AIMERS    | W   | 1.000      | -            | -                | -                | 0 (0.000) |     8.28 | autimatic, Brehze, HexT, oSee, Walco |
+|           68 |      515 | 2024-06-04 | Nouns            | L   | 1.000      | -            | -                | -                | -         |   -11.33 | autimatic, Brehze, HexT, oSee, Walco |
+|           67 |      812 | 2024-05-23 | Nouns            | L   | 1.000      | -            | -                | -                | -         |   -12.18 | autimatic, Brehze, HexT, oSee, Walco |
+|           66 |      829 | 2024-05-22 | Elevate          | L   | 1.000      | -            | -                | -                | -         |   -14.96 | autimatic, Brehze, HexT, oSee, Walco |
+|           65 |      834 | 2024-05-22 | Elevate          | L   | 1.000      | -            | -                | -                | -         |   -16.35 | autimatic, Brehze, HexT, oSee, Walco |
+|           64 |      857 | 2024-05-22 | Legacy           | W   | 1.000      | 0.384        | 0.146 (0.056)    | 0.452 (0.174)    | 0 (0.000) |    20.20 | autimatic, Brehze, HexT, oSee, Walco |
+|           63 |      880 | 2024-05-21 | Take Flyte       | L   | 1.000      | -            | -                | -                | -         |   -23.72 | autimatic, Brehze, HexT, oSee, Walco |
+|           62 |      882 | 2024-05-21 | Take Flyte       | W   | 1.000      | 0.477        | -                | 0.306 (0.146)    | 0 (0.000) |     7.27 | autimatic, Brehze, HexT, oSee, Walco |
+|           61 |      913 | 2024-05-20 | M80              | L   | 1.000      | -            | -                | -                | -         |    -5.94 | autimatic, Brehze, HexT, oSee, Walco |
+|           60 |      918 | 2024-05-20 | M80              | L   | 1.000      | -            | -                | -                | -         |    -6.28 | autimatic, Brehze, HexT, oSee, Walco |
+|           59 |      976 | 2024-05-18 | Nouns            | L   | 0.998      | -            | -                | -                | -         |   -16.59 | autimatic, Brehze, HexT, oSee, Walco |
+|           58 |      981 | 2024-05-18 | Party Astronauts | W   | 0.997      | 0.303        | 0.055 (0.017)    | 0.600 (0.181)    | 0 (0.000) |    14.33 | autimatic, Brehze, HexT, oSee, Walco |
+|           57 |     1015 | 2024-05-17 | BOSS             | W   | 0.991      | -            | -                | -                | 0 (0.000) |     8.42 | autimatic, Brehze, HexT, oSee, Walco |
+|           56 |     1083 | 2024-05-15 | LAG              | W   | 0.978      | 0.477        | 0.021 (0.010)    | 0.421 (0.196)    | -         |     9.47 | autimatic, Brehze, HexT, oSee, Walco |
+|           55 |     1091 | 2024-05-15 | LAG              | W   | 0.978      | 0.477        | 0.021 (0.010)    | 0.421 (0.196)    | -         |    10.21 | autimatic, Brehze, HexT, oSee, Walco |
+|           54 |     1136 | 2024-05-14 | One More         | W   | 0.971      | -            | -                | -                | -         |     5.84 | autimatic, Brehze, HexT, oSee, Walco |
+|           53 |     1142 | 2024-05-14 | One More         | W   | 0.971      | -            | -                | -                | -         |     6.16 | autimatic, Brehze, HexT, oSee, Walco |
+|           52 |     1206 | 2024-05-12 | Take Flyte       | W   | 0.958      | -            | -                | -                | -         |     8.89 | autimatic, Brehze, HexT, oSee, Walco |
+|           51 |     1208 | 2024-05-12 | Elevate          | W   | 0.957      | -            | -                | -                | -         |    15.08 | autimatic, Brehze, HexT, oSee, Walco |
+|           50 |     1238 | 2024-05-11 | Take Flyte       | W   | 0.950      | -            | -                | -                | -         |     8.75 | autimatic, Brehze, HexT, oSee, Walco |
+|           49 |     1240 | 2024-05-11 | BOSS             | W   | 0.950      | -            | -                | -                | -         |    11.37 | autimatic, Brehze, HexT, oSee, Walco |
+|           48 |     1342 | 2024-05-06 | Party Astronauts | W   | 0.918      | 0.477        | 0.055 (0.024)    | 0.600 (0.263)    | -         |    17.80 | autimatic, Brehze, HexT, oSee, Walco |
+|           47 |     1343 | 2024-05-06 | Party Astronauts | L   | 0.918      | -            | -                | -                | -         |   -10.95 | autimatic, Brehze, HexT, oSee, Walco |
+|           46 |     1578 | 2024-04-25 | Wildcard         | L   | 0.845      | -            | -                | -                | -         |   -11.76 | autimatic, Brehze, HexT, oSee, Walco |
+|           45 |     1580 | 2024-04-25 | Wildcard         | W   | 0.844      | 0.477        | 0.068 (0.028)    | 0.572 (0.230)    | -         |    15.12 | autimatic, Brehze, HexT, oSee, Walco |
+|           44 |     1816 | 2024-04-17 | OMiT             | L   | 0.790      | -            | -                | -                | -         |   -16.51 | autimatic, Brehze, HexT, oSee, Walco |
+|           43 |     1875 | 2024-04-15 | Mythic           | W   | 0.778      | 0.477        | -                | 0.377 (0.140)    | -         |     8.83 | autimatic, Brehze, HexT, oSee, Walco |
+|           42 |     1876 | 2024-04-15 | Mythic           | W   | 0.777      | -            | -                | -                | -         |     9.41 | autimatic, Brehze, HexT, oSee, Walco |
+|           41 |     1962 | 2024-04-10 | BOSS             | W   | 0.745      | -            | -                | -                | -         |    10.49 | autimatic, Brehze, HexT, oSee, Walco |
+|           40 |     1967 | 2024-04-10 | BOSS             | L   | 0.744      | -            | -                | -                | -         |   -13.25 | autimatic, Brehze, HexT, oSee, Walco |
+|           39 |     2021 | 2024-04-09 | Carpe Diem       | W   | 0.738      | -            | -                | -                | -         |     6.44 | autimatic, Brehze, HexT, oSee, Walco |
+|           38 |     2024 | 2024-04-09 | Carpe Diem       | W   | 0.738      | -            | -                | -                | -         |     6.79 | autimatic, Brehze, HexT, oSee, Walco |
+|           37 |     2325 | 2024-03-27 | Nouns            | W   | 0.652      | 0.477        | 0.081 (0.025)    | 0.504 (0.157)    | -         |    13.59 | autimatic, Brehze, HexT, oSee, Walco |
+|           36 |     2330 | 2024-03-27 | Nouns            | L   | 0.651      | -            | -                | -                | -         |    -6.96 | autimatic, Brehze, HexT, oSee, Walco |
+|           35 |     2377 | 2024-03-26 | MIGHT            | W   | 0.645      | -            | -                | -                | -         |     3.29 | autimatic, Brehze, HexT, oSee, Walco |
+|           34 |     2382 | 2024-03-26 | MIGHT            | W   | 0.645      | -            | -                | -                | -         |     3.40 | autimatic, Brehze, HexT, oSee, Walco |
+|           33 |     2548 | 2024-03-15 | FLUFFY AIMERS    | W   | 0.572      | -            | -                | -                | -         |     7.99 | autimatic, Brehze, HexT, oSee, Walco |
+|           32 |     2550 | 2024-03-15 | FLUFFY AIMERS    | L   | 0.571      | -            | -                | -                | -         |   -10.27 | autimatic, Brehze, HexT, oSee, Walco |
+|           31 |     2568 | 2024-03-14 | Limitless        | W   | 0.565      | -            | -                | -                | -         |     4.03 | autimatic, Brehze, HexT, oSee, Walco |
+|           30 |     2573 | 2024-03-14 | Limitless        | W   | 0.565      | -            | -                | -                | -         |     4.17 | autimatic, Brehze, HexT, oSee, Walco |
+|           29 |     2646 | 2024-03-12 | Carpe Diem       | L   | 0.551      | -            | -                | -                | -         |   -11.09 | autimatic, Brehze, HexT, oSee, Walco |
+|           28 |     2901 | 2024-03-02 | MIBR             | L   | 0.483      | -            | -                | -                | -         |    -0.30 | Brehze, daps, FaNg, HexT, oSee       |
+|           27 |     2920 | 2024-03-01 | Imperial         | L   | 0.477      | -            | -                | -                | -         |    -0.43 | Brehze, daps, FaNg, HexT, oSee       |
+|           26 |     3026 | 2024-02-24 | Wildcard         | L   | 0.438      | -            | -                | -                | -         |    -5.32 | Brehze, daps, FaNg, HexT, oSee       |
+|           25 |     3029 | 2024-02-24 | Limitless        | W   | 0.438      | -            | -                | -                | -         |     3.27 | Brehze, daps, FaNg, HexT, oSee       |
+|           24 |     3035 | 2024-02-24 | Mythic           | W   | 0.437      | -            | -                | -                | -         |     6.43 | Brehze, daps, FaNg, HexT, oSee       |
+|           23 |     3071 | 2024-02-22 | Party Astronauts | L   | 0.424      | -            | -                | -                | -         |    -5.27 | Brehze, daps, FaNg, HexT, oSee       |
+|           22 |     3075 | 2024-02-22 | Wildcard         | W   | 0.424      | -            | -                | -                | -         |     8.29 | Brehze, daps, FaNg, HexT, oSee       |
+|           21 |     3123 | 2024-02-20 | Party Astronauts | L   | 0.412      | -            | -                | -                | -         |    -5.20 | Brehze, daps, FaNg, HexT, oSee       |
+|           20 |     3148 | 2024-02-19 | Party Astronauts | W   | 0.406      | -            | -                | -                | -         |     7.75 | Brehze, daps, FaNg, HexT, oSee       |
+|           19 |     3150 | 2024-02-19 | Mythic           | W   | 0.404      | -            | -                | -                | -         |     6.26 | Brehze, daps, FaNg, HexT, oSee       |
+|           18 |     3451 | 2024-02-03 | Elevate          | L   | 0.297      | -            | -                | -                | -         |    -4.53 | Brehze, daps, FaNg, HexT, oSee       |
+|           17 |     3477 | 2024-02-02 | Party Astronauts | W   | 0.291      | -            | -                | -                | -         |     5.69 | Brehze, daps, FaNg, HexT, oSee       |
+|           16 |     3481 | 2024-02-02 | Wildcard         | L   | 0.291      | -            | -                | -                | -         |    -3.36 | Brehze, daps, FaNg, HexT, oSee       |
+|           15 |     3483 | 2024-02-02 | Party Astronauts | W   | 0.290      | -            | -                | -                | -         |     5.75 | Brehze, daps, FaNg, HexT, oSee       |
+|           14 |     3859 | 2024-01-18 | Wildcard         | L   | 0.191      | -            | -                | -                | -         |    -2.27 | Brehze, daps, FaNg, HexT, oSee       |
+|           13 |     3863 | 2024-01-18 | Elevate          | W   | 0.191      | -            | -                | -                | -         |     3.11 | Brehze, daps, FaNg, HexT, oSee       |
+|           12 |     3909 | 2024-01-17 | squids           | W   | 0.184      | -            | -                | -                | -         |     0.38 | Brehze, daps, FaNg, HexT, oSee       |
+|           11 |     3960 | 2024-01-16 | Elevate          | L   | 0.178      | -            | -                | -                | -         |    -2.73 | Brehze, daps, FaNg, HexT, oSee       |
+|           10 |     3966 | 2024-01-16 | regain           | W   | 0.177      | -            | -                | -                | -         |     0.57 | Brehze, daps, FaNg, HexT, oSee       |
+|            9 |     4006 | 2024-01-15 | TSM Shimmer      | W   | 0.171      | -            | -                | -                | -         |     1.63 | Brehze, daps, FaNg, HexT, oSee       |
+|            8 |     4035 | 2024-01-14 | Rocket           | L   | 0.166      | -            | -                | -                | -         |    -4.57 | Brehze, daps, FaNg, HexT, oSee       |
+|            7 |     4045 | 2024-01-14 | LOS              | W   | 0.164      | -            | -                | -                | -         |     0.33 | Brehze, daps, FaNg, HexT, oSee       |
+|            6 |     4061 | 2024-01-13 | Nouns            | L   | 0.158      | -            | -                | -                | -         |    -1.94 | Brehze, daps, FaNg, HexT, oSee       |
+|            5 |     4100 | 2024-01-12 | Complexity       | L   | 0.152      | -            | -                | -                | -         |    -0.03 | Brehze, daps, FaNg, HexT, oSee       |
+|            4 |     4109 | 2024-01-12 | Elevate          | W   | 0.152      | -            | -                | -                | -         |     2.37 | Brehze, daps, FaNg, HexT, oSee       |
+|            3 |     4191 | 2024-01-09 | Liquid           | L   | 0.133      | -            | -                | -                | -         |    -0.05 | Brehze, daps, FaNg, HexT, oSee       |
+|            2 |     4192 | 2024-01-09 | Akimbo           | W   | 0.132      | -            | -                | -                | -         |     1.14 | Brehze, daps, FaNg, HexT, oSee       |
+|            1 |     4195 | 2024-01-09 | MagicLight       | W   | 0.132      | -            | -                | -                | -         |     0.26 | Brehze, daps, FaNg, HexT, oSee       |
 
 <br />
 <span id="table2"></span><br />
 To calculate a roster's Bounty Offered:<br />
 
-- First, take the sum of their top 10 scaled winnings ($7,250.00)
-- Divide that value by the 5th highest value among all rosters ($304,111.55)
+- First, take the sum of their top 10 scaled winnings ($7,163.39)
+- Divide that value by the 5th highest value among all rosters ($300,710.22)
 - The final value (0.02) is scaled by the curve function.[<sup>3</sup>](#curveFunction)
 
 Top ten winnings for this roster:<br />
@@ -129,8 +127,8 @@ Top ten winnings for this roster:<br />
 | Event Date | Age Weight | Prize Winnings | Scaled Winnings |
 | :- | -: | :- | :- |
 | 2024-06-09 |      1.000 | $4,250.00      | $4,250.00       |
-| 2024-05-18 |      1.000 | $1,000.00      | $1,000.00       |
-| 2024-05-12 |      1.000 | $2,000.00      | $2,000.00       |
+| 2024-05-18 |      0.998 | $1,000.00      | $998.18         |
+| 2024-05-12 |      0.958 | $2,000.00      | $1,915.21       |
 
 
 <span id="curveFunction"></span>_The Curve Function: 1 / ( 1 + abs( log10( x ) ) )_<br />

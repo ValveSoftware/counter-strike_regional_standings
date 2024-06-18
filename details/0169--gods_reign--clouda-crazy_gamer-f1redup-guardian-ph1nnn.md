@@ -4,23 +4,23 @@ Roster: clouda, Crazy_Gamer, f1redup, GuardiaN, Ph1NNN<br />
 Region: [Asia]( ../standings_asia.md)<br />
 <br />
 Global Rank: [169](../standings_global.md)<br />
-Regional Rank: [16]( ../standings_asia.md)<br />
-Final Rank Value:  656.5<br />
+Regional Rank: [17]( ../standings_asia.md)<br />
+Final Rank Value:  654.6<br />
 <br />
-Final Rank Value (656.5) = Starting Rank Value (663.9) + Head To Head Adjustments (-7.4)<br />
+Final Rank Value (654.6) = Starting Rank Value (660.8) + Head To Head Adjustments (-6.2)<br />
 
 #### Starting Rank Value<br />
 To figure out a rosters's Starting Rank Value, first take the average of these four factors:<br />
-- Bounty Offered: 0.287[<sup>1</sup>](#table2)
-- Bounty Collected: 0.201[<sup>2</sup>](#table1)
+- Bounty Offered: 0.282[<sup>1</sup>](#table2)
+- Bounty Collected: 0.197[<sup>2</sup>](#table1)
 - Opponent Network: 0.001[<sup>2</sup>](#table1)
-- LAN Wins: 0.040[<sup>2</sup>](#table1)
+- LAN Wins: 0.034[<sup>2</sup>](#table1)
 
-The average of these factors is 0.132<br />
+The average of these factors is 0.128<br />
 <br />
 Next, take the maximum and minimum average across all teams and compute the following:<br />
-- 400 + ( ( Roster_Average - Min_Average ) / ( Max_Average - Min_Average ) ) * 1600 = 663.9
-- 400 + ( ( 0.132 - 0.000 ) / ( 0.803 - 0.000 ) ) * 1600 = 663.9
+- 400 + ( ( Roster_Average - Min_Average ) / ( Max_Average - Min_Average ) ) * 1600 = 660.8
+- 400 + ( ( 0.128 - 0.000 ) / ( 0.787 - 0.000 ) ) * 1600 = 660.8
 
 
 #### Factors<br />
@@ -36,34 +36,30 @@ Note:<br />
 
 | Match Played | Match ID | Date       | Opponent       | W/L | Age Weight | Event Weight | Bounty Collected | Opponent Network | LAN Wins  | H2H Adj. | Roster                                         |
 | -: | -: | :- | :- | :- | :- | :- | :- | :- | :- | -: | :- |
-|           13 |     3189 | 2024-02-09 | Pak Boyz       | L   | 0.384      | -            | -                | -                | -         |    -5.22 | clouda, Crazy_Gamer, f1redup, GuardiaN, Ph1NNN |
-|           12 |     3201 | 2024-02-08 | True Rippers   | L   | 0.378      | -            | -                | -                | -         |    -5.49 | clouda, Crazy_Gamer, f1redup, GuardiaN, Ph1NNN |
-|           11 |     3204 | 2024-02-07 | WahWah         | W   | 0.376      | 0.435        | 0.007 (0.001)    | 0.015 (0.002)    | 1 (0.376) |     6.06 | clouda, Crazy_Gamer, f1redup, GuardiaN, Ph1NNN |
-|           10 |     3537 | 2024-01-21 | Trouble makers | L   | 0.259      | -            | -                | -                | -         |    -5.91 | clouda, Crazy_Gamer, CycloneF, f1redup, Ph1NNN |
-|            9 |     3549 | 2024-01-20 | MAG            | L   | 0.257      | -            | -                | -                | -         |    -5.71 | clouda, Crazy_Gamer, CycloneF, f1redup, Ph1NNN |
-|            8 |     3636 | 2024-01-19 | SR Nacague     | W   | 0.245      | 0.143        | 0.000 (0.000)    | 0.027 (0.001)    | 0 (0.000) |     1.44 | clouda, Crazy_Gamer, CycloneF, f1redup, Ph1NNN |
-|            7 |     3651 | 2024-01-19 | RESILIENCE     | W   | 0.244      | 0.143        | 0.000 (0.000)    | 0.009 (0.000)    | 0 (0.000) |     1.34 | clouda, Crazy_Gamer, CycloneF, f1redup, Ph1NNN |
-|            6 |     3736 | 2024-01-17 | MAG            | W   | 0.232      | 0.143        | 0.000 (0.000)    | 0.096 (0.003)    | 0 (0.000) |     2.13 | clouda, Crazy_Gamer, CycloneF, f1redup, Ph1NNN |
-|            5 |     3739 | 2024-01-17 | SR Nacague     | W   | 0.232      | 0.143        | 0.000 (0.000)    | 0.027 (0.001)    | 0 (0.000) |     1.39 | clouda, Crazy_Gamer, CycloneF, f1redup, Ph1NNN |
-|            4 |     3745 | 2024-01-17 | Drippy Lab     | W   | 0.231      | 0.143        | 0.000 (0.000)    | 0.018 (0.001)    | 0 (0.000) |     1.37 | clouda, Crazy_Gamer, CycloneF, f1redup, Ph1NNN |
-|            3 |     3750 | 2024-01-17 | DarkSide       | W   | 0.231      | 0.143        | 0.000 (0.000)    | 0.000 (0.000)    | 0 (0.000) |     1.35 | clouda, Crazy_Gamer, CycloneF, f1redup, Ph1NNN |
-|            2 |     4140 | 2023-12-17 | Marcos         | L   | 0.025      | -            | -                | -                | -         |    -0.25 | clouda, Crazy_Gamer, CycloneF, f1redup, Ph1NNN |
-|            1 |     4144 | 2023-12-16 | Ikari          | W   | 0.023      | 0.262        | 0.000 (0.000)    | 0.000 (0.000)    | 0 (0.000) |     0.14 | clouda, Crazy_Gamer, CycloneF, f1redup, Ph1NNN |
+|           11 |     3384 | 2024-02-09 | Pak Boyz       | L   | 0.333      | -            | -                | -                | -         |    -4.58 | clouda, Crazy_Gamer, f1redup, GuardiaN, Ph1NNN |
+|           10 |     3396 | 2024-02-08 | True Rippers   | L   | 0.327      | -            | -                | -                | -         |    -4.76 | clouda, Crazy_Gamer, f1redup, GuardiaN, Ph1NNN |
+|            9 |     3399 | 2024-02-07 | WahWah         | W   | 0.326      | 0.435        | 0.006 (0.001)    | 0.012 (0.002)    | 1 (0.326) |     5.25 | clouda, Crazy_Gamer, f1redup, GuardiaN, Ph1NNN |
+|            8 |     3732 | 2024-01-21 | Trouble makers | L   | 0.208      | -            | -                | -                | -         |    -4.74 | clouda, Crazy_Gamer, CycloneF, f1redup, Ph1NNN |
+|            7 |     3744 | 2024-01-20 | MAG            | L   | 0.206      | -            | -                | -                | -         |    -4.57 | clouda, Crazy_Gamer, CycloneF, f1redup, Ph1NNN |
+|            6 |     3831 | 2024-01-19 | SR Nacague     | W   | 0.194      | 0.143        | 0.000 (0.000)    | 0.020 (0.001)    | 0 (0.000) |     1.15 | clouda, Crazy_Gamer, CycloneF, f1redup, Ph1NNN |
+|            5 |     3846 | 2024-01-19 | RESILIENCE     | W   | 0.193      | 0.143        | 0.000 (0.000)    | 0.006 (0.000)    | 0 (0.000) |     1.09 | clouda, Crazy_Gamer, CycloneF, f1redup, Ph1NNN |
+|            4 |     3931 | 2024-01-17 | MAG            | W   | 0.182      | 0.143        | 0.000 (0.000)    | 0.074 (0.002)    | 0 (0.000) |     1.68 | clouda, Crazy_Gamer, CycloneF, f1redup, Ph1NNN |
+|            3 |     3934 | 2024-01-17 | SR Nacague     | W   | 0.181      | 0.143        | 0.000 (0.000)    | 0.020 (0.001)    | 0 (0.000) |     1.10 | clouda, Crazy_Gamer, CycloneF, f1redup, Ph1NNN |
+|            2 |     3940 | 2024-01-17 | Drippy Lab     | W   | 0.181      | 0.143        | 0.000 (0.000)    | 0.013 (0.000)    | 0 (0.000) |     1.08 | clouda, Crazy_Gamer, CycloneF, f1redup, Ph1NNN |
+|            1 |     3945 | 2024-01-17 | DarkSide       | W   | 0.180      | 0.143        | 0.000 (0.000)    | 0.000 (0.000)    | 0 (0.000) |     1.07 | clouda, Crazy_Gamer, CycloneF, f1redup, Ph1NNN |
 
 <br />
 <span id="table2"></span><br />
 To calculate a roster's Bounty Offered:<br />
 
-- First, take the sum of their top 10 scaled winnings ($1,006.13)
-- Divide that value by the 5th highest value among all rosters ($304,111.55)
+- First, take the sum of their top 10 scaled winnings ($867.11)
+- Divide that value by the 5th highest value among all rosters ($300,710.22)
 - The final value (0.00) is scaled by the curve function.[<sup>3</sup>](#curveFunction)
 
 Top ten winnings for this roster:<br />
 
 | Event Date | Age Weight | Prize Winnings | Scaled Winnings |
 | :- | -: | :- | :- |
-| 2024-02-11 |      0.397 | $2,500.00      | $993.75         |
-| 2023-12-17 |      0.025 | $500.00        | $12.39          |
 
 
 <span id="curveFunction"></span>_The Curve Function: 1 / ( 1 + abs( log10( x ) ) )_<br />
