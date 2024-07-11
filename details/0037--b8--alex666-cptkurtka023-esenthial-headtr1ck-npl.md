@@ -4,23 +4,23 @@ Roster: alex666, cptkurtka023, esenthial, headtr1ck, npl<br />
 Region: [Europe]( ../standings_europe.md)<br />
 <br />
 Global Rank: [37](../standings_global.md)<br />
-Regional Rank: [27]( ../standings_europe.md)<br />
-Final Rank Value:  1237.1<br />
+Regional Rank: [26]( ../standings_europe.md)<br />
+Final Rank Value:  1232.5<br />
 <br />
-Final Rank Value (1237.1) = Starting Rank Value (1164.4) + Head To Head Adjustments (72.7)<br />
+Final Rank Value (1232.5) = Starting Rank Value (1165.9) + Head To Head Adjustments (66.7)<br />
 
 #### Starting Rank Value<br />
 To figure out a rosters's Starting Rank Value, first take the average of these four factors:<br />
-- Bounty Offered: 0.610[<sup>1</sup>](#table2)
-- Bounty Collected: 0.502[<sup>2</sup>](#table1)
-- Opponent Network: 0.393[<sup>2</sup>](#table1)
+- Bounty Offered: 0.619[<sup>1</sup>](#table2)
+- Bounty Collected: 0.490[<sup>2</sup>](#table1)
+- Opponent Network: 0.344[<sup>2</sup>](#table1)
 - LAN Wins: 0.000[<sup>2</sup>](#table1)
 
-The average of these factors is 0.376<br />
+The average of these factors is 0.363<br />
 <br />
 Next, take the maximum and minimum average across all teams and compute the following:<br />
-- 400 + ( ( Roster_Average - Min_Average ) / ( Max_Average - Min_Average ) ) * 1600 = 1164.4
-- 400 + ( ( 0.376 - 0.000 ) / ( 0.787 - 0.000 ) ) * 1600 = 1164.4
+- 400 + ( ( Roster_Average - Min_Average ) / ( Max_Average - Min_Average ) ) * 1600 = 1165.9
+- 400 + ( ( 0.363 - 0.000 ) / ( 0.759 - 0.000 ) ) * 1600 = 1165.9
 
 
 #### Factors<br />
@@ -36,99 +36,99 @@ Note:<br />
 
 | Match Played | Match ID | Date       | Opponent      | W/L | Age Weight | Event Weight | Bounty Collected | Opponent Network | LAN Wins  | H2H Adj. | Roster                                           |
 | -: | -: | :- | :- | :- | :- | :- | :- | :- | :- | -: | :- |
-|           74 |       17 | 2024-06-16 | 3DMAX         | W   | 1.000      | 0.435        | 0.186 (0.081)    | 1.000 (0.435)    | 0 (0.000) |    17.73 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           73 |       28 | 2024-06-16 | Monte         | W   | 1.000      | 0.435        | 0.189 (0.082)    | -                | 0 (0.000) |    15.41 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           72 |       63 | 2024-06-15 | Illuminar     | W   | 1.000      | -            | -                | -                | 0 (0.000) |     5.08 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           71 |      142 | 2024-06-13 | MOUZ NXT      | W   | 1.000      | 0.435        | 0.158 (0.069)    | 1.000 (0.435)    | 0 (0.000) |    12.25 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           70 |      162 | 2024-06-12 | BLEED         | L   | 1.000      | -            | -                | -                | -         |   -12.20 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           69 |      255 | 2024-06-09 | AMKAL         | L   | 1.000      | -            | -                | -                | -         |   -11.24 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           68 |      367 | 2024-06-07 | Verdant       | W   | 1.000      | -            | -                | -                | 0 (0.000) |     3.96 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           67 |      375 | 2024-06-07 | PERA          | W   | 1.000      | -            | -                | -                | 0 (0.000) |     7.48 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           66 |      384 | 2024-06-07 | Verdant       | L   | 1.000      | -            | -                | -                | -         |   -27.85 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           65 |      679 | 2024-05-30 | SINNERS       | L   | 1.000      | -            | -                | -                | -         |   -21.97 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           64 |      771 | 2024-05-26 | MOUZ NXT      | L   | 1.000      | -            | -                | -                | -         |   -22.07 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           63 |      779 | 2024-05-25 | RUBY          | W   | 1.000      | -            | -                | -                | 0 (0.000) |     6.16 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           62 |      785 | 2024-05-25 | BetBoom       | W   | 1.000      | 0.435        | 0.414 (0.180)    | 0.798 (0.347)    | 0 (0.000) |    24.79 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           61 |      801 | 2024-05-24 | Alliance      | W   | 1.000      | -            | -                | -                | 0 (0.000) |     4.56 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           60 |      821 | 2024-05-23 | DMS           | W   | 1.000      | -            | -                | -                | 0 (0.000) |     5.45 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           59 |      899 | 2024-05-21 | Rhyno         | W   | 1.000      | -            | -                | -                | -         |     8.16 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           58 |      940 | 2024-05-20 | EYEBALLERS    | W   | 1.000      | -            | -                | -                | -         |     5.23 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           57 |      965 | 2024-05-19 | Zero Tenacity | L   | 1.000      | -            | -                | -                | -         |   -21.47 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           56 |      987 | 2024-05-18 | Sashi         | W   | 0.996      | 0.384        | 0.200 (0.076)    | 1.000 (0.383)    | -         |    18.21 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           55 |     1003 | 2024-05-18 | Rebels        | W   | 0.994      | -            | -                | -                | -         |    11.63 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           54 |     1032 | 2024-05-17 | 3DMAX         | W   | 0.988      | 0.500        | 0.186 (0.092)    | 1.000 (0.494)    | -         |    17.81 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           53 |     1060 | 2024-05-16 | DMS           | W   | 0.982      | -            | -                | -                | -         |     5.65 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           52 |     1075 | 2024-05-16 | Sampi         | W   | 0.980      | -            | -                | -                | -         |     8.35 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           51 |     1108 | 2024-05-15 | PARIVISION    | L   | 0.976      | -            | -                | -                | -         |   -22.24 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           50 |     1175 | 2024-05-14 | Verdant       | W   | 0.968      | -            | -                | -                | -         |     3.37 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           49 |     1180 | 2024-05-14 | MOUZ NXT      | W   | 0.967      | 0.384        | 0.158 (0.059)    | 1.000 (0.372)    | -         |    11.91 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           48 |     1215 | 2024-05-12 | BetBoom       | W   | 0.956      | 0.435        | 0.414 (0.172)    | 0.798 (0.331)    | -         |    25.82 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           47 |     1226 | 2024-05-12 | MOUZ NXT      | W   | 0.954      | 0.435        | 0.158 (0.066)    | 1.000 (0.415)    | -         |    13.61 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           46 |     1260 | 2024-05-11 | BLEED         | W   | 0.947      | 0.435        | 0.347 (0.143)    | 0.946 (0.389)    | -         |    21.80 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           45 |     1296 | 2024-05-09 | KOI           | W   | 0.934      | -            | -                | -                | -         |    16.19 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           44 |     1353 | 2024-05-06 | Enterprise    | W   | 0.915      | -            | -                | -                | -         |     8.61 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           43 |     1391 | 2024-05-04 | GL Academy    | W   | 0.901      | -            | -                | -                | -         |     4.99 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           42 |     1438 | 2024-05-02 | Permitta      | W   | 0.887      | -            | -                | -                | -         |     9.85 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           41 |     1445 | 2024-05-01 | Nemiga        | L   | 0.883      | -            | -                | -                | -         |    -7.17 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           40 |     1449 | 2024-05-01 | V1dar         | W   | 0.882      | -            | -                | -                | -         |     1.41 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           39 |     1463 | 2024-05-01 | SINNERS       | W   | 0.880      | -            | -                | -                | -         |    12.65 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           38 |     1480 | 2024-04-30 | Alliance      | W   | 0.874      | -            | -                | -                | -         |     9.07 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           37 |     1484 | 2024-04-30 | Zero Tenacity | L   | 0.874      | -            | -                | -                | -         |   -14.22 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           36 |     1509 | 2024-04-28 | BLEED         | L   | 0.863      | -            | -                | -                | -         |    -4.49 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           35 |     1557 | 2024-04-26 | Alliance      | W   | 0.850      | -            | -                | -                | -         |     7.95 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           34 |     1627 | 2024-04-23 | BLEED         | L   | 0.829      | -            | -                | -                | -         |    -4.16 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           33 |     1642 | 2024-04-22 | Passion UA    | W   | 0.823      | 0.500        | -                | 0.803 (0.330)    | -         |     9.64 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           32 |     1648 | 2024-04-22 | Alliance      | L   | 0.821      | -            | -                | -                | -         |   -18.20 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           31 |     1666 | 2024-04-21 | PARIVISION    | W   | 0.815      | -            | -                | -                | -         |     8.50 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           30 |     1745 | 2024-04-19 | HAVU          | W   | 0.801      | -            | -                | -                | -         |     3.55 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           29 |     1806 | 2024-04-18 | Zero Tenacity | W   | 0.793      | -            | -                | -                | -         |    11.13 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           28 |     1831 | 2024-04-17 | Zero Tenacity | L   | 0.788      | -            | -                | -                | -         |   -14.05 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           27 |     1868 | 2024-04-16 | AMKAL         | L   | 0.781      | -            | -                | -                | -         |    -8.99 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
-|           26 |     1878 | 2024-04-15 | Sangal        | L   | 0.776      | -            | -                | -                | -         |   -12.22 | baz, cptkurtka023, esenthial, headtr1ck, npl     |
-|           25 |     1999 | 2024-04-10 | Nexus         | L   | 0.742      | -            | -                | -                | -         |   -17.71 | baz, cptkurtka023, esenthial, headtr1ck, npl     |
-|           24 |     2040 | 2024-04-09 | Rebels        | L   | 0.736      | -            | -                | -                | -         |   -12.59 | baz, cptkurtka023, esenthial, headtr1ck, npl     |
-|           23 |     2085 | 2024-04-08 | MOUZ NXT      | L   | 0.728      | -            | -                | -                | -         |   -13.08 | baz, cptkurtka023, esenthial, headtr1ck, npl     |
-|           22 |     2259 | 2024-04-02 | Metizport     | L   | 0.689      | -            | -                | -                | -         |   -14.72 | baz, cptkurtka023, esenthial, npl, OWNER         |
-|           21 |     2264 | 2024-04-02 | Apeks         | L   | 0.688      | -            | -                | -                | -         |   -12.73 | baz, cptkurtka023, esenthial, npl, OWNER         |
-|           20 |     2291 | 2024-03-31 | Apeks         | W   | 0.675      | -            | -                | -                | -         |     8.85 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
-|           19 |     2304 | 2024-03-29 | Space         | L   | 0.662      | -            | -                | -                | -         |   -17.99 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
-|           18 |     2350 | 2024-03-27 | Rebels        | W   | 0.650      | -            | -                | -                | -         |     8.06 | baz, cptkurtka023, esenthial, npl, OWNER         |
-|           17 |     2362 | 2024-03-27 | Sampi         | W   | 0.649      | -            | -                | -                | -         |     5.08 | baz, cptkurtka023, esenthial, npl, OWNER         |
-|           16 |     2393 | 2024-03-25 | FORZE         | W   | 0.636      | -            | -                | -                | -         |     7.33 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
-|           15 |     2452 | 2024-03-21 | BetBoom       | L   | 0.608      | -            | -                | -                | -         |    -1.56 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
-|           14 |     2492 | 2024-03-19 | ex-Sprout     | W   | 0.594      | -            | -                | -                | -         |     0.73 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
-|           13 |     2559 | 2024-03-15 | 3DMAX         | L   | 0.569      | -            | -                | -                | -         |    -8.09 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
-|           12 |     2652 | 2024-03-12 | Metizport     | L   | 0.550      | -            | -                | -                | -         |   -11.84 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
-|           11 |     2658 | 2024-03-12 | ENCE          | W   | 0.549      | -            | -                | -                | -         |    15.46 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
-|           10 |     2672 | 2024-03-11 | KOI           | W   | 0.543      | -            | -                | -                | -         |     9.34 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
-|            9 |     2680 | 2024-03-11 | Virtus.pro    | L   | 0.542      | -            | -                | -                | -         |    -0.52 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
-|            8 |     2744 | 2024-03-08 | PARIVISION    | L   | 0.522      | -            | -                | -                | -         |   -11.95 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
-|            7 |     2830 | 2024-03-05 | Johnny Speeds | W   | 0.503      | -            | -                | -                | -         |    10.77 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
-|            6 |     2837 | 2024-03-05 | Passion UA    | W   | 0.502      | -            | -                | -                | -         |     5.59 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
-|            5 |     2845 | 2024-03-05 | UGANDA        | W   | 0.502      | -            | -                | -                | -         |     0.23 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
-|            4 |     2972 | 2024-02-27 | DMS           | L   | 0.456      | -            | -                | -                | -         |   -11.89 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
-|            3 |     3185 | 2024-02-18 | Aurora        | L   | 0.395      | -            | -                | -                | -         |    -0.77 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
-|            2 |     3236 | 2024-02-16 | 500           | W   | 0.382      | -            | -                | -                | -         |     1.10 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
-|            1 |     3241 | 2024-02-16 | PERA          | W   | 0.381      | -            | -                | -                | -         |     0.16 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
+|           74 |      153 | 2024-06-16 | 3DMAX         | W   | 1.000      | 0.435        | 0.205 (0.089)    | 1.000 (0.435)    | 0 (0.000) |    17.96 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           73 |      164 | 2024-06-16 | Monte         | W   | 1.000      | 0.435        | 0.188 (0.082)    | 0.668 (0.290)    | 0 (0.000) |    15.18 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           72 |      199 | 2024-06-15 | Illuminar     | W   | 1.000      | -            | -                | -                | 0 (0.000) |     7.95 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           71 |      278 | 2024-06-13 | MOUZ NXT      | W   | 1.000      | 0.435        | 0.152 (0.066)    | 1.000 (0.435)    | 0 (0.000) |    12.41 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           70 |      298 | 2024-06-12 | BLEED         | L   | 1.000      | -            | -                | -                | -         |   -11.45 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           69 |      391 | 2024-06-09 | AMKAL         | L   | 0.986      | -            | -                | -                | -         |   -12.56 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           68 |      503 | 2024-06-07 | Verdant       | W   | 0.973      | -            | -                | -                | 0 (0.000) |     4.16 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           67 |      511 | 2024-06-07 | PERA          | W   | 0.973      | -            | -                | -                | 0 (0.000) |     7.96 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           66 |      520 | 2024-06-07 | Verdant       | L   | 0.972      | -            | -                | -                | -         |   -26.77 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           65 |      813 | 2024-05-30 | SINNERS       | L   | 0.920      | -            | -                | -                | -         |   -19.72 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           64 |      905 | 2024-05-26 | MOUZ NXT      | L   | 0.892      | -            | -                | -                | -         |   -19.37 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           63 |      913 | 2024-05-25 | RUBY          | W   | 0.888      | 0.435        | 0.139 (0.054)    | -                | 0 (0.000) |     5.88 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           62 |      919 | 2024-05-25 | BetBoom       | W   | 0.886      | 0.435        | 0.406 (0.156)    | 0.745 (0.287)    | 0 (0.000) |    22.87 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           61 |      935 | 2024-05-24 | Alliance      | W   | 0.880      | -            | -                | -                | 0 (0.000) |     4.40 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           60 |      955 | 2024-05-23 | DMS           | W   | 0.872      | -            | -                | -                | 0 (0.000) |     4.84 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           59 |     1033 | 2024-05-21 | Rhyno         | W   | 0.860      | -            | -                | -                | -         |     7.83 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           58 |     1074 | 2024-05-20 | EYEBALLERS    | W   | 0.852      | -            | -                | -                | -         |     4.70 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           57 |     1099 | 2024-05-19 | Zero Tenacity | L   | 0.846      | -            | -                | -                | -         |   -17.90 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           56 |     1121 | 2024-05-18 | Sashi         | W   | 0.840      | 0.384        | 0.202 (0.065)    | 1.000 (0.323)    | -         |    15.06 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           55 |     1137 | 2024-05-18 | Rebels        | W   | 0.838      | -            | -                | -                | -         |     9.57 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           54 |     1166 | 2024-05-17 | 3DMAX         | W   | 0.832      | 0.500        | 0.205 (0.085)    | 1.000 (0.416)    | -         |    15.38 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           53 |     1194 | 2024-05-16 | DMS           | W   | 0.827      | -            | -                | -                | -         |     4.81 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           52 |     1209 | 2024-05-16 | Slovakia      | W   | 0.825      | 0.384        | -                | 0.891 (0.282)    | -         |     6.84 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           51 |     1242 | 2024-05-15 | PARIVISION    | L   | 0.820      | -            | -                | -                | -         |   -18.78 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           50 |     1309 | 2024-05-14 | Verdant       | W   | 0.813      | -            | -                | -                | -         |     3.18 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           49 |     1314 | 2024-05-14 | MOUZ NXT      | W   | 0.812      | 0.384        | -                | 1.000 (0.312)    | -         |    10.26 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           48 |     1349 | 2024-05-12 | BetBoom       | W   | 0.800      | 0.435        | 0.406 (0.141)    | -                | -         |    22.16 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           47 |     1360 | 2024-05-12 | MOUZ NXT      | W   | 0.799      | 0.435        | 0.152 (0.053)    | 1.000 (0.347)    | -         |    11.43 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           46 |     1394 | 2024-05-11 | BLEED         | W   | 0.791      | 0.435        | 0.348 (0.120)    | 0.908 (0.312)    | -         |    18.52 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           45 |     1430 | 2024-05-09 | KOI           | W   | 0.778      | -            | -                | -                | -         |    13.52 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           44 |     1487 | 2024-05-06 | Enterprise    | W   | 0.759      | -            | -                | -                | -         |     6.95 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           43 |     1525 | 2024-05-04 | GL Academy    | W   | 0.745      | -            | -                | -                | -         |     3.86 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           42 |     1572 | 2024-05-02 | Permitta      | W   | 0.731      | -            | -                | -                | -         |     7.83 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           41 |     1579 | 2024-05-01 | Nemiga        | L   | 0.727      | -            | -                | -                | -         |    -6.17 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           40 |     1583 | 2024-05-01 | V1dar         | W   | 0.726      | -            | -                | -                | -         |     1.05 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           39 |     1597 | 2024-05-01 | SINNERS       | W   | 0.725      | -            | -                | -                | -         |    10.60 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           38 |     1614 | 2024-04-30 | Alliance      | W   | 0.719      | -            | -                | -                | -         |     7.21 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           37 |     1618 | 2024-04-30 | Zero Tenacity | L   | 0.718      | -            | -                | -                | -         |   -11.92 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           36 |     1643 | 2024-04-28 | BLEED         | L   | 0.708      | -            | -                | -                | -         |    -3.85 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           35 |     1691 | 2024-04-26 | Alliance      | W   | 0.694      | -            | -                | -                | -         |     6.38 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           34 |     1761 | 2024-04-23 | BLEED         | L   | 0.673      | -            | -                | -                | -         |    -3.56 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           33 |     1776 | 2024-04-22 | Passion UA    | W   | 0.667      | -            | -                | -                | -         |     7.56 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           32 |     1782 | 2024-04-22 | Alliance      | L   | 0.665      | -            | -                | -                | -         |   -14.93 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           31 |     1800 | 2024-04-21 | PARIVISION    | W   | 0.659      | -            | -                | -                | -         |     6.67 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           30 |     1879 | 2024-04-19 | HAVU          | W   | 0.646      | -            | -                | -                | -         |     2.65 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           29 |     1940 | 2024-04-18 | Zero Tenacity | W   | 0.638      | -            | -                | -                | -         |     9.16 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           28 |     1965 | 2024-04-17 | Zero Tenacity | L   | 0.632      | -            | -                | -                | -         |   -11.09 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           27 |     2002 | 2024-04-16 | AMKAL         | L   | 0.625      | -            | -                | -                | -         |    -8.65 | alex666, cptkurtka023, esenthial, headtr1ck, npl |
+|           26 |     2012 | 2024-04-15 | Sangal        | L   | 0.621      | -            | -                | -                | -         |    -9.41 | baz, cptkurtka023, esenthial, headtr1ck, npl     |
+|           25 |     2133 | 2024-04-10 | Romania       | L   | 0.586      | -            | -                | -                | -         |   -14.58 | baz, cptkurtka023, esenthial, headtr1ck, npl     |
+|           24 |     2174 | 2024-04-09 | Rebels        | L   | 0.581      | -            | -                | -                | -         |   -10.48 | baz, cptkurtka023, esenthial, headtr1ck, npl     |
+|           23 |     2219 | 2024-04-08 | MOUZ NXT      | L   | 0.572      | -            | -                | -                | -         |   -10.31 | baz, cptkurtka023, esenthial, headtr1ck, npl     |
+|           22 |     2393 | 2024-04-02 | Metizport     | L   | 0.534      | -            | -                | -                | -         |   -11.97 | baz, cptkurtka023, esenthial, npl, OWNER         |
+|           21 |     2398 | 2024-04-02 | Apeks         | L   | 0.533      | -            | -                | -                | -         |   -10.99 | baz, cptkurtka023, esenthial, npl, OWNER         |
+|           20 |     2424 | 2024-03-31 | Apeks         | W   | 0.519      | -            | -                | -                | -         |     5.69 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
+|           19 |     2437 | 2024-03-29 | Space         | L   | 0.507      | -            | -                | -                | -         |   -13.69 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
+|           18 |     2483 | 2024-03-27 | Rebels        | W   | 0.494      | -            | -                | -                | -         |     5.83 | baz, cptkurtka023, esenthial, npl, OWNER         |
+|           17 |     2495 | 2024-03-27 | Slovakia      | W   | 0.493      | -            | -                | -                | -         |     3.65 | baz, cptkurtka023, esenthial, npl, OWNER         |
+|           16 |     2526 | 2024-03-25 | FORZE         | W   | 0.480      | -            | -                | -                | -         |     4.83 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
+|           15 |     2585 | 2024-03-21 | BetBoom       | L   | 0.452      | -            | -                | -                | -         |    -1.05 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
+|           14 |     2625 | 2024-03-19 | ex-Sprout     | W   | 0.439      | -            | -                | -                | -         |     0.45 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
+|           13 |     2692 | 2024-03-15 | 3DMAX         | L   | 0.413      | -            | -                | -                | -         |    -5.58 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
+|           12 |     2785 | 2024-03-12 | Metizport     | L   | 0.394      | -            | -                | -                | -         |    -8.99 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
+|           11 |     2791 | 2024-03-12 | ENCE          | W   | 0.393      | -            | -                | -                | -         |    10.72 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
+|           10 |     2805 | 2024-03-11 | KOI           | W   | 0.387      | -            | -                | -                | -         |     6.53 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
+|            9 |     2813 | 2024-03-11 | Virtus.pro    | L   | 0.387      | -            | -                | -                | -         |    -0.42 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
+|            8 |     2877 | 2024-03-08 | PARIVISION    | L   | 0.367      | -            | -                | -                | -         |    -8.44 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
+|            7 |     2963 | 2024-03-05 | Johnny Speeds | W   | 0.347      | -            | -                | -                | -         |     8.60 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
+|            6 |     2970 | 2024-03-05 | Passion UA    | W   | 0.347      | -            | -                | -                | -         |     3.63 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
+|            5 |     2978 | 2024-03-05 | UGANDA        | W   | 0.346      | -            | -                | -                | -         |     0.15 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
+|            4 |     3105 | 2024-02-27 | DMS           | L   | 0.300      | -            | -                | -                | -         |    -7.85 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
+|            3 |     3318 | 2024-02-18 | Aurora        | L   | 0.239      | -            | -                | -                | -         |    -0.41 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
+|            2 |     3369 | 2024-02-16 | 500           | W   | 0.226      | -            | -                | -                | -         |     0.61 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
+|            1 |     3374 | 2024-02-16 | PERA          | W   | 0.225      | -            | -                | -                | -         |     0.10 | cptkurtka023, esenthial, npl, OWNER, r1nkle      |
 
 <br />
 <span id="table2"></span><br />
 To calculate a roster's Bounty Offered:<br />
 
-- First, take the sum of their top 10 scaled winnings ($68,931.20)
-- Divide that value by the 5th highest value among all rosters ($300,710.22)
-- The final value (0.23) is scaled by the curve function.[<sup>3</sup>](#curveFunction)
+- First, take the sum of their top 10 scaled winnings ($62,450.72)
+- Divide that value by the 5th highest value among all rosters ($258,358.97)
+- The final value (0.24) is scaled by the curve function.[<sup>3</sup>](#curveFunction)
 
 Top ten winnings for this roster:<br />
 
 | Event Date | Age Weight | Prize Winnings | Scaled Winnings |
 | :- | -: | :- | :- |
 | 2024-06-16 |      1.000 | $22,000.00     | $22,000.00      |
-| 2024-06-09 |      1.000 | $500.00        | $500.00         |
-| 2024-05-26 |      1.000 | $5,000.00      | $5,000.00       |
-| 2024-05-18 |      0.996 | $10,000.00     | $9,959.78       |
-| 2024-05-12 |      0.956 | $22,000.00     | $21,031.31      |
-| 2024-04-24 |      0.835 | $12,500.00     | $10,440.12      |
+| 2024-06-09 |      0.987 | $1,500.00      | $1,480.82       |
+| 2024-05-26 |      0.893 | $5,000.00      | $4,466.15       |
+| 2024-05-18 |      0.840 | $10,000.00     | $8,403.05       |
+| 2024-05-12 |      0.800 | $22,000.00     | $17,606.50      |
+| 2024-04-24 |      0.680 | $12,500.00     | $8,494.21       |
 
 
 <span id="curveFunction"></span>_The Curve Function: 1 / ( 1 + abs( log10( x ) ) )_<br />
