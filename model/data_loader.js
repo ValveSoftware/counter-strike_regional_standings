@@ -36,6 +36,17 @@ function filterMatchesByTime( matches, startTime, endTime )
         && (startTime < 0 || match.matchStartTime >= startTime ) );
 }
 
+function filterShowmatches( matches, events ){
+    return matches.filter( match => {
+        let eventName = events[ match.eventId ].name;
+
+        if ( eventName.toLowerCase().includes('showmatch') )
+            return false;
+
+        return true;
+    });
+}
+
 class EventTeam {
     constructor( prizeJson ) {
         this.placement = prizeJson.placement;
@@ -183,6 +194,9 @@ class DataLoader
             if( event !== undefined )
                 event.accumulateMatch( match );
         } );
+
+        // Remove showmatches
+        matches = filterShowmatches( matches, events );
 
         // Estimate the information content of each match (for example, recent matches may be considered
         // to have more accurate data about the current skill of players than old ones)

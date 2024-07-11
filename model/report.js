@@ -187,7 +187,7 @@ function displayTeamRankingSummary( team, teams ){
         let lanWin = '-';
         let eventWeight = '-';
 
-        let roster = tm.match.team1Name === team.name ? tm.match.team1Players : tm.match.team2Players;
+        let roster = tm.match.team1.rosterId === team.rosterId ? tm.match.team1Players : tm.match.team2Players;
 
         // use base if you're showing age/event modifiers, val otherwise.
 
