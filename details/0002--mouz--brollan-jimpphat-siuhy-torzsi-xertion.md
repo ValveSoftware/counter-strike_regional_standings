@@ -5,22 +5,22 @@ Region: [Europe]( ../standings_europe.md)<br />
 <br />
 Global Rank: [2](../standings_global.md)<br />
 Regional Rank: [2]( ../standings_europe.md)<br />
-Final Rank Value:  1975.3<br />
+Final Rank Value:  2010.7<br />
 <br />
-Final Rank Value (1975.3) = Starting Rank Value (1953.6) + Head To Head Adjustments (21.7)<br />
+Final Rank Value (2010.7) = Starting Rank Value (2000.0) + Head To Head Adjustments (10.7)<br />
 
 #### Starting Rank Value<br />
 To figure out a rosters's Starting Rank Value, first take the average of these four factors:<br />
 - Bounty Offered: 1.000[<sup>1</sup>](#table2)
-- Bounty Collected: 0.703[<sup>2</sup>](#table1)
-- Opponent Network: 0.308[<sup>2</sup>](#table1)
-- LAN Wins: 0.935[<sup>2</sup>](#table1)
+- Bounty Collected: 0.691[<sup>2</sup>](#table1)
+- Opponent Network: 0.361[<sup>2</sup>](#table1)
+- LAN Wins: 0.928[<sup>2</sup>](#table1)
 
-The average of these factors is 0.737<br />
+The average of these factors is 0.745<br />
 <br />
 Next, take the maximum and minimum average across all teams and compute the following:<br />
-- 400 + ( ( Roster_Average - Min_Average ) / ( Max_Average - Min_Average ) ) * 1600 = 1953.6
-- 400 + ( ( 0.737 - 0.000 ) / ( 0.759 - 0.000 ) ) * 1600 = 1953.6
+- 400 + ( ( Roster_Average - Min_Average ) / ( Max_Average - Min_Average ) ) * 1600 = 2000.0
+- 400 + ( ( 0.745 - 0.000 ) / ( 0.745 - 0.000 ) ) * 1600 = 2000.0
 
 
 #### Factors<br />
@@ -36,59 +36,58 @@ Note:<br />
 
 | Match Played | Match ID | Date       | Opponent           | W/L | Age Weight | Event Weight | Bounty Collected | Opponent Network | LAN Wins  | H2H Adj. | Roster                                    |
 | -: | -: | :- | :- | :- | :- | :- | :- | :- | :- | -: | :- |
-|           34 |      849 | 2024-05-28 | G2                 | L   | 0.909      | -            | -                | -                | -         |   -18.74 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
-|           33 |      870 | 2024-05-27 | Complexity         | W   | 0.903      | 0.624        | 0.440 (0.248)    | 0.427 (0.241)    | 1 (0.903) |     7.07 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
-|           32 |      881 | 2024-05-27 | 9z                 | L   | 0.900      | -            | -                | -                | -         |   -26.26 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
-|           31 |     1098 | 2024-05-19 | Spirit             | W   | 0.846      | 0.769        | 1.000 (0.650)    | 0.462 (0.300)    | 1 (0.846) |    13.33 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
-|           30 |     1126 | 2024-05-18 | HEROIC             | W   | 0.840      | 0.769        | -                | 0.480 (0.310)    | 1 (0.840) |     4.81 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
-|           29 |     1205 | 2024-05-16 | Virtus.pro         | W   | 0.825      | 0.769        | 0.347 (0.220)    | 0.391 (0.248)    | 1 (0.825) |     5.17 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
-|           28 |     1310 | 2024-05-14 | BetBoom            | W   | 0.813      | 0.769        | 0.406 (0.253)    | 0.745 (0.465)    | 1 (0.813) |     1.59 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
-|           27 |     1353 | 2024-05-12 | Vitality           | W   | 0.800      | 0.889        | 0.733 (0.521)    | 0.395 (0.281)    | 1 (0.800) |    12.76 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
-|           26 |     1373 | 2024-05-11 | Complexity         | W   | 0.794      | 0.889        | 0.440 (0.310)    | 0.427 (0.302)    | 1 (0.794) |     7.53 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
-|           25 |     1423 | 2024-05-09 | G2                 | W   | 0.781      | 0.889        | 0.745 (0.517)    | 0.481 (0.334)    | 1 (0.781) |     9.31 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
-|           24 |     1516 | 2024-05-04 | Liquid             | W   | 0.747      | 0.889        | 0.494 (0.328)    | 0.546 (0.363)    | 1 (0.747) |     2.92 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
-|           23 |     1585 | 2024-05-01 | GamerLegion        | W   | 0.726      | -            | -                | -                | 1 (0.726) |     0.43 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
-|           22 |     1615 | 2024-04-30 | Bad News Kangaroos | W   | 0.719      | -            | -                | -                | -         |     0.05 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
-|           21 |     2034 | 2024-04-14 | FaZe               | L   | 0.612      | -            | -                | -                | -         |   -10.80 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
-|           20 |     2051 | 2024-04-13 | G2                 | W   | 0.604      | 0.624        | 0.745 (0.281)    | -                | -         |     8.14 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
-|           19 |     2144 | 2024-04-10 | Liquid             | W   | 0.584      | -            | -                | -                | -         |     2.37 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
-|           18 |     2214 | 2024-04-08 | FURIA              | W   | 0.573      | -            | -                | -                | -         |     2.52 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
-|           17 |     2232 | 2024-04-08 | TYLOO              | W   | 0.570      | -            | -                | -                | -         |     0.03 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
-|           16 |     2433 | 2024-03-29 | G2                 | L   | 0.508      | -            | -                | -                | -         |    -9.06 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
-|           15 |     2556 | 2024-03-22 | Complexity         | W   | 0.459      | -            | -                | -                | -         |     4.22 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
-|           14 |     2576 | 2024-03-21 | Eternal Fire       | W   | 0.453      | 1.000        | 1.000 (0.453)    | -                | -         |     3.55 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
-|           13 |     2587 | 2024-03-21 | Gaimin Gladiators  | W   | 0.452      | 1.000        | -                | 0.528 (0.239)    | -         |     0.18 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
-|           12 |     3266 | 2024-02-20 | Spirit             | W   | 0.253      | -            | -                | -                | -         |     4.63 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
-|           11 |     3288 | 2024-02-19 | Gaimin Gladiators  | W   | 0.247      | -            | -                | -                | -         |     0.08 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
-|           10 |     3301 | 2024-02-19 | ex-Guild Eagles    | W   | 0.245      | -            | -                | -                | -         |     0.02 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
-|            9 |     3495 | 2024-02-10 | FaZe               | L   | 0.186      | -            | -                | -                | -         |    -3.28 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
-|            8 |     3538 | 2024-02-06 | ENCE               | W   | 0.160      | -            | -                | -                | -         |     0.38 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
-|            7 |     3550 | 2024-02-05 | GamerLegion        | W   | 0.153      | -            | -                | -                | -         |     0.02 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
-|            6 |     3573 | 2024-02-04 | Cloud9             | W   | 0.146      | -            | -                | -                | -         |     0.09 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
-|            5 |     3886 | 2024-01-20 | ex-Preasy          | W   | 0.048      | -            | -                | -                | -         |     0.00 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
-|            4 |     3901 | 2024-01-20 | Spirit             | L   | 0.046      | -            | -                | -                | -         |    -0.63 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
-|            3 |     3951 | 2024-01-19 | Eternal Fire       | L   | 0.040      | -            | -                | -                | -         |    -0.98 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
-|            2 |     4009 | 2024-01-18 | HEROIC             | W   | 0.033      | -            | -                | -                | -         |     0.28 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
-|            1 |     4025 | 2024-01-18 | EYEBALLERS         | W   | 0.033      | -            | -                | -                | -         |     0.00 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
+|           33 |        6 | 2024-07-17 | Sashi              | W   | 1.000      | 1.000        | 0.215 (0.215)    | 1.000 (1.000)    | 1 (1.000) |     0.33 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
+|           32 |     1013 | 2024-05-28 | G2                 | L   | 0.869      | -            | -                | -                | -         |   -17.65 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
+|           31 |     1034 | 2024-05-27 | Complexity         | W   | 0.863      | 0.624        | 0.445 (0.240)    | 0.412 (0.222)    | 1 (0.863) |     6.09 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
+|           30 |     1045 | 2024-05-27 | 9z                 | L   | 0.861      | -            | -                | -                | -         |   -25.24 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
+|           29 |     1262 | 2024-05-19 | Spirit             | W   | 0.806      | 0.769        | 1.000 (0.620)    | 0.434 (0.269)    | 1 (0.806) |    11.18 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
+|           28 |     1290 | 2024-05-18 | HEROIC             | W   | 0.800      | 0.769        | -                | 0.448 (0.275)    | 1 (0.800) |     3.71 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
+|           27 |     1369 | 2024-05-16 | Virtus.pro         | W   | 0.786      | 0.769        | -                | 0.367 (0.221)    | 1 (0.786) |     3.99 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
+|           26 |     1474 | 2024-05-14 | BetBoom            | W   | 0.773      | 0.769        | 0.403 (0.239)    | 0.704 (0.418)    | 1 (0.773) |     1.19 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
+|           25 |     1517 | 2024-05-12 | Vitality           | W   | 0.760      | 0.889        | 0.733 (0.495)    | 0.416 (0.281)    | 1 (0.760) |    11.41 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
+|           24 |     1537 | 2024-05-11 | Complexity         | W   | 0.754      | 0.889        | 0.445 (0.298)    | 0.412 (0.276)    | 1 (0.754) |     6.30 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
+|           23 |     1587 | 2024-05-09 | G2                 | W   | 0.741      | 0.889        | 0.738 (0.486)    | 0.496 (0.327)    | 1 (0.741) |     8.97 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
+|           22 |     1680 | 2024-05-04 | Liquid             | W   | 0.707      | 0.889        | 0.494 (0.310)    | 0.510 (0.321)    | 1 (0.707) |     1.95 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
+|           21 |     1749 | 2024-05-01 | GamerLegion        | W   | 0.687      | -            | -                | -                | -         |     0.31 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
+|           20 |     1779 | 2024-04-30 | Bad News Kangaroos | W   | 0.679      | -            | -                | -                | -         |     0.04 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
+|           19 |     2198 | 2024-04-14 | FaZe               | L   | 0.572      | -            | -                | -                | -         |   -11.22 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
+|           18 |     2215 | 2024-04-13 | G2                 | W   | 0.565      | 0.624        | 0.738 (0.260)    | -                | -         |     7.68 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
+|           17 |     2308 | 2024-04-10 | Liquid             | W   | 0.545      | -            | -                | -                | -         |     1.52 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
+|           16 |     2378 | 2024-04-08 | FURIA              | W   | 0.533      | -            | -                | -                | -         |     1.80 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
+|           15 |     2396 | 2024-04-08 | TYLOO              | W   | 0.531      | -            | -                | -                | -         |     0.02 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
+|           14 |     2597 | 2024-03-29 | G2                 | L   | 0.468      | -            | -                | -                | -         |    -8.23 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
+|           13 |     2720 | 2024-03-22 | Complexity         | W   | 0.420      | -            | -                | -                | -         |     3.36 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
+|           12 |     2740 | 2024-03-21 | Eternal Fire       | W   | 0.414      | 1.000        | 1.000 (0.414)    | -                | -         |     2.41 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
+|           11 |     2751 | 2024-03-21 | Gaimin Gladiators  | W   | 0.412      | -            | -                | -                | -         |     0.10 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
+|           10 |     3430 | 2024-02-20 | Spirit             | W   | 0.214      | -            | -                | -                | -         |     3.38 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
+|            9 |     3452 | 2024-02-19 | Gaimin Gladiators  | W   | 0.207      | -            | -                | -                | -         |     0.04 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
+|            8 |     3465 | 2024-02-19 | ex-Guild Eagles    | W   | 0.205      | -            | -                | -                | -         |     0.01 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
+|            7 |     3659 | 2024-02-10 | FaZe               | L   | 0.147      | -            | -                | -                | -         |    -2.88 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
+|            6 |     3702 | 2024-02-06 | ENCE               | W   | 0.121      | -            | -                | -                | -         |     0.18 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
+|            5 |     3714 | 2024-02-05 | GamerLegion        | W   | 0.114      | -            | -                | -                | -         |     0.01 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
+|            4 |     3737 | 2024-02-04 | Cloud9             | W   | 0.106      | -            | -                | -                | -         |     0.04 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
+|            3 |     4050 | 2024-01-20 | ex-Preasy          | W   | 0.008      | -            | -                | -                | -         |     0.00 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
+|            2 |     4065 | 2024-01-20 | Spirit             | L   | 0.007      | -            | -                | -                | -         |    -0.11 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
+|            1 |     4115 | 2024-01-19 | Eternal Fire       | L   | 0.001      | -            | -                | -                | -         |    -0.02 | Brollan, Jimpphat, siuhy, torzsi, xertioN |
 
 <br />
 <span id="table2"></span><br />
 To calculate a roster's Bounty Offered:<br />
 
-- First, take the sum of their top 10 scaled winnings ($459,086.81)
-- Divide that value by the 5th highest value among all rosters ($258,358.97)
+- First, take the sum of their top 10 scaled winnings ($433,657.02)
+- Divide that value by the 5th highest value among all rosters ($245,446.02)
 - The final value (1.00) is scaled by the curve function.[<sup>3</sup>](#curveFunction)
 
 Top ten winnings for this roster:<br />
 
 | Event Date | Age Weight | Prize Winnings | Scaled Winnings |
 | :- | -: | :- | :- |
-| 2024-06-02 |      0.941 | $5,000.00      | $4,705.01       |
-| 2024-05-19 |      0.846 | $300,000.00    | $253,801.20     |
-| 2024-05-12 |      0.800 | $170,000.00    | $135,975.43     |
-| 2024-04-14 |      0.612 | $42,000.00     | $25,692.77      |
-| 2024-03-31 |      0.521 | $45,000.00     | $23,428.73      |
-| 2024-02-11 |      0.194 | $80,000.00     | $15,483.65      |
+| 2024-06-02 |      0.901 | $5,000.00      | $4,506.96       |
+| 2024-05-19 |      0.806 | $300,000.00    | $241,918.13     |
+| 2024-05-12 |      0.760 | $170,000.00    | $129,241.69     |
+| 2024-04-14 |      0.572 | $42,000.00     | $24,029.14      |
+| 2024-03-31 |      0.481 | $45,000.00     | $21,646.27      |
+| 2024-02-11 |      0.154 | $80,000.00     | $12,314.83      |
 
 
 <span id="curveFunction"></span>_The Curve Function: 1 / ( 1 + abs( log10( x ) ) )_<br />
