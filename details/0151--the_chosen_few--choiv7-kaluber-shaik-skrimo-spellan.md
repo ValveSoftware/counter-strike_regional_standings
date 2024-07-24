@@ -5,22 +5,22 @@ Region: [Europe]( ../standings_europe.md)<br />
 <br />
 Global Rank: [151](../standings_global.md)<br />
 Regional Rank: [99]( ../standings_europe.md)<br />
-Final Rank Value:  728.0<br />
+Final Rank Value:  703.4<br />
 <br />
-Final Rank Value (728.0) = Starting Rank Value (700.9) + Head To Head Adjustments (27.1)<br />
+Final Rank Value (703.4) = Starting Rank Value (680.6) + Head To Head Adjustments (22.7)<br />
 
 #### Starting Rank Value<br />
 To figure out a rosters's Starting Rank Value, first take the average of these four factors:<br />
-- Bounty Offered: 0.258[<sup>1</sup>](#table2)
-- Bounty Collected: 0.278[<sup>2</sup>](#table1)
-- Opponent Network: 0.024[<sup>2</sup>](#table1)
+- Bounty Offered: 0.252[<sup>1</sup>](#table2)
+- Bounty Collected: 0.281[<sup>2</sup>](#table1)
+- Opponent Network: 0.022[<sup>2</sup>](#table1)
 - LAN Wins: 0.000[<sup>2</sup>](#table1)
 
-The average of these factors is 0.140<br />
+The average of these factors is 0.139<br />
 <br />
 Next, take the maximum and minimum average across all teams and compute the following:<br />
-- 400 + ( ( Roster_Average - Min_Average ) / ( Max_Average - Min_Average ) ) * 1600 = 700.9
-- 400 + ( ( 0.140 - 0.000 ) / ( 0.745 - 0.000 ) ) * 1600 = 700.9
+- 400 + ( ( Roster_Average - Min_Average ) / ( Max_Average - Min_Average ) ) * 1600 = 680.6
+- 400 + ( ( 0.139 - 0.000 ) / ( 0.790 - 0.000 ) ) * 1600 = 680.6
 
 
 #### Factors<br />
@@ -36,31 +36,31 @@ Note:<br />
 
 | Match Played | Match ID | Date       | Opponent        | W/L | Age Weight | Event Weight | Bounty Collected | Opponent Network | LAN Wins  | H2H Adj. | Roster                                  |
 | -: | -: | :- | :- | :- | :- | :- | :- | :- | :- | -: | :- |
-|           18 |     2858 | 2024-03-15 | Permitta        | L   | 0.373      | -            | -                | -                | -         |    -2.12 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
-|           17 |     2888 | 2024-03-14 | Endpoint        | W   | 0.368      | 0.372        | 0.018 (0.002)    | 0.498 (0.068)    | 0 (0.000) |     8.67 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
-|           16 |     2954 | 2024-03-12 | ARCRED          | W   | 0.354      | 0.372        | 0.057 (0.008)    | 0.354 (0.047)    | 0 (0.000) |     8.26 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
-|           15 |     3014 | 2024-03-09 | Passion UA      | W   | 0.334      | 0.372        | 0.087 (0.011)    | 0.847 (0.105)    | 0 (0.000) |     8.99 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
-|           14 |     3092 | 2024-03-06 | Insilio         | L   | 0.314      | -            | -                | -                | -         |    -1.96 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
-|           13 |     3168 | 2024-03-03 | Metizport       | L   | 0.295      | -            | -                | -                | -         |    -1.70 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
-|           12 |     3174 | 2024-03-03 | TSM             | W   | 0.294      | 0.143        | 0.009 (0.000)    | 0.083 (0.003)    | 0 (0.000) |     5.06 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
-|           11 |     3180 | 2024-03-03 | KOI             | W   | 0.294      | 0.143        | 0.091 (0.004)    | 0.448 (0.019)    | 0 (0.000) |     8.73 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
-|           10 |     3349 | 2024-02-24 | brazylijski luz | L   | 0.240      | -            | -                | -                | -         |    -2.33 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
-|            9 |     3496 | 2024-02-17 | Entropiq        | L   | 0.195      | -            | -                | -                | -         |    -4.05 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
-|            8 |     3501 | 2024-02-17 | kONO            | L   | 0.193      | -            | -                | -                | -         |    -1.76 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
-|            7 |     3508 | 2024-02-17 | Monte           | L   | 0.193      | -            | -                | -                | -         |    -0.52 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
-|            6 |     3654 | 2024-02-10 | ex-Anonymo      | W   | 0.148      | 0.358        | 0.000 (0.000)    | 0.000 (0.000)    | 0 (0.000) |     0.72 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
-|            5 |     3730 | 2024-02-04 | North Macedonia | W   | 0.107      | 0.143        | 0.000 (0.000)    | 0.008 (0.000)    | 0 (0.000) |     0.82 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
-|            4 |     3751 | 2024-02-03 | Zero Tenacity   | L   | 0.101      | -            | -                | -                | -         |    -0.30 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
-|            3 |     3792 | 2024-02-02 | NAVI Junior     | W   | 0.094      | 0.143        | 0.006 (0.000)    | 0.051 (0.001)    | 0 (0.000) |     1.54 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
-|            2 |     3795 | 2024-02-02 | Juggernauts     | W   | 0.093      | 0.143        | 0.000 (0.000)    | 0.000 (0.000)    | 0 (0.000) |     0.46 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
-|            1 |     3799 | 2024-02-02 | NAVI Junior     | L   | 0.093      | -            | -                | -                | -         |    -1.40 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
+|           18 |     3146 | 2024-03-15 | Permitta        | L   | 0.326      | -            | -                | -                | -         |    -1.93 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
+|           17 |     3176 | 2024-03-14 | Endpoint        | W   | 0.320      | 0.372        | 0.015 (0.002)    | 0.466 (0.056)    | 0 (0.000) |     7.54 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
+|           16 |     3242 | 2024-03-12 | ARCRED          | W   | 0.307      | 0.372        | 0.048 (0.006)    | 0.329 (0.038)    | 0 (0.000) |     6.91 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
+|           15 |     3302 | 2024-03-09 | Passion UA      | W   | 0.287      | 0.372        | 0.163 (0.017)    | 1.000 (0.107)    | 0 (0.000) |     8.12 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
+|           14 |     3380 | 2024-03-06 | Insilio         | L   | 0.267      | -            | -                | -                | -         |    -1.83 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
+|           13 |     3456 | 2024-03-03 | Metizport       | L   | 0.248      | -            | -                | -                | -         |    -1.57 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
+|           12 |     3462 | 2024-03-03 | TSM             | W   | 0.247      | 0.143        | 0.008 (0.000)    | 0.066 (0.002)    | 0 (0.000) |     4.04 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
+|           11 |     3468 | 2024-03-03 | KOI             | W   | 0.246      | 0.143        | 0.076 (0.003)    | 0.404 (0.014)    | 0 (0.000) |     7.16 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
+|           10 |     3637 | 2024-02-24 | brazylijski luz | L   | 0.192      | -            | -                | -                | -         |    -1.91 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
+|            9 |     3784 | 2024-02-17 | Entropiq        | L   | 0.148      | -            | -                | -                | -         |    -3.06 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
+|            8 |     3789 | 2024-02-17 | kONO            | L   | 0.146      | -            | -                | -                | -         |    -1.43 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
+|            7 |     3796 | 2024-02-17 | Monte           | L   | 0.145      | -            | -                | -                | -         |    -0.51 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
+|            6 |     3942 | 2024-02-10 | ex-Anonymo      | W   | 0.101      | 0.358        | 0.000 (0.000)    | 0.000 (0.000)    | 0 (0.000) |     0.54 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
+|            5 |     4018 | 2024-02-04 | North Macedonia | W   | 0.060      | 0.143        | 0.000 (0.000)    | 0.004 (0.000)    | 0 (0.000) |     0.48 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
+|            4 |     4039 | 2024-02-03 | Zero Tenacity   | L   | 0.054      | -            | -                | -                | -         |    -0.15 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
+|            3 |     4080 | 2024-02-02 | NAVI Junior     | W   | 0.046      | 0.143        | 0.005 (0.000)    | 0.042 (0.000)    | 0 (0.000) |     0.77 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
+|            2 |     4083 | 2024-02-02 | Juggernauts     | W   | 0.046      | 0.143        | 0.000 (0.000)    | 0.000 (0.000)    | 0 (0.000) |     0.25 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
+|            1 |     4087 | 2024-02-02 | NAVI Junior     | L   | 0.045      | -            | -                | -                | -         |    -0.68 | choiv7, KalubeR, shaiK, Skrimo, SPELLAN |
 
 <br />
 <span id="table2"></span><br />
 To calculate a roster's Bounty Offered:<br />
 
-- First, take the sum of their top 10 scaled winnings ($330.37)
-- Divide that value by the 5th highest value among all rosters ($245,446.02)
+- First, take the sum of their top 10 scaled winnings ($294.95)
+- Divide that value by the 5th highest value among all rosters ($276,334.18)
 - The final value (0.00) is scaled by the curve function.[<sup>3</sup>](#curveFunction)
 
 Top ten winnings for this roster:<br />

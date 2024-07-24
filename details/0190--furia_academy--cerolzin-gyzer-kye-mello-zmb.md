@@ -4,23 +4,23 @@ Roster: cerolzin, GYZER, kye, mello, zmb<br />
 Region: [Americas]( ../standings_americas.md)<br />
 <br />
 Global Rank: [190](../standings_global.md)<br />
-Regional Rank: [50]( ../standings_americas.md)<br />
-Final Rank Value:  545.2<br />
+Regional Rank: [51]( ../standings_americas.md)<br />
+Final Rank Value:  530.9<br />
 <br />
-Final Rank Value (545.2) = Starting Rank Value (531.4) + Head To Head Adjustments (13.9)<br />
+Final Rank Value (530.9) = Starting Rank Value (519.6) + Head To Head Adjustments (11.3)<br />
 
 #### Starting Rank Value<br />
 To figure out a rosters's Starting Rank Value, first take the average of these four factors:<br />
 - Bounty Offered: 0.000[<sup>1</sup>](#table2)
-- Bounty Collected: 0.236[<sup>2</sup>](#table1)
+- Bounty Collected: 0.227[<sup>2</sup>](#table1)
 - Opponent Network: 0.009[<sup>2</sup>](#table1)
 - LAN Wins: 0.000[<sup>2</sup>](#table1)
 
-The average of these factors is 0.061<br />
+The average of these factors is 0.059<br />
 <br />
 Next, take the maximum and minimum average across all teams and compute the following:<br />
-- 400 + ( ( Roster_Average - Min_Average ) / ( Max_Average - Min_Average ) ) * 1600 = 531.4
-- 400 + ( ( 0.061 - 0.000 ) / ( 0.745 - 0.000 ) ) * 1600 = 531.4
+- 400 + ( ( Roster_Average - Min_Average ) / ( Max_Average - Min_Average ) ) * 1600 = 519.6
+- 400 + ( ( 0.059 - 0.000 ) / ( 0.790 - 0.000 ) ) * 1600 = 519.6
 
 
 #### Factors<br />
@@ -36,24 +36,24 @@ Note:<br />
 
 | Match Played | Match ID | Date       | Opponent    | W/L | Age Weight | Event Weight | Bounty Collected | Opponent Network | LAN Wins  | H2H Adj. | Roster                                |
 | -: | -: | :- | :- | :- | :- | :- | :- | :- | :- | -: | :- |
-|           11 |     2251 | 2024-04-11 | Case        | L   | 0.553      | -            | -                | -                | -         |    -1.83 | cerolzin, GYZER, kye, mello, zmb      |
-|           10 |     2406 | 2024-04-07 | Imperial    | L   | 0.527      | -            | -                | -                | -         |    -0.09 | Bruninho, cerolzin, GYZER, kye, mello |
-|            9 |     2890 | 2024-03-14 | Case        | L   | 0.368      | -            | -                | -                | -         |    -1.16 | Bruninho, cerolzin, GYZER, kye, mello |
-|            8 |     2950 | 2024-03-12 | Solid       | W   | 0.354      | 0.303        | 0.047 (0.005)    | 0.622 (0.067)    | 0 (0.000) |    10.01 | Bruninho, cerolzin, GYZER, kye, mello |
-|            7 |     2963 | 2024-03-11 | BESTIA      | L   | 0.349      | -            | -                | -                | -         |    -0.68 | Bruninho, cerolzin, GYZER, kye, mello |
-|            6 |     2988 | 2024-03-10 | Case        | L   | 0.342      | -            | -                | -                | -         |    -0.95 | Bruninho, cerolzin, GYZER, kye, mello |
-|            5 |     2990 | 2024-03-10 | Flamengo    | W   | 0.341      | 0.435        | 0.000 (0.000)    | 0.030 (0.004)    | 0 (0.000) |     5.02 | Bruninho, cerolzin, GYZER, kye, mello |
-|            4 |     3034 | 2024-03-08 | BESTIA      | L   | 0.329      | -            | -                | -                | -         |    -0.60 | Bruninho, cerolzin, GYZER, kye, mello |
-|            3 |     3476 | 2024-02-18 | BESTIA      | L   | 0.201      | -            | -                | -                | -         |    -0.37 | Bruninho, cerolzin, GYZER, kye, mello |
-|            2 |     3527 | 2024-02-16 | Dusty Roots | W   | 0.187      | 0.435        | 0.010 (0.001)    | 0.191 (0.016)    | 0 (0.000) |     4.79 | Bruninho, cerolzin, GYZER, kye, mello |
-|            1 |     3638 | 2024-02-12 | BESTIA      | L   | 0.162      | -            | -                | -                | -         |    -0.29 | Bruninho, cerolzin, GYZER, kye, mello |
+|           11 |     2539 | 2024-04-11 | Case        | L   | 0.506      | -            | -                | -                | -         |    -1.77 | cerolzin, GYZER, kye, mello, zmb      |
+|           10 |     2694 | 2024-04-07 | Imperial    | L   | 0.480      | -            | -                | -                | -         |    -0.14 | Bruninho, cerolzin, GYZER, kye, mello |
+|            9 |     3178 | 2024-03-14 | Case        | L   | 0.320      | -            | -                | -                | -         |    -1.06 | Bruninho, cerolzin, GYZER, kye, mello |
+|            8 |     3238 | 2024-03-12 | Solid       | W   | 0.307      | 0.303        | 0.037 (0.003)    | 0.791 (0.074)    | 0 (0.000) |     8.63 | Bruninho, cerolzin, GYZER, kye, mello |
+|            7 |     3251 | 2024-03-11 | BESTIA      | L   | 0.302      | -            | -                | -                | -         |    -0.54 | Bruninho, cerolzin, GYZER, kye, mello |
+|            6 |     3276 | 2024-03-10 | Case        | L   | 0.295      | -            | -                | -                | -         |    -0.88 | Bruninho, cerolzin, GYZER, kye, mello |
+|            5 |     3278 | 2024-03-10 | Flamengo    | W   | 0.294      | 0.435        | 0.000 (0.000)    | 0.024 (0.003)    | 0 (0.000) |     4.35 | Bruninho, cerolzin, GYZER, kye, mello |
+|            4 |     3322 | 2024-03-08 | BESTIA      | L   | 0.282      | -            | -                | -                | -         |    -0.48 | Bruninho, cerolzin, GYZER, kye, mello |
+|            3 |     3764 | 2024-02-18 | BESTIA      | L   | 0.153      | -            | -                | -                | -         |    -0.26 | Bruninho, cerolzin, GYZER, kye, mello |
+|            2 |     3815 | 2024-02-16 | Dusty Roots | W   | 0.140      | 0.435        | 0.008 (0.001)    | 0.268 (0.016)    | 0 (0.000) |     3.67 | Bruninho, cerolzin, GYZER, kye, mello |
+|            1 |     3926 | 2024-02-12 | BESTIA      | L   | 0.115      | -            | -                | -                | -         |    -0.19 | Bruninho, cerolzin, GYZER, kye, mello |
 
 <br />
 <span id="table2"></span><br />
 To calculate a roster's Bounty Offered:<br />
 
 - First, take the sum of their top 10 scaled winnings ($0.00)
-- Divide that value by the 5th highest value among all rosters ($245,446.02)
+- Divide that value by the 5th highest value among all rosters ($276,334.18)
 - The final value (0.00) is scaled by the curve function.[<sup>3</sup>](#curveFunction)
 
 Top ten winnings for this roster:<br />
