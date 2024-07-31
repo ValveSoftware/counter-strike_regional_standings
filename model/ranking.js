@@ -128,9 +128,9 @@ function applyRanking( teams ){
     regions.forEach( r => {
         let regionalRank = 0;
         teams.forEach( t => {            
-            if ( t.matchesPlayed >= 10 && r === t.region ) {
+            if ( t.matchesPlayed >= 10 && t.region[r] === 1 ) {
                 regionalRank += 1;
-                t.regionalRank = regionalRank;
+                t.regionalRank[r] = regionalRank;
             }    
         });       
     });

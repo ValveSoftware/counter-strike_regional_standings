@@ -41,7 +41,9 @@ function getPluralityRegion( players ) {
         regionAssignment[Region.getCountryRegion(el)]+=1 
     });
 
-    let region = regionAssignment.findIndex( el => el === Math.max(...regionAssignment) );
+    let maxRegionalRepresentation = Math.max( ...regionAssignment );
+    let region = regionAssignment.map( (el, idx) => { return el === maxRegionalRepresentation ? 1 : 0; });
+
     return region;
 }
 
@@ -61,6 +63,7 @@ class Team {
         this.lastPlayed = 0;
         this.modifiers = {};
         this.region = getPluralityRegion( this.players );
+        this.regionalRank = [-1,-1,-1];
     }
 
     // A past team is considered as the same entity as a more recent one,

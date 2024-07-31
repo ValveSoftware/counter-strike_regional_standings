@@ -90,12 +90,12 @@ function displayRankings( teams, regions = [0,1,2], strDate ) {
 
     var dispRank = 0;
     teams.forEach( t => {
-		if (t.globalRank > 0 && regions.some(r => r === t.region) ) {
+		if (t.globalRank > 0 && regions.some(r => t.region[r] === 1 ) ) {
             let displayRank = t.globalRank;
             let paddedRank = displayRank.toString().padStart(4,'0');
             
             if ( regions.length === 1 )
-                displayRank = t.regionalRank;
+                displayRank = t.regionalRank[ regions[0] ];
 
             table.addElem( displayRank );
             table.addElem( t.glickoTeam.rank() );
@@ -119,8 +119,7 @@ function displayRankings( teams, regions = [0,1,2], strDate ) {
 
 
 function displayTeamRankingSummary( team, teams ){
-    let region = RegionList[team.region];
-    let regionFile = `standings_${ RegionList[team.region].toLowerCase() }`;
+    
     let roster = sortCaseInsensitive( team.players.map( el=> el.nick ) ).join(', ');
     let minSeedValue = Math.min( ...teams.map(t => t.seedValue ) );
     let maxSeedValue = Math.max( ...teams.map(t => t.seedValue ) );
@@ -129,10 +128,19 @@ function displayTeamRankingSummary( team, teams ){
     output += formatLine( `### Roster Details`);
     output += formatLine( `Team Name: ${ team.name }` );
     output += formatLine( `Roster: ${ roster }` );
-    output += formatLine( `Region: [${ region }]( ../${ regionFile}.md)` );
-    output += formatLine( '' );
     output += formatLine( `Global Rank: [${ team.globalRank }](../standings_global.md)`);
-    output += formatLine( `Regional Rank: [${ team.regionalRank }]( ../${ regionFile}.md)` );
+    output += formatLine( '' );
+
+    team.region.forEach( (r, idx) => {
+        if ( r === 1 ){
+            let region = RegionList[ idx ];
+            let regionFile = `standings_${ RegionList[ idx ].toLowerCase() }`; 
+            output += formatLine( `Region: [${ region }]( ../${ regionFile}.md)` );            
+            output += formatLine( `Regional Rank: [${ team.regionalRank[ idx ] }]( ../${ regionFile}.md)` );
+            output += formatLine( '' ); 
+        }
+    });    
+   
     output += formatLine( `Final Rank Value:  ${ team.rankValue.toFixed(1) }` );
     output += formatLine( '' );
     output += formatLine( `Final Rank Value (${ team.rankValue.toFixed(1) }) = Starting Rank Value (${ team.rankValueSeed.toFixed(1) }) + Head To Head Adjustments (${ (team.rankValue - team.rankValueSeed).toFixed(1) })`);
