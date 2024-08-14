@@ -42,8 +42,8 @@ function generateOutput( teams, regions = [0,1,2], strDate ){
     }
 
     let liveFolder= `../live/${year}/`
-    if ( !fs.existsSync( liveFolder ) )
-        fs.mkdirSync( liveFolder, { recursive: true } );
+    if ( !fs.existsSync( liveFolder + `${ summaryFolder }` ) )
+        fs.mkdirSync( (liveFolder + `${ summaryFolder }`), { recursive: true } );
 
     fs.writeFileSync( `${ liveFolder }standings_global_${ fileDate }${ format }`, displayRankings( teams, [0,1,2], strDate ) );
     fs.writeFileSync( `${ liveFolder }standings_europe_${ fileDate }${ format }`, displayRankings( teams, [0], strDate ) );
@@ -53,9 +53,9 @@ function generateOutput( teams, regions = [0,1,2], strDate ){
     teams.forEach( t => {
         if (t.globalRank > 0 ){
             let paddedRank = t.globalRank.toString().padStart(4,'0');
-            t.filename =  `../${ summaryFolder }${ paddedRank }--${ sanitize( t.name ) }--${ sanitizeRoster( t.players ) }${ format }`;
+            t.filename =  `${ liveFolder }${ summaryFolder }${ paddedRank }--${ sanitize( t.name ) }--${ sanitizeRoster( t.players ) }${ format }`;
 
-            fs.writeFileSync( t.filename, displayTeamRankingSummary( t, teams ) );
+            fs.writeFileSync( t.filename, displayTeamRankingSummary( t, teams, strDate ) );
         }
     });    
 }
@@ -137,25 +137,26 @@ function displayRankings( teams, regions = [0,1,2], strDate ) {
 
 
 
-function displayTeamRankingSummary( team, teams ){
+function displayTeamRankingSummary( team, teams, strDate ){
     
     let roster = sortCaseInsensitive( team.players.map( el=> el.nick ) ).join(', ');
     let minSeedValue = Math.min( ...teams.map(t => t.seedValue ) );
     let maxSeedValue = Math.max( ...teams.map(t => t.seedValue ) );
+    let fileDate = strDate.replaceAll('-','_');
 
     let output = '';
     output += formatLine( `### Roster Details`);
     output += formatLine( `Team Name: ${ team.name }` );
     output += formatLine( `Roster: ${ roster }` );
-    output += formatLine( `Global Rank: [${ team.globalRank }](../standings_global.md)`);
+    output += formatLine( `Global Rank: [${ team.globalRank }](../standings_global_${ fileDate }.md)`);
     output += formatLine( '' );
 
     team.region.forEach( (r, idx) => {
         if ( r === 1 ){
             let region = RegionList[ idx ];
             let regionFile = `standings_${ RegionList[ idx ].toLowerCase() }`; 
-            output += formatLine( `Region: [${ region }]( ../${ regionFile}.md)` );            
-            output += formatLine( `Regional Rank: [${ team.regionalRank[ idx ] }]( ../${ regionFile}.md)` );
+            output += formatLine( `Region: [${ region }]( ../${ regionFile}_${ fileDate }.md)` );            
+            output += formatLine( `Regional Rank: [${ team.regionalRank[ idx ] }]( ../${ regionFile}_${ fileDate }.md)` );
             output += formatLine( '' ); 
         }
     });    
