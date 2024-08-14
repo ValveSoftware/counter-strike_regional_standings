@@ -26,10 +26,29 @@ function generateOutput( teams, regions = [0,1,2], strDate ){
 
     clearSummaryFolder();
 
-    fs.writeFileSync( `../standings_global${ format }`, displayRankings( teams, [0,1,2], strDate ) );
-    fs.writeFileSync( `../standings_europe${ format }`, displayRankings( teams, [0], strDate ) );
-    fs.writeFileSync( `../standings_americas${ format }`, displayRankings( teams, [1], strDate ) );
-    fs.writeFileSync( `../standings_asia${ format }`, displayRankings( teams, [2], strDate ) );
+    let fileDate = strDate.replaceAll('-','_');
+    let year = fileDate.slice(0,4);
+    let dayOfMonth = Number( strDate.slice(-2) );
+
+    if ( dayOfMonth < 8 ) {
+        let invitationFolder = `../invitation/${year}/`;        
+        if ( !fs.existsSync( invitationFolder ))
+            fs.mkdirSync( invitationFolder, { recursive: true } );
+        
+        fs.writeFileSync( `${invitationFolder}standings_global_${ fileDate }${ format }`, displayRankings( teams, [0,1,2], strDate ) );
+        fs.writeFileSync( `${invitationFolder}standings_europe_${ fileDate }${ format }`, displayRankings( teams, [0], strDate ) );
+        fs.writeFileSync( `${invitationFolder}standings_americas_${ fileDate }${ format }`, displayRankings( teams, [1], strDate ) );
+        fs.writeFileSync( `${invitationFolder}standings_asia_${ fileDate }${ format }`, displayRankings( teams, [2], strDate ) );
+    }
+
+    let liveFolder= `../live/${year}/`
+    if ( !fs.existsSync( liveFolder ) )
+        fs.mkdirSync( liveFolder, { recursive: true } );
+
+    fs.writeFileSync( `${ liveFolder }standings_global_${ fileDate }${ format }`, displayRankings( teams, [0,1,2], strDate ) );
+    fs.writeFileSync( `${ liveFolder }standings_europe_${ fileDate }${ format }`, displayRankings( teams, [0], strDate ) );
+    fs.writeFileSync( `${ liveFolder }standings_americas_${ fileDate }${ format }`, displayRankings( teams, [1], strDate ) );
+    fs.writeFileSync( `${ liveFolder }standings_asia_${ fileDate }${ format }`, displayRankings( teams, [2], strDate ) );
 
     teams.forEach( t => {
         if (t.globalRank > 0 ){
