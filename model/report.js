@@ -24,16 +24,15 @@ function formatLine( line, newline = false ){
 
 function generateOutput( teams, regions = [0,1,2], strDate ){
 
-    clearSummaryFolder();
-
     let fileDate = strDate.replaceAll('-','_');
     let year = fileDate.slice(0,4);
     let dayOfMonth = Number( strDate.slice(-2) );
+    let invitationFolder = `../invitation/${year}/`;  
+    let liveFolder= `../live/${year}/`
 
-    if ( dayOfMonth < 8 ) {
-        let invitationFolder = `../invitation/${year}/`;        
-        if ( !fs.existsSync( invitationFolder ))
-            fs.mkdirSync( invitationFolder, { recursive: true } );
+    if ( dayOfMonth < 8 ) {                  
+        if ( !fs.existsSync( invitationFolder + `${ summaryFolder }${ fileDate }/` ) )
+            fs.mkdirSync( ( invitationFolder + `${ summaryFolder }${ fileDate }/`), { recursive: true } );
         
         fs.writeFileSync( `${invitationFolder}standings_global_${ fileDate }${ format }`, displayRankings( teams, [0,1,2], strDate ) );
         fs.writeFileSync( `${invitationFolder}standings_europe_${ fileDate }${ format }`, displayRankings( teams, [0], strDate ) );
@@ -41,9 +40,8 @@ function generateOutput( teams, regions = [0,1,2], strDate ){
         fs.writeFileSync( `${invitationFolder}standings_asia_${ fileDate }${ format }`, displayRankings( teams, [2], strDate ) );
     }
 
-    let liveFolder= `../live/${year}/`
-    if ( !fs.existsSync( liveFolder + `${ summaryFolder }` ) )
-        fs.mkdirSync( (liveFolder + `${ summaryFolder }`), { recursive: true } );
+    if ( !fs.existsSync( liveFolder + `${ summaryFolder }${ fileDate }/` ) )
+        fs.mkdirSync( (liveFolder + `${ summaryFolder }${ fileDate }/`), { recursive: true } );
 
     fs.writeFileSync( `${ liveFolder }standings_global_${ fileDate }${ format }`, displayRankings( teams, [0,1,2], strDate ) );
     fs.writeFileSync( `${ liveFolder }standings_europe_${ fileDate }${ format }`, displayRankings( teams, [0], strDate ) );
@@ -53,9 +51,13 @@ function generateOutput( teams, regions = [0,1,2], strDate ){
     teams.forEach( t => {
         if (t.globalRank > 0 ){
             let paddedRank = t.globalRank.toString().padStart(4,'0');
-            t.filename =  `${ liveFolder }${ summaryFolder }${ paddedRank }--${ sanitize( t.name ) }--${ sanitizeRoster( t.players ) }${ format }`;
 
-            fs.writeFileSync( t.filename, displayTeamRankingSummary( t, teams, strDate ) );
+            t.filename =  `${ summaryFolder }${ fileDate }/${ paddedRank }--${ sanitize( t.name ) }--${ sanitizeRoster( t.players ) }${ format }`;
+            fs.writeFileSync( `${ liveFolder }${ t.filename }`, displayTeamRankingSummary( t, teams, strDate ) );
+
+            if ( dayOfMonth < 8 ) {
+                fs.writeFileSync( `${ invitationFolder }${ t.filename }`, displayTeamRankingSummary( t, teams, strDate ) );
+            }
         }
     });    
 }
@@ -77,13 +79,9 @@ function sanitizeRoster( roster, delimiter = '-' ){
     return sanitize( text );
 }
 
-function clearSummaryFolder(){
-    fs.rmSync( `../${summaryFolder}`,{ recursive : true, force: true } );
-    fs.mkdirSync( `../${summaryFolder}` );
-}
-
 function displayRankings( teams, regions = [0,1,2], strDate ) {
     let output = '';
+    let fileDate = strDate.replaceAll('-','_');
 
     // Get the region we are doing standings for
     let standings = 'Standings';
@@ -95,8 +93,6 @@ function displayRankings( teams, regions = [0,1,2], strDate ) {
     output += formatLine( '' );
 
     var table = new Table();
-
-    let sampleTeam;
 
     // Sort teams by rank value
     let sortedTeams = [...teams].sort((a, b) => b.rankValue - a.rankValue);
@@ -120,7 +116,7 @@ function displayRankings( teams, regions = [0,1,2], strDate ) {
             table.addElem( t.glickoTeam.rank() );
             table.addElem( t.name );
             table.addElem( sortCaseInsensitive( t.players.map(p => p.nick) ).join(', ') );
-            table.addElem( `[details](${summaryFolder}${ paddedRank }--${ sanitize( t.name ) }--${ sanitizeRoster( t.players )}${ format })` );
+            table.addElem( `[details](${ summaryFolder }${ fileDate }/${ paddedRank }--${ sanitize( t.name ) }--${ sanitizeRoster( t.players )}${ format })` );
             table.commitRow();
         }
     });
@@ -148,15 +144,15 @@ function displayTeamRankingSummary( team, teams, strDate ){
     output += formatLine( `### Roster Details`);
     output += formatLine( `Team Name: ${ team.name }` );
     output += formatLine( `Roster: ${ roster }` );
-    output += formatLine( `Global Rank: [${ team.globalRank }](../standings_global_${ fileDate }.md)`);
+    output += formatLine( `Global Rank: [${ team.globalRank }](../../standings_global_${ fileDate }.md)`);
     output += formatLine( '' );
 
     team.region.forEach( (r, idx) => {
         if ( r === 1 ){
             let region = RegionList[ idx ];
             let regionFile = `standings_${ RegionList[ idx ].toLowerCase() }`; 
-            output += formatLine( `Region: [${ region }]( ../${ regionFile}_${ fileDate }.md)` );            
-            output += formatLine( `Regional Rank: [${ team.regionalRank[ idx ] }]( ../${ regionFile}_${ fileDate }.md)` );
+            output += formatLine( `Region: [${ region }]( ../../${ regionFile}_${ fileDate }.md)` );            
+            output += formatLine( `Regional Rank: [${ team.regionalRank[ idx ] }]( ../../${ regionFile}_${ fileDate }.md)` );
             output += formatLine( '' ); 
         }
     });    
