@@ -32,6 +32,9 @@ function run()
         standings = `Regional Standings for ${RegionList[regions[0]]}`;
     }
 
+    if ( process.argv[4] !== undefined )
+        strDate = process.argv[4];
+
     // Print markdown table for results
     Report.generateOutput( teams, regions, strDate );
 }
