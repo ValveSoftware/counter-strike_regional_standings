@@ -47,6 +47,19 @@ function filterShowmatches( matches, events ){
     });
 }
 
+function filterUnrankedMatches( matches ) {
+
+    return matches.filter( match => {
+        if ( match.matchStartTime < 1735689600 )
+            return true;
+
+        if ( match.valveRanked === undefined )
+            return false;
+
+        return match.valveRanked;        
+    });
+}
+
 class EventTeam {
     constructor( prizeJson ) {
         this.placement = prizeJson.placement;
@@ -179,6 +192,10 @@ class DataLoader
         // Filter matches to only the data we are interested in.
         this.setTimeFilter( versionTimestamp );
         matches = filterIncompleteMatches( matches );
+        
+        // Remove unranked events
+        matches = filterUnrankedMatches( matches );
+        
         const [startTime,endTime] = findTimeWindow( matches, this.filterEndTime, this.filterWindow );
         let graceperiod = 30 * 24 * 3600; // 1 month
         this.rankingContext.setTimeWindow( startTime, endTime - graceperiod );
@@ -196,7 +213,7 @@ class DataLoader
         } );
 
         // Remove showmatches
-        matches = filterShowmatches( matches, events );
+        matches = filterShowmatches( matches, events );        
 
         // Estimate the information content of each match (for example, recent matches may be considered
         // to have more accurate data about the current skill of players than old ones)
