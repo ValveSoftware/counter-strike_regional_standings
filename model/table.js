@@ -348,7 +348,7 @@ class Table
 		}
 		else
 		{
-			order = Array( ...this.columns[0].elems.keys() );
+			order = [ ...this.columns[0].elems.keys() ];
 		}
 
 		// Generate table

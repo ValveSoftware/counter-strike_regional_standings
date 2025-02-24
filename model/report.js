@@ -95,7 +95,6 @@ function displayRankings( teams, regions = [0,1,2], strDate ) {
     var table = new Table();
 
     // Sort teams by rank value
-    let sortedTeams = [...teams].sort((a, b) => b.rankValue - a.rankValue);
 
     table.addColumn( 'Standing' );
     table.addNumericColumn( 'Points' ).setPrecision(0);
@@ -103,7 +102,6 @@ function displayRankings( teams, regions = [0,1,2], strDate ) {
     table.addColumn( 'Roster' );
     table.addColumn( '' );
 
-    var dispRank = 0;
     teams.forEach( t => {
 		if (t.globalRank > 0 && regions.some(r => t.region[r] === 1 ) ) {
             let displayRank = t.globalRank;
@@ -266,30 +264,34 @@ function displayTeamRankingSummary( team, teams, strDate ){
     output += formatLine( `- First, take the sum of their top 10 scaled winnings (${ USDollar.format(team.scaledWinnings.toFixed(2)) })`, true );
     output += formatLine( `- Divide that value by the 5th highest value among all rosters (${ USDollar.format( nthHighest( teams.map( t => t.scaledWinnings ) , 5 ) ) })`, true);
     output += formatLine( `- The final value (${ team.bountyOffered.toFixed(2) }) is scaled by the curve function.[<sup>3</sup>](#curveFunction)`, true)
-    output += formatLine('\nTop ten winnings for this roster:');
-    var winningsTable = new Table();
+    
+    if ( team.scaledWinnings > 0){
+        output += formatLine('\nTop ten winnings for this roster:');
+        var winningsTable = new Table();
 
-    winningsTable.addColumn( 'Event Date' );
-    winningsTable.addNumericColumn( 'Age Weight' ).setPrecision(3);
-    winningsTable.addColumn( 'Prize Winnings');
-    winningsTable.addColumn( 'Scaled Winnings');
+        winningsTable.addColumn( 'Event Date' );
+        winningsTable.addNumericColumn( 'Age Weight' ).setPrecision(3);
+        winningsTable.addColumn( 'Prize Winnings');
+        winningsTable.addColumn( 'Scaled Winnings');
 
-    team.winnings.sort( (a,b) => b.eventTime - a.eventTime );
-    team.winnings.forEach( (w,idx) => {
-        let d = new Date( 0 );
-        d.setUTCSeconds( w.eventTime );
-        let strDate = d.toLocaleString( 'fr-CA', { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'America/Los_Angeles' } );
+        team.winnings.sort( (a,b) => b.eventTime - a.eventTime );    
+        team.winnings.forEach( (w,idx) => {
 
-        winningsTable.addElem( strDate );
-        winningsTable.addElem( w.age );
-        winningsTable.addElem( USDollar.format( w.base ) );
-        winningsTable.addElem( USDollar.format( w.val ) );
+            let d = new Date( 0 );
+            d.setUTCSeconds( w.eventTime );
+            let strDate = d.toLocaleString( 'fr-CA', { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'America/Los_Angeles' } );
 
-        winningsTable.commitRow();
-    })
+            winningsTable.addElem( strDate );
+            winningsTable.addElem( w.age );
+            winningsTable.addElem( USDollar.format( w.base ) );
+            winningsTable.addElem( USDollar.format( w.val ) );
 
-    let winningsTableString = winningsTable.printMarkdownToString();
-    output += '\n' + winningsTableString + '\n';
+            winningsTable.commitRow();
+        })
+
+        let winningsTableString = winningsTable.printMarkdownToString();
+        output += '\n' + winningsTableString + '\n';
+    }
 
     output += formatLine( '', true );
     output += formatLine( `<span id="curveFunction"></span>_The Curve Function: 1 / ( 1 + abs( log10( x ) ) )_` );

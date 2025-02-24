@@ -119,7 +119,11 @@ function applyRanking( teams ){
     let regions = [0,1,2];
 
     teams.forEach( t => {
-        if (t.matchesPlayed >= 10) {
+        t.satisfiesRankingCriteria = ( t.matchesPlayed >= 5 );
+    });
+
+    teams.forEach( t => {
+        if ( t.satisfiesRankingCriteria === true ) {
             globalRank += 1;
             t.globalRank = globalRank;
         }
@@ -128,7 +132,7 @@ function applyRanking( teams ){
     regions.forEach( r => {
         let regionalRank = 0;
         teams.forEach( t => {            
-            if ( t.matchesPlayed >= 10 && t.region[r] === 1 ) {
+            if ( t.satisfiesRankingCriteria === true && t.region[r] === 1 ) {
                 regionalRank += 1;
                 t.regionalRank[r] = regionalRank;
             }    

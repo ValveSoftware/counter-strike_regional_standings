@@ -29,6 +29,14 @@ function filterIncompleteMatches( matches ) {
     return matches.filter( match => ( match.team1Players.length === 5 && match.team2Players.length === 5 ) );
 }
 
+function filterInProgressEvents( matches, events ){
+    matches = matches.filter( match => {
+        return events[ match.eventId ].finished;
+    })
+
+    return matches;
+}
+
 function filterMatchesByTime( matches, startTime, endTime )
 {
     return matches.filter( match =>
@@ -63,7 +71,7 @@ function filterUnrankedMatches( matches ) {
 class EventTeam {
     constructor( prizeJson ) {
         this.placement = prizeJson.placement;
-        this.prize = prizeJson.prize;
+        this.prize = prizeJson.prize + prizeJson.clubShare;
         this.shared = prizeJson.shared;
     }
 }
@@ -76,6 +84,7 @@ class Event {
         this.prizeDistributionByTeamId = {};
         this.lan = eventJson.lan;
         this.lastMatchTime = -1;
+        this.finished = eventJson.finished;
 
         eventJson.prizeDistribution.forEach( teamJson => {
             this.prizeDistributionByTeamId[teamJson.teamId] = new EventTeam( teamJson );
@@ -91,13 +100,21 @@ class Event {
 function initTeams( matches, events, rankingContext ) {
     let teams = [];
 
-    function insertTeam( name, players ) {
+    function insertTeam( name, players, isForfeitMatch ) {
+
         let team = teams.find( team => team.sharesRoster(players) );
-        if( team !== undefined )
-            return team;
+        if( team !== undefined ){
+            if ( team.isPendingUpdate === true ){
+                team.name = name;
+                team.players = players;
+                team.isPendingUpdate = isForfeitMatch;
+            }
+            
+            return team;            
+        }
 
         let rosterId = teams.length;
-        team = new Team( rosterId, name, players );
+        team = new Team( rosterId, name, players, isForfeitMatch );
         teams.push( team );
         return team;
     }
@@ -105,8 +122,8 @@ function initTeams( matches, events, rankingContext ) {
     matches.forEach( (match, idx) => {
         match.umid = idx;
 
-        match.team1 = insertTeam( match.team1Name, match.team1Players );
-        match.team2 = insertTeam( match.team2Name, match.team2Players );
+        match.team1 = insertTeam( match.team1Name, match.team1Players, match.forfeited );
+        match.team2 = insertTeam( match.team2Name, match.team2Players, match.forfeited );
 
         match.team1.accumulateMatch( match );
         match.team2.accumulateMatch( match );
@@ -191,9 +208,10 @@ class DataLoader
 
         // Filter matches to only the data we are interested in.
         this.setTimeFilter( versionTimestamp );
+
         matches = filterIncompleteMatches( matches );
-        
-        // Remove unranked events
+
+        // Remove unranked matches
         matches = filterUnrankedMatches( matches );
         
         const [startTime,endTime] = findTimeWindow( matches, this.filterEndTime, this.filterWindow );
@@ -213,7 +231,10 @@ class DataLoader
         } );
 
         // Remove showmatches
-        matches = filterShowmatches( matches, events );        
+        matches = filterShowmatches( matches, events );  
+        
+        // Remove events that are in-progress
+        matches = filterInProgressEvents( matches, events );
 
         // Estimate the information content of each match (for example, recent matches may be considered
         // to have more accurate data about the current skill of players than old ones)

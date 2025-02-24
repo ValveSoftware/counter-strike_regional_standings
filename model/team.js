@@ -38,7 +38,8 @@ function getPluralityRegion( players ) {
     let regionAssignment = [0, 0, 0]; //EU, AMER, ROW
 
     teamCountries.forEach( el => { 
-        regionAssignment[Region.getCountryRegion(el)]+=1 
+        if ( el !== 'world' )
+            regionAssignment[Region.getCountryRegion(el)]+=1;
     });
 
     let maxRegionalRepresentation = Math.max( ...regionAssignment );
@@ -52,7 +53,7 @@ class Team {
     static TeamMatch = TeamMatch;
     static TeamEvent = TeamEvent;
 
-    constructor( rosterId, name, players ) {
+    constructor( rosterId, name, players, isPendingUpdate ) {
         this.rosterId = rosterId;
         this.name = name;
         this.players = players;
@@ -64,6 +65,8 @@ class Team {
         this.modifiers = {};
         this.region = getPluralityRegion( this.players );
         this.regionalRank = [-1,-1,-1];
+        this.isPendingUpdate = isPendingUpdate;
+        this.satisfiesRankingCriteria = false;
     }
 
     // A past team is considered as the same entity as a more recent one,
