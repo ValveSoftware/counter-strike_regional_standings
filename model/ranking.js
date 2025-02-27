@@ -20,6 +20,14 @@ const SEED_MODIFIER_FACTORS = {
 const MIN_SEEDED_RANK = 400;
 const MAX_SEEDED_RANK = 2000;
 
+function filterLimitedScopeEvents( matches, events ){
+    matches = matches.filter( match => {
+        return !events[ match.eventId ].limitedScope;
+    })
+
+    return matches;
+}
+
 function generateRanking( versionTimestamp = -1, filename )
 {
     // Parameters
@@ -31,6 +39,10 @@ function generateRanking( versionTimestamp = -1, filename )
 
     let teams = dataLoader.teams;
     let matches = dataLoader.matches;
+    let events = dataLoader.events;
+    let glickoMatches = dataLoader.matches;
+
+    glickoMatches = filterLimitedScopeEvents ( matches, events ); // only run H2H on events that have full scope
 
     const glicko = new Glicko();
     glicko.setFixedRD( 75 );        // glicko -> elo
@@ -39,7 +51,7 @@ function generateRanking( versionTimestamp = -1, filename )
     seedTeams( glicko, teams );
 
     // Adjust rankings based on games played
-    runMatches( glicko, matches );
+    runMatches( glicko, glickoMatches );
     teams.forEach( team => { team.rankValue = team.glickoTeam.rank(); } );
 
     // Remove rosters with no wins from the standings
