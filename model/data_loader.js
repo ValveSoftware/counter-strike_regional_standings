@@ -85,6 +85,7 @@ class Event {
         this.lan = eventJson.lan;
         this.lastMatchTime = -1;
         this.finished = eventJson.finished;
+        this.limitedScope = eventJson.limitedScope;
 
         eventJson.prizeDistribution.forEach( teamJson => {
             this.prizeDistributionByTeamId[teamJson.teamId] = new EventTeam( teamJson );
