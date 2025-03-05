@@ -28,6 +28,19 @@ class RankingContext {
         return Math.pow( clamp, this.timeDecayFactor );
     }
 
+    getEventModifier( matchTimeStamp, eventTimeStamp ) {
+        // get event timestamp modifier, permitting a 1 month grace period on events that have finished within 30 days of the match.
+        let eventGracePeriod = matchTimeStamp - ( 1*30*24*3600 );
+        let matchWindowEnd = matchTimeStamp - ( 6*30*24*3600 );
+
+        if(eventTimeStamp > eventGracePeriod) {
+            return 1;
+        }
+
+        let clamp = remapValueClamped( eventTimeStamp, matchTimeStamp, matchWindowEnd, 0, 1 )
+        return Math.pow( clamp, this.timeDecayFactor );
+    }
+
     // Currently we use the same value for both prize pool outlier count, and distinct opponent outlier count.
     setOutlierCount( nth )
     {
