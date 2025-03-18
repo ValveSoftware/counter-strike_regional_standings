@@ -58,14 +58,20 @@ function filterShowmatches( matches, events ){
 function filterUnrankedMatches( matches ) {
 
     return matches.filter( match => {
-        if ( match.matchStartTime < 1735689600 )
-            return true;
 
         if ( match.valveRanked === undefined )
             return false;
 
         return match.valveRanked;        
     });
+}
+
+function filterUnrankedEvents( matches, events ){
+    matches = matches.filter( match => {
+        return events[ match.eventId ].valveRanked;
+    })
+
+    return matches;
 }
 
 class EventTeam {
@@ -85,6 +91,7 @@ class Event {
         this.lan = eventJson.lan;
         this.lastMatchTime = -1;
         this.finished = eventJson.finished;
+        this.valveRanked = eventJson.valveRanked;
 
         eventJson.prizeDistribution.forEach( teamJson => {
             this.prizeDistributionByTeamId[teamJson.teamId] = new EventTeam( teamJson );
@@ -235,6 +242,9 @@ class DataLoader
         
         // Remove events that are in-progress
         matches = filterInProgressEvents( matches, events );
+
+        // Remove unranked events
+        matches = filterUnrankedEvents( matches, events );
 
         // Estimate the information content of each match (for example, recent matches may be considered
         // to have more accurate data about the current skill of players than old ones)
