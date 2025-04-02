@@ -101,20 +101,34 @@ function initTeams( matches, events, rankingContext ) {
     let teams = [];
 
     function insertTeam( name, players, isForfeitMatch ) {
+        let matchingTeams = teams.filter(team => team.sharesRoster(players));
 
-        let team = teams.find( team => team.sharesRoster(players) );
-        if( team !== undefined ){
-            if ( team.isPendingUpdate === true ){
+        if (matchingTeams.length > 0) {
+            // Use a consistent team assignment process, with team determined at branch diverge, compared to which team was initiated first.
+            // Select the team with the most recent match after the divergence
+            let team = matchingTeams.reduce((oldest, team) => {
+                let teamLastPlayed = team.teamMatches.length > 0
+                    ? Math.min(...team.teamMatches.map(m => m.match.timestamp))
+                    : Infinity; // Handle teams with no matches
+
+                let oldestLastPlayed = oldest.teamMatches.length > 0
+                    ? Math.min(...oldest.teamMatches.map(m => m.match.timestamp))
+                    : Infinity;
+
+                return teamLastPlayed < oldestLastPlayed ? team : oldest;
+            }, matchingTeams[0]);
+
+            if (team.isPendingUpdate === true) {
                 team.name = name;
                 team.players = players;
                 team.isPendingUpdate = isForfeitMatch;
             }
-            
-            return team;            
-        }
+
+        return team; // Return the matching team that follows branch diverge logic
+    }
 
         let rosterId = teams.length;
-        team = new Team( rosterId, name, players, isForfeitMatch );
+        let team = new Team( rosterId, name, players, isForfeitMatch );
         teams.push( team );
         return team;
     }
