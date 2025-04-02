@@ -106,10 +106,18 @@ function initTeams( matches, events, rankingContext ) {
 
         if (matchingTeams.length > 0) {
             // Use a consistent team assignment process, with team determined at branch diverge, compared to which team was initiated first.
-            // Select the team with the most recent lastPlayed timestamp
-            let team = matchingTeams.reduce((latest, team) => 
-                team.lastPlayed < latest.lastPlayed ? team : latest
-            );
+            // Select the team with the most recent match after the divergence
+            let team = matchingTeams.reduce((oldest, team) => {
+                let teamLastPlayed = team.teamMatches.length > 0
+                    ? Math.min(...team.teamMatches.map(m => m.match.timestamp))
+                    : Infinity; // Handle teams with no matches
+
+                let oldestLastPlayed = oldest.teamMatches.length > 0
+                    ? Math.min(...oldest.teamMatches.map(m => m.match.timestamp))
+                    : Infinity;
+
+                return teamLastPlayed < oldestLastPlayed ? team : oldest;
+            }, matchingTeams[0]);
 
             if (team.isPendingUpdate === true) {
                 team.name = name;
