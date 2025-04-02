@@ -101,7 +101,6 @@ function initTeams( matches, events, rankingContext ) {
     let teams = [];
 
     function insertTeam( name, players, isForfeitMatch ) {
-
         let matchingTeams = teams.filter(team => team.sharesRoster(players));
 
         if (matchingTeams.length > 0) {
@@ -129,7 +128,7 @@ function initTeams( matches, events, rankingContext ) {
     }
 
         let rosterId = teams.length;
-        team = new Team( rosterId, name, players, isForfeitMatch );
+        let team = new Team( rosterId, name, players, isForfeitMatch );
         teams.push( team );
         return team;
     }
