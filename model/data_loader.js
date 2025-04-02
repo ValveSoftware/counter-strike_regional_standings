@@ -108,7 +108,7 @@ function initTeams( matches, events, rankingContext ) {
             // Use a consistent team assignment process, with team determined at branch diverge, compared to which team was initiated first.
             // Select the team with the most recent lastPlayed timestamp
             let team = matchingTeams.reduce((latest, team) => 
-                team.lastPlayed > latest.lastPlayed ? team : latest
+                team.lastPlayed < latest.lastPlayed ? team : latest
             );
 
             if (team.isPendingUpdate === true) {
