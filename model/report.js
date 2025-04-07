@@ -123,7 +123,7 @@ function displayRankings( teams, regions = [0,1,2], strDate ) {
     output += '\n' + tableString + '\n';
 
     output += formatLine( '', true );
-    output += formatLine( '_Event data for Regional Standings provided by HLTV.org_' );
+    output += formatLine( '_Tournament data for Regional Standings provided by HLTV.org_' );
 
     //console.log( output );
     return output;
@@ -178,9 +178,9 @@ function displayTeamRankingSummary( team, teams, strDate ){
     output += formatLine( `Note:`);
     output += formatLine( '', true );
     output += formatLine( `- For Bounty Collected, Opponent Network, and LAN Wins, we consider only the ten best results over the past 6 months.`, true);
-    output += formatLine( `- Raw values for those factors are multiplied by Age Weight. Bounty and Opponent Network values are also multiplied by Event Weight. The adjusted value is shown in parenthesis.`, true);
+    output += formatLine( `- Raw values for those factors are multiplied by Age Weight. Bounty and Opponent Network values are also multiplied by Tournament Weight. The adjusted value is shown in parenthesis.`, true);
     output += formatLine( `- The final value for a factor is the total of its adjusted values divided by 10. Bounty Collected is further scaled by the curve function[<sup>3</sup>](#curveFunction)`, true);
-    output += formatLine( `- Head to head adjustments are based on rosters' starting rank values. The results shown below are adjusted by Age Weight and not Event Weight`, true);
+    output += formatLine( `- Head to head adjustments are based on rosters' starting rank values. The results shown below are adjusted by Age Weight and not Tournament Weight`, true);
     output += formatLine( '<span id="table1"></span>' );
 
     var table = new Table();
@@ -190,7 +190,7 @@ function displayTeamRankingSummary( team, teams, strDate ){
     table.addColumn( 'Opponent' );
     table.addColumn( 'W/L' );
     table.addColumn( 'Age Weight' );
-    table.addColumn( 'Event Weight' );
+    table.addColumn( 'Tournament Weight' );
     table.addColumn( 'Bounty Collected' );
     table.addColumn( 'Opponent Network' );
     table.addColumn( 'LAN Wins' );
@@ -269,7 +269,7 @@ function displayTeamRankingSummary( team, teams, strDate ){
         output += formatLine('\nTop ten winnings for this roster:');
         var winningsTable = new Table();
 
-        winningsTable.addColumn( 'Event Date' );
+        winningsTable.addColumn( 'Tournament Date' );
         winningsTable.addNumericColumn( 'Age Weight' ).setPrecision(3);
         winningsTable.addColumn( 'Prize Winnings');
         winningsTable.addColumn( 'Scaled Winnings');
@@ -297,7 +297,7 @@ function displayTeamRankingSummary( team, teams, strDate ){
     output += formatLine( `<span id="curveFunction"></span>_The Curve Function: 1 / ( 1 + abs( log10( x ) ) )_` );
     output += formatLine( '', true );
     output += formatLine( '---', true );
-    output += formatLine( '_Event data for Regional Standings provided by HLTV.org_' );
+    output += formatLine( '_Tournament data for Regional Standings provided by HLTV.org_' );
 
     return output;
 }
