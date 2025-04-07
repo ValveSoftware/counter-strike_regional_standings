@@ -85,6 +85,7 @@ class Event {
         this.lan = eventJson.lan;
         this.lastMatchTime = -1;
         this.finished = eventJson.finished;
+        this.tier = eventJson.tier; //A specified tier "1" , "2" or "Wildcard" must be added to the eventJson
 
         eventJson.prizeDistribution.forEach( teamJson => {
             this.prizeDistributionByTeamId[teamJson.teamId] = new EventTeam( teamJson );
