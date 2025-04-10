@@ -262,17 +262,40 @@ var regionMap = [
     { countrycode : 've', region : 'SA' },    
 ];
 
-function getCountryRegion( playerCountry ){
+//--------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
+// Area/Postal Codes for Russia (EU VS Far East), first 2 digits
 
-    let record = regionMap.filter( el => el.countrycode.toLowerCase() === playerCountry.toLowerCase() )[0];
+var FarEastRUPostalCode = [
+    { FarEastRUPostalCode : 67, region : 'AS' },
+    { FarEastRUPostalCode : 68, region : 'AS' },
+    { FarEastRUPostalCode : 69, region : 'AS' },
+];
+
+function getCountryRegion(playerCountry) {
+    let record = regionMap.filter(el => el.countrycode.toLowerCase() === playerCountry.toLowerCase())[0];
     let region = record.region;
 
-    if ( region === 'EU' ){
+    if (region === 'NA' || region === 'SA') {
+        return 1;
+    }
+
+    if (region === 'AS') {
+        return 2;
+    }
+
+    if (region === 'EU') {
+        if (playerCountry.toLowerCase() === 'ru') {
+            for (let postalCodeRecord of FarEastRUPostalCode) {
+                let postalCode = postalCodeRecord.FarEastRUPostalCode;
+                if (postalCode < 70 && postalCode > 66) {
+                    return 2;
+                }
+            }
+            return 0;
+        }
         return 0;
     }
 
-    if ( region === 'NA' || region === 'SA' )
-        return 1;
-
-    return 2;
+    return 0;
 }
