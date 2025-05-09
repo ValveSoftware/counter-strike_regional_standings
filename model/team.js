@@ -26,6 +26,7 @@ class TeamMatch {
         }
 
         this.match      = match;
+        this.eventId    = match.eventId;
         this.team       = team;
         this.teamNumber = ( match.team1 === team ) ? 1 : 2;
         this.isWinner   = match.winningTeam === this.teamNumber;
@@ -204,10 +205,75 @@ class Team {
             let network = [];
 
             team.wonMatches.forEach( teamMatch => {
+                // Phase 3 now includes an additional method to determine the stakes of an event.
+                // This is through assessing the significance of an event through its participants.
+
+                // Firstly, identify all other participants for each event a team has won matches in.
+                let eventId = teamMatch.match.eventId;
+
+                let matchesInEvent = team.teamMatches.filter( match => match.eventId === eventId );
+                let eventParticipants = new Set();
+                let matchTime = teamMatch.match.matchStartTime;                          
+
+                matchesInEvent.forEach( match => {
+                    if ( match.opponent.rosterId !== team.rosterId ) {
+                        eventParticipants.add(match.opponent);
+                    }
+                });
+
+
+                // Store winnings per participant for an event.
+                let participantWinningsArray = [];
+
+                // Iterate through each event participant, retrieving their winnings in non wildcard prior events.
+                Array.from(eventParticipants).forEach(participant => {
+                    let priorEvents = Array.from(participant.eventMap?.values() || [])
+                        .filter(event => event.event.lastMatchTime < matchTime && event.event.tier !== "Wildcard");
+
+                    // Scale the winnings in accordance with the time difference between match and event end.
+                    let adjustedWinnings = priorEvents.map(event => {
+                        let timeModifier = context.getEventModifier(matchTime, event.event.lastMatchTime);
+                        return (event.winnings * timeModifier);
+                    });
+
+                    let totalScaledWinnings = (adjustedWinnings.reduce((sum, val) => sum + val, 0));
+
+                    participantWinningsArray.push({
+                        participantId: participant.rosterId, 
+                        totalScaledWinnings
+                    });
+                });
+
+
+                let scaledWinningsArray = participantWinningsArray
+                    .map(participant => participant.totalScaledWinnings)
+                    .sort((a, b) => b - a); 
+
+                // Cut the scaled winnings to be a maximum of the top 8 for that event, then take the average of the given winnings for that event.
+                let slicedArray = scaledWinningsArray.slice(0, 8); 
+                let totalScaledWinningsRatio = slicedArray.reduce( ( sum, value ) => sum + value, 0) / ( slicedArray.length || 1 );
+
+                
                 let id = teamMatch.match.umid;
                 let timestampModifier = context.getTimestampModifier( teamMatch.match.matchStartTime );
+
+                // Identify the potential event stakes given the prize pool.
+
                 let prizepool = getPrizePool( teamMatch );
-                let stakesModifier = curveFunction( Math.min( prizepool / 1000000, 1 ) ); //prizepool of the event is curved the same as a bounty, and is limited to $1,000,000.
+
+                let prizePoolStakes = prizepool / 1000000;
+
+                // Identify the alternative potential event stakes due to the perceived previous success of the attending rosters. 
+                // Divide the total scaled winnings ratio, by a base 25,000. Reduce this base requirement in accordance with match timestamp.
+
+                let eventStakes = (totalScaledWinningsRatio / ( 25000 * Math.pow(timestampModifier,0.5)));
+
+                // Take the higher stakes value, determined by prize pool or participant strength.
+                // In a majority of cases, tournaments will be scaled by the strength of participant. Prize pool scaling operates as a fall back for when there is a lack of team data or the tournament scales above the teams.
+
+                let stakesValue = Math.max( eventStakes, prizePoolStakes);
+
+                let stakesModifier = curveFunction( Math.min( stakesValue, 1 ) ); 
                 let matchContext = timestampModifier * stakesModifier;
 
                 let scaledBounty = teamMatch.opponent.bountyOffered * matchContext;
