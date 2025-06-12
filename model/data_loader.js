@@ -85,6 +85,11 @@ class Event {
         this.lan = eventJson.lan;
         this.lastMatchTime = -1;
         this.finished = eventJson.finished;
+        this.tier = eventJson.tier; // Assigned to tournament tier as outlined in the Tournament Operation Requirements.
+        this.openProportion = eventJson.openProportion ?? 1; 
+        // openProportion is a value submitted by a Tournament Operator for a specific event between 0 and 1, representing the percentage of paths that are open to the public.
+        // If an event contains a preceding tournament. The proportion of invites from that tournament is multiplied against the openProportion value of that event.
+        // In the case of multiple preceding tournaments and/or open qualifiers. These values can be summed to a total for the main event.
 
         eventJson.prizeDistribution.forEach( teamJson => {
             this.prizeDistributionByTeamId[teamJson.teamId] = new EventTeam( teamJson );
