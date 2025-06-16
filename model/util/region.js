@@ -2,6 +2,7 @@
 
 module.exports = {
     getCountryRegion : getCountryRegion
+    ,getRegionPriority : getRegionPriority
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -262,6 +263,8 @@ var regionMap = [
     { countrycode : 've', region : 'SA' },    
 ];
 
+var regionPriority = [ 3, 2, 1 ]; // [ Europe, Americas, Asia ] // Priority should follow the relative number of regional invitations in the Major Supplemental Rulebook
+
 function getCountryRegion( playerCountry ){
 
     let record = regionMap.filter( el => el.countrycode.toLowerCase() === playerCountry.toLowerCase() )[0];
@@ -275,4 +278,8 @@ function getCountryRegion( playerCountry ){
         return 1;
 
     return 2;
+}
+
+function getRegionPriority( region ){
+    return regionPriority[region];
 }

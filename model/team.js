@@ -43,7 +43,8 @@ function getPluralityRegion( players ) {
     });
 
     let maxRegionalRepresentation = Math.max( ...regionAssignment );
-    let region = regionAssignment.map( (el, idx) => { return el === maxRegionalRepresentation ? 1 : 0; });
+    let region = regionAssignment.map( (el, idx) => { return el === maxRegionalRepresentation ? Region.getRegionPriority( idx ) : 0; });
+    region = region.map( el => { return el === Math.max( ...region) ? 1 : 0 } ) ;
 
     return region;
 }
