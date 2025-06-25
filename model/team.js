@@ -36,11 +36,19 @@ class TeamMatch {
 function getPluralityRegion( players ) {
     let teamCountries = players.map( el => el.countryIso );
     let regionAssignment = [0, 0, 0]; //EU, AMER, ROW
+    let lowPriorityRepresentation = 0;
 
-    teamCountries.forEach( el => { 
-        if ( el !== 'world' )
-            regionAssignment[Region.getCountryRegion(el)]+=1;
+    teamCountries.forEach( el => {         
+        if ( el !== 'world' ){
+            if ( Region.getCountryRegion(el) > -1 )   
+                regionAssignment[Region.getCountryRegion(el)]+=1;
+            else
+                lowPriorityRepresentation += 1;
+        }
     });
+
+    let lowestPriorityRepresented = Math.min( ...regionAssignment.map( (el, idx) => { return el > 0 ? Region.getRegionPriority(idx) : Infinity } ) );
+    regionAssignment[ Region.getRegionIdxFromPriority( lowestPriorityRepresented ) ] += lowPriorityRepresentation;
 
     let maxRegionalRepresentation = Math.max( ...regionAssignment );
     let region = regionAssignment.map( (el, idx) => { return el === maxRegionalRepresentation ? Region.getRegionPriority( idx ) : 0; });

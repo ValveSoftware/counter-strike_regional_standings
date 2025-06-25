@@ -3,6 +3,7 @@
 module.exports = {
     getCountryRegion : getCountryRegion
     ,getRegionPriority : getRegionPriority
+    ,getRegionIdxFromPriority : getRegionIdxFromPriority
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10,7 +11,7 @@ module.exports = {
 // Region Map
 
 var regionMap = [
-    { countrycode : 'dz', region : 'AF' },
+    { countrycode : 'dz', region : 'MENA' },
     { countrycode : 'ao', region : 'AF' },
     { countrycode : 'bj', region : 'AF' },
     { countrycode : 'bw', region : 'AF' },
@@ -25,7 +26,7 @@ var regionMap = [
     { countrycode : 'cd', region : 'AF' },
     { countrycode : 'ci', region : 'AF' },
     { countrycode : 'dj', region : 'AF' },
-    { countrycode : 'eg', region : 'AF' },
+    { countrycode : 'eg', region : 'MENA' },
     { countrycode : 'gq', region : 'AF' },
     { countrycode : 'er', region : 'AF' },
     { countrycode : 'et', region : 'AF' },
@@ -37,14 +38,14 @@ var regionMap = [
     { countrycode : 'ke', region : 'AF' },
     { countrycode : 'ls', region : 'AF' },
     { countrycode : 'lr', region : 'AF' },
-    { countrycode : 'ly', region : 'AF' },
+    { countrycode : 'ly', region : 'MENA' },
     { countrycode : 'mg', region : 'AF' },
     { countrycode : 'mw', region : 'AF' },
     { countrycode : 'ml', region : 'AF' },
     { countrycode : 'mr', region : 'AF' },
     { countrycode : 'mu', region : 'AF' },
     { countrycode : 'yt', region : 'AF' },
-    { countrycode : 'ma', region : 'AF' },
+    { countrycode : 'ma', region : 'MENA' },
     { countrycode : 'mz', region : 'AF' },
     { countrycode : 'na', region : 'AF' },
     { countrycode : 'ne', region : 'AF' },
@@ -63,7 +64,7 @@ var regionMap = [
     { countrycode : 'sz', region : 'AF' },
     { countrycode : 'tz', region : 'AF' },
     { countrycode : 'tg', region : 'AF' },
-    { countrycode : 'tn', region : 'AF' },
+    { countrycode : 'tn', region : 'MENA' },
     { countrycode : 'ug', region : 'AF' },
     { countrycode : 'eh', region : 'AF' },
     { countrycode : 'zm', region : 'AF' },
@@ -74,9 +75,9 @@ var regionMap = [
     { countrycode : 'hm', region : 'AN' },
     { countrycode : 'gs', region : 'AN' },
     { countrycode : 'af', region : 'AS' },
-    { countrycode : 'am', region : 'AS' },
-    { countrycode : 'az', region : 'AS' },
-    { countrycode : 'bh', region : 'AS' },
+    { countrycode : 'am', region : 'MENA' },
+    { countrycode : 'az', region : 'MENA' },
+    { countrycode : 'bh', region : 'MENA' },
     { countrycode : 'bd', region : 'AS' },
     { countrycode : 'bt', region : 'AS' },
     { countrycode : 'io', region : 'AS' },
@@ -85,47 +86,47 @@ var regionMap = [
     { countrycode : 'cn', region : 'AS' },
     { countrycode : 'cx', region : 'AS' },
     { countrycode : 'cc', region : 'AS' },
-    { countrycode : 'cy', region : 'AS' },
-    { countrycode : 'ge', region : 'AS' },
+    { countrycode : 'cy', region : 'MENA' },
+    { countrycode : 'ge', region : 'MENA' },
     { countrycode : 'hk', region : 'AS' },
     { countrycode : 'in', region : 'AS' },
     { countrycode : 'id', region : 'AS' },
     { countrycode : 'ir', region : 'AS' },
-    { countrycode : 'iq', region : 'AS' },
-    { countrycode : 'il', region : 'AS' },
+    { countrycode : 'iq', region : 'MENA' },
+    { countrycode : 'il', region : 'MENA' },
     { countrycode : 'jp', region : 'AS' },
-    { countrycode : 'jo', region : 'AS' },
+    { countrycode : 'jo', region : 'MENA' },
     { countrycode : 'kz', region : 'EU' },
     { countrycode : 'kp', region : 'AS' },
     { countrycode : 'kr', region : 'AS' },
-    { countrycode : 'kw', region : 'AS' },
+    { countrycode : 'kw', region : 'MENA' },
     { countrycode : 'kg', region : 'AS' },
     { countrycode : 'la', region : 'AS' },
-    { countrycode : 'lb', region : 'AS' },
+    { countrycode : 'lb', region : 'MENA' },
     { countrycode : 'mo', region : 'AS' },
     { countrycode : 'my', region : 'AS' },
     { countrycode : 'mv', region : 'AS' },
     { countrycode : 'mn', region : 'AS' },
     { countrycode : 'mm', region : 'AS' },
     { countrycode : 'np', region : 'AS' },
-    { countrycode : 'om', region : 'AS' },
+    { countrycode : 'om', region : 'MENA' },
     { countrycode : 'pk', region : 'AS' },
     { countrycode : 'ps', region : 'AS' },
     { countrycode : 'ph', region : 'AS' },
-    { countrycode : 'qa', region : 'AS' },
-    { countrycode : 'sa', region : 'AS' },
+    { countrycode : 'qa', region : 'MENA' },
+    { countrycode : 'sa', region : 'MENA' },
     { countrycode : 'sg', region : 'AS' },
     { countrycode : 'lk', region : 'AS' },
-    { countrycode : 'sy', region : 'AS' },
+    { countrycode : 'sy', region : 'MENA' },
     { countrycode : 'tw', region : 'AS' },
     { countrycode : 'tj', region : 'AS' },
     { countrycode : 'th', region : 'AS' },
     { countrycode : 'tl', region : 'AS' },
     { countrycode : 'tm', region : 'AS' },
-    { countrycode : 'ae', region : 'AS' },
+    { countrycode : 'ae', region : 'MENA' },
     { countrycode : 'uz', region : 'AS' },
     { countrycode : 'vn', region : 'AS' },
-    { countrycode : 'ye', region : 'AS' },
+    { countrycode : 'ye', region : 'MENA' },
     { countrycode : 'ax', region : 'EU' },
     { countrycode : 'al', region : 'EU' },
     { countrycode : 'ad', region : 'EU' },
@@ -270,16 +271,23 @@ function getCountryRegion( playerCountry ){
     let record = regionMap.filter( el => el.countrycode.toLowerCase() === playerCountry.toLowerCase() )[0];
     let region = record.region;
 
-    if ( region === 'EU' ){
+    if ( region === 'EU' || region === 'MENA' ){
         return 0;
     }
 
     if ( region === 'NA' || region === 'SA' )
         return 1;
 
+    if ( region === 'AF' )
+        return -1;
+
     return 2;
 }
 
 function getRegionPriority( region ){
     return regionPriority[region];
+}
+
+function getRegionIdxFromPriority( priority ){
+    return regionPriority.findIndex( el => {return el === priority } );
 }
