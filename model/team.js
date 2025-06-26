@@ -125,7 +125,28 @@ class Team {
         function curveFunction( x ) { return Math.pow( 1 / ( 1 + Math.abs(Math.log10(x)) ), 1 ); }
         function powerFunction( x ) { return Math.pow( x, 1 ) };
         function getPrizePool( x ) { return Math.max(1, x.team.eventMap.get( x.match.eventId ).event.prizePool ) };
+        function getTier( x ) { return Math.max(1, x.team.eventMap.get( x.match.eventId ).event.tier ) };
+        function getOpenProportion ( x ) { return x.team.eventMap.get( x.match.eventId ).event.openProportion };
         function getLAN( x ) { return x.team.eventMap.get( x.match.eventId ).event.lan ? 1 : 0 };
+        function openCurveFunction(x, lan, tier) {
+            const proportion = Math.min( x, 1 );
+            const log10x = Math.log10(proportion);
+
+            // Different curve functions depending on whether the event is on LAN
+            const coeff = lan ? 0.5 : 0.25
+            const y = 1 - (coeff * (log10x ** 2));
+
+            // Clamping to a minimum 0.5 multiplier
+            let result = Math.max(y, 0.5);
+
+            // Only apply open proportion curve to Tier 2 tournaments
+            if (tier !== 2) {
+                result = 1;
+            }
+
+            return result;
+        }
+
 
         let bucketSize = 10; // used for all factors that track your top N results
 
@@ -161,7 +182,10 @@ class Team {
                 let timestampModifier = context.getTimestampModifier( matchTime );
                 let lan = getLAN( wonMatch );
                 let matchContext = timestampModifier;
-                let scaledLan = lan * matchContext;
+                let openProportion = getOpenProportion( wonMatch );
+                let tier = getTier( wonMatch );
+                let openContext = openCurveFunction ( openProportion, lan, tier );
+                let scaledLan = lan * matchContext * openContext;
                 lanWins.push( { id: id, context: matchContext, base: lan, val: scaledLan } );  
             });
 
@@ -215,9 +239,13 @@ class Team {
             team.wonMatches.forEach( teamMatch => {
                 let id = teamMatch.match.umid;
                 let timestampModifier = context.getTimestampModifier( teamMatch.match.matchStartTime );
+                let lan = getLAN( teamMatch );
                 let prizepool = getPrizePool( teamMatch );
+                let openProportion = getOpenProportion( teamMatch );
+                let tier = getTier( teamMatch );
+                let openContext = openCurveFunction ( openProportion , lan, tier );
                 let stakesModifier = curveFunction( Math.min( prizepool / 1000000, 1 ) ); //prizepool of the event is curved the same as a bounty, and is limited to $1,000,000.
-                let matchContext = timestampModifier * stakesModifier;
+                let matchContext = timestampModifier * openContext * stakesModifier;
 
                 let scaledBounty = teamMatch.opponent.bountyOffered * matchContext;
                 let scaledNetwork = teamMatch.opponent.ownNetwork * matchContext;
