@@ -126,6 +126,7 @@ class Team {
         function powerFunction( x ) { return Math.pow( x, 1 ) };
         function getPrizePool( x ) { return Math.max(1, x.team.eventMap.get( x.match.eventId ).event.prizePool ) };
         function getLAN( x ) { return x.team.eventMap.get( x.match.eventId ).event.lan ? 1 : 0 };
+        function getPlayerBreak ( x ) { return x.team.eventMap.get( x.match.eventId ).event.playerBreak ? 0.5 : 1 };
 
         let bucketSize = 10; // used for all factors that track your top N results
 
@@ -216,7 +217,12 @@ class Team {
                 let id = teamMatch.match.umid;
                 let timestampModifier = context.getTimestampModifier( teamMatch.match.matchStartTime );
                 let prizepool = getPrizePool( teamMatch );
-                let stakesModifier = curveFunction( Math.min( prizepool / 1000000, 1 ) ); //prizepool of the event is curved the same as a bounty, and is limited to $1,000,000.
+
+                let prizePoolStakesModifier = curveFunction( Math.min( prizepool / 1000000, 1 ) ); //prizepool of the event is curved the same as a bounty, and is limited to $1,000,000.
+                let playerBreakStakesModifier = getPlayerBreak ( teamMatch ); // stakes modifier of an event is halved if the event was opearting through the player break.
+
+                let stakesModifier = prizePoolStakesModifier * playerBreakStakesModifier;
+
                 let matchContext = timestampModifier * stakesModifier;
 
                 let scaledBounty = teamMatch.opponent.bountyOffered * matchContext;
