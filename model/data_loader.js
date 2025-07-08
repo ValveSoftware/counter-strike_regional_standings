@@ -85,6 +85,7 @@ class Event {
         this.lan = eventJson.lan;
         this.lastMatchTime = -1;
         this.finished = eventJson.finished;
+        this.playerBreak = false;
 
         eventJson.prizeDistribution.forEach( teamJson => {
             this.prizeDistributionByTeamId[teamJson.teamId] = new EventTeam( teamJson );
@@ -229,6 +230,20 @@ class DataLoader
             if( event !== undefined )
                 event.accumulateMatch( match );
         } );
+
+        // Identify events that run through the player break
+
+        matches.forEach(match => {
+            if (
+                match.matchStartTime >= 1782082800 &&
+                match.matchStartTime <= 1784502000
+            ) {
+                let event = events[match.eventId];
+                if (event) {
+                    event.playerBreak = true;
+                }
+            }
+        });
 
         // Remove showmatches
         matches = filterShowmatches( matches, events );  
