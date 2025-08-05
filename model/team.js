@@ -33,31 +33,6 @@ class TeamMatch {
     }
 }
 
-function getPluralityRegion( players ) {
-    let teamCountries = players.map( el => el.countryIso );
-    let regionAssignment = [0, 0, 0]; //EU, AMER, ROW
-    let lowPriorityRepresentation = 0;
-
-    teamCountries.forEach( el => {         
-        if ( el !== 'world' ){
-            if ( Region.getCountryRegion(el) > -1 )   
-                regionAssignment[Region.getCountryRegion(el)]+=1;
-            else
-                lowPriorityRepresentation += 1;
-        }
-    });
-
-    let lowestPriorityRepresented = Math.min( ...regionAssignment.map( (el, idx) => { return el > 0 ? Region.getRegionPriority(idx) : Infinity } ) );
-    regionAssignment[ Region.getRegionIdxFromPriority( lowestPriorityRepresented ) ] += lowPriorityRepresentation;
-
-    let maxRegionalRepresentation = Math.max( ...regionAssignment );
-    let region = regionAssignment.map( (el, idx) => { return el === maxRegionalRepresentation ? Region.getRegionPriority( idx ) : 0; });
-    region = region.map( el => { return el === Math.max( ...region) ? 1 : 0 } ) ;
-
-    return region;
-}
-
-
 class Team {
     static TeamMatch = TeamMatch;
     static TeamEvent = TeamEvent;
@@ -65,6 +40,7 @@ class Team {
     constructor( rosterId, name, players, isPendingUpdate ) {
         this.rosterId = rosterId;
         this.name = name;
+        this.activeRoster = [];
         this.players = players;
         this.teamMatches = [];
         this.wonMatches = [];
@@ -72,7 +48,7 @@ class Team {
         this.eventMap = new Map();
         this.lastPlayed = 0;
         this.modifiers = {};
-        this.region = getPluralityRegion( this.players );
+        this.region = -1;
         this.regionalRank = [-1,-1,-1];
         this.isPendingUpdate = isPendingUpdate;
         this.satisfiesRankingCriteria = false;
@@ -120,11 +96,75 @@ class Team {
         }
     }
 
+    setActiveRoster(){
+        // include in the active roster only the most recent players who have played five or more matches on this roster.
+        let recentPlayers = [];
+        let matchCount = 0;
+        this.teamMatches.forEach( ( tm, idx ) =>{
+            if ( idx < 10 ){
+                matchCount = idx;
+                let players = tm.teamNumber === 1 ? tm.match.team1Players : tm.match.team2Players;
+                players.forEach( player => {
+                    if ( recentPlayers[player.nick] === undefined ){
+                        recentPlayers[player.nick] = player;
+                        recentPlayers[player.nick].totalMatches = 1;
+                        recentPlayers[player.nick].mostRecentMatch = idx;
+                    } else {
+                        recentPlayers[player.nick].totalMatches += 1;
+                    }
+                })
+            }
+        } )
+
+        let activeRoster = [];
+        let rosterCount = 0;
+        for ( let i = 0; i < matchCount; i ++){
+            for (const id in recentPlayers ){
+                if ( recentPlayers[id].mostRecentMatch === i && recentPlayers[id].totalMatches >= 5 && rosterCount < 5 ){
+                    activeRoster[rosterCount] = recentPlayers[id];
+                    rosterCount += 1;
+                }                    
+            };
+        }
+
+        this.activeRoster = activeRoster;
+    }
+
+    setPluralityRegion() {
+        let players = this.activeRoster;
+        let teamCountries = players.map( el => el.countryIso );
+        let regionAssignment = [0, 0, 0]; //EU, AMER, ROW
+        let lowPriorityRepresentation = 0;
+
+        teamCountries.forEach( el => {         
+            if ( el !== 'world' ){
+                if ( Region.getCountryRegion(el) > -1 )   
+                    regionAssignment[Region.getCountryRegion(el)]+=1;
+                else
+                    lowPriorityRepresentation += 1;
+            }
+        });
+
+        let lowestPriorityRepresented = 1; //Lowest priority region by default
+
+        if ( lowPriorityRepresentation < players.length )
+            lowestPriorityRepresented = Math.min( ...regionAssignment.map( (el, idx) => { return el > 0 ? Region.getRegionPriority(idx) : Infinity } ) );
+        
+        regionAssignment[ Region.getRegionIdxFromPriority( lowestPriorityRepresented ) ] += lowPriorityRepresentation;
+
+        let maxRegionalRepresentation = Math.max( ...regionAssignment );
+        let region = regionAssignment.map( (el, idx) => { return el === maxRegionalRepresentation ? Region.getRegionPriority( idx ) : 0; });
+        region = region.map( el => { return el === Math.max( ...region) ? 1 : 0 } ) ;
+
+        this.region = region;
+    }
+
+
     static initializeSeedingModifiers( teams, context )
     {
         function curveFunction( x ) { return Math.pow( 1 / ( 1 + Math.abs(Math.log10(x)) ), 1 ); }
         function powerFunction( x ) { return Math.pow( x, 1 ) };
-        function getPrizePool( x ) { return Math.max(1, x.team.eventMap.get( x.match.eventId ).event.prizePool ) };
+        function getCappedPrizePool( x ) { return Math.min( Math.max(1, x.team.eventMap.get( x.match.eventId ).event.prizePool ), 1000000 ) };
         function getLAN( x ) { return x.team.eventMap.get( x.match.eventId ).event.lan ? 1 : 0 };
 
         let bucketSize = 10; // used for all factors that track your top N results
@@ -215,8 +255,8 @@ class Team {
             team.wonMatches.forEach( teamMatch => {
                 let id = teamMatch.match.umid;
                 let timestampModifier = context.getTimestampModifier( teamMatch.match.matchStartTime );
-                let prizepool = getPrizePool( teamMatch );
-                let stakesModifier = curveFunction( Math.min( prizepool / 1000000, 1 ) ); //prizepool of the event is curved the same as a bounty, and is limited to $1,000,000.
+                let cappedPrizePool = getCappedPrizePool( teamMatch );
+                let stakesModifier = curveFunction( cappedPrizePool / 1000000 ); //cappedPrizePool of the event is curved the same as a bounty, and is limited to $1,000,000.
                 let matchContext = timestampModifier * stakesModifier;
 
                 let scaledBounty = teamMatch.opponent.bountyOffered * matchContext;

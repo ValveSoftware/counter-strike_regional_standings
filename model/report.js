@@ -52,7 +52,8 @@ function generateOutput( teams, regions = [0,1,2], strDate ){
         if (t.globalRank > 0 ){
             let paddedRank = t.globalRank.toString().padStart(4,'0');
 
-            t.filename =  `${ summaryFolder }${ fileDate }/${ paddedRank }--${ sanitize( t.name ) }--${ sanitizeRoster( t.players ) }${ format }`;
+            t.filename =  `${ summaryFolder }${ fileDate }/${ paddedRank }--${ sanitize( t.name ) }--${ sanitizeRoster( t.activeRoster ) }${ format }`;
+            
             fs.writeFileSync( `${ liveFolder }${ t.filename }`, displayTeamRankingSummary( t, teams, strDate ) );
 
             if ( dayOfMonth < 8 ) {
@@ -113,8 +114,8 @@ function displayRankings( teams, regions = [0,1,2], strDate ) {
             table.addElem( displayRank );
             table.addElem( t.glickoTeam.rank() );
             table.addElem( t.name );
-            table.addElem( sortCaseInsensitive( t.players.map(p => p.nick) ).join(', ') );
-            table.addElem( `[details](${ summaryFolder }${ fileDate }/${ paddedRank }--${ sanitize( t.name ) }--${ sanitizeRoster( t.players )}${ format })` );
+            table.addElem( sortCaseInsensitive( t.activeRoster.map(p => p.nick) ).join(', ') );
+            table.addElem( `[details](${ summaryFolder }${ fileDate }/${ paddedRank }--${ sanitize( t.name ) }--${ sanitizeRoster( t.activeRoster )}${ format })` );
             table.commitRow();
         }
     });
@@ -133,7 +134,7 @@ function displayRankings( teams, regions = [0,1,2], strDate ) {
 
 function displayTeamRankingSummary( team, teams, strDate ){
     
-    let roster = sortCaseInsensitive( team.players.map( el=> el.nick ) ).join(', ');
+    let roster = sortCaseInsensitive( team.activeRoster.map( el=> el.nick ) ).join(', ');
     let minSeedValue = Math.min( ...teams.map(t => t.seedValue ) );
     let maxSeedValue = Math.max( ...teams.map(t => t.seedValue ) );
     let fileDate = strDate.replaceAll('-','_');

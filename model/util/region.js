@@ -111,7 +111,7 @@ var regionMap = [
     { countrycode : 'np', region : 'AS' },
     { countrycode : 'om', region : 'MENA' },
     { countrycode : 'pk', region : 'AS' },
-    { countrycode : 'ps', region : 'AS' },
+    { countrycode : 'ps', region: 'MENA' },
     { countrycode : 'ph', region : 'AS' },
     { countrycode : 'qa', region : 'MENA' },
     { countrycode : 'sa', region : 'MENA' },

@@ -13,7 +13,7 @@ function parsePrizePool( prizePool ) {
 
     prizePool = prizePool.replaceAll(',','').replace('$','');
     if ( /^[0-9]+$/.test(prizePool) )
-        return Number(prizePool);
+        return Math.min( Number(prizePool), 1000000 ); //cap event prize pool at $1m
 
     return 0; 
 }
@@ -86,9 +86,18 @@ class Event {
         this.lastMatchTime = -1;
         this.finished = eventJson.finished;
 
+        // connect qualified events
+        let qualifiedEvents = [];
+
+
         eventJson.prizeDistribution.forEach( teamJson => {
             this.prizeDistributionByTeamId[teamJson.teamId] = new EventTeam( teamJson );
+
+            if ( teamJson.qualifiedEvents.length > 0 )
+                qualifiedEvents.push( teamJson.qualifiedEvents );
         } );
+
+        this.qualifiedEvents = qualifiedEvents.length > 0 ?  qualifiedEvents[qualifiedEvents.length - 1 ] : -1;
     }
 
     accumulateMatch( match )
@@ -137,6 +146,11 @@ function initTeams( matches, events, rankingContext ) {
             match.team2.recordEventParticipation( events[match.eventId], match.team2Id );
         }
     } );
+
+    teams.forEach( team => { 
+            team.setActiveRoster();
+            team.setPluralityRegion();
+        } );
 
     // Calculate seeding data for each team based on professional performance
     // (quantity/quality of professional teams defeated and prizes won)
@@ -222,6 +236,28 @@ class DataLoader
         // initialize event list
         let events = {};
         dataJson.events.forEach( eventJson => events[eventJson.eventId] = new Event( eventJson ) );
+
+        // link the prize pool of events that are connected (e.g., winning in event A qualifies a roster to participate in event B)        
+        let getLinkedPrizePool = function( id, counter = 0, prizePool = 0 ) {
+            let qualifiedEvent = events[id].qualifiedEvents;
+            let isQualifiedEventDataAvailable = events[qualifiedEvent] === undefined ? false : true;    
+
+            if ( qualifiedEvent !== -1 && isQualifiedEventDataAvailable ){
+                let isQualifiedEventComplete = events[qualifiedEvent].finished;
+                if ( isQualifiedEventComplete ){
+                    return getLinkedPrizePool( qualifiedEvent, counter + 1, Math.min( events[qualifiedEvent].prizePool, 1000000 ) );
+                }
+            }
+            return [ counter, prizePool ];
+        }
+
+        for ( const id in events ){
+            let [counter, linkedPrizePool] = getLinkedPrizePool( id );
+            if ( counter > 0 ){
+                events[id].prizePool += linkedPrizePool * Math.pow(0.5,counter);
+                events[id].prizePool = Math.min( events[id].prizePool, 1000000 );
+            }
+        }
 
         // Let each event know what matches were part of it
         matches.forEach( match => {
