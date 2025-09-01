@@ -11,7 +11,7 @@ function parsePrizePool( prizePool ) {
     if ( prizePool === undefined )
         return 0;
 
-    prizePool = prizePool.replaceAll(',','').replace('$','');
+    prizePool = prizePool.replaceAll(',','').replace(/\$/g,'');
     if ( /^[0-9]+$/.test(prizePool) )
         return Math.min( Number(prizePool), 1000000 ); //cap event prize pool at $1m
 
