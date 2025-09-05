@@ -85,6 +85,7 @@ class Event {
         this.lan = eventJson.lan;
         this.lastMatchTime = -1;
         this.finished = eventJson.finished;
+        this.limitedScope = eventJson.limitedScope;
 
         // connect qualified events
         let qualifiedEvents = [];
