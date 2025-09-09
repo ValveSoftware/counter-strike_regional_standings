@@ -166,6 +166,7 @@ class Team {
         function powerFunction( x ) { return Math.pow( x, 1 ) };
         function getCappedPrizePool( x ) { return Math.min( Math.max(1, x.team.eventMap.get( x.match.eventId ).event.prizePool ), 1000000 ) };
         function getLAN( x ) { return x.team.eventMap.get( x.match.eventId ).event.lan ? 1 : 0 };
+        function getOpenSignups ( x ) { return x.team.eventMap.get( x.match.eventId ).event.openSignups };
 
         let bucketSize = 10; // used for all factors that track your top N results
 
@@ -200,9 +201,10 @@ class Team {
                 let id = wonMatch.match.umid;
                 let timestampModifier = context.getTimestampModifier( matchTime );
                 let lan = getLAN( wonMatch );
+                let openSignups = getOpenSignups( wonMatch );
                 let matchContext = timestampModifier;
                 let scaledLan = lan * matchContext;
-                lanWins.push( { id: id, context: matchContext, base: lan, val: scaledLan } );  
+                lanWins.push( { id: id, context: matchContext, base: lan, val: scaledLan, open: openSignups } );  
             });
 
             // A team's own 'network' is the sum of distinct opponents they defeated, scaled by how long it's been since they defeated them.
@@ -212,7 +214,27 @@ class Team {
 
             // The 'LAN' factor is similar to 'network,' the total number of wins on LAN (up to 'bucketSize'), scaled by how long ago the event took place. 
             lanWins.sort( (a,b) => b.val - a.val );
-            team.lanWins = lanWins.slice(0,bucketSize);
+
+            // Limit the bucket to a maximum of 5 open signup LAN events. 
+            const MAX_OPEN_LAN = 5;
+            let openLanCount = 0;
+
+            let finalLanWins = [];
+
+            for ( const win of lanWins ){
+                if (finalLanWins.length >= bucketSize) break; 
+                if ( win.open === true ){
+                    if ( openLanCount < MAX_OPEN_LAN ){
+                        finalLanWins.push( win );
+                        openLanCount += 1;
+                    }
+
+                } else {
+                    finalLanWins.push( win ); 
+                }
+            }
+
+            team.lanWins = finalLanWins;
             team.scaledLanWins = team.lanWins.map( el => el.val).reduce( (a,b) => a + b, 0 ) / bucketSize; //a team's scaled LAN participation is the proportion of matches that were of maximum LAN context (maximum prizepool, LAN, occurred recently)
 
             // Also calculate top N winnings. Like 'network' and 'LAN,' Winnings are scaled by the age of the result.
