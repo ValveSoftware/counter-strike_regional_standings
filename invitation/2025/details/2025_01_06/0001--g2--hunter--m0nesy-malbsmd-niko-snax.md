@@ -1,6 +1,6 @@
 ### Roster Details<br />
 Team Name: G2<br />
-Roster: huNter-, m0NESY, malbsMd, NiKo, Snax<br />
+Roster: huNter-, m0NESY, malbsMd, HeavyGod, Snax<br />
 Global Rank: [1](../../standings_global_2025_01_06.md)<br />
 <br />
 Region: [Europe]( ../../standings_europe_2025_01_06.md)<br />
