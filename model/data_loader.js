@@ -5,8 +5,6 @@ const Region = require('./util/region');
 const Team = require('./team');
 const remapValueClamped = require('./util/remap_value_clamped');
 
-const __highValueEvents = [6372,6711,6712,6713,6714,6586,6588]; //explicitly include RMR events, Majors
-
 function parsePrizePool( prizePool ) {
     if ( prizePool === undefined )
         return 0;
@@ -227,15 +225,21 @@ class DataLoader
 
         // Remove unranked matches
         matches = filterUnrankedMatches( matches );
+
+        // initialize event list
+        let events = {};
+        dataJson.events.forEach( eventJson => events[eventJson.eventId] = new Event( eventJson ) );
+
+        // Remove showmatches
+        matches = filterShowmatches( matches, events );  
+        
+        // Remove events that are in-progress
+        matches = filterInProgressEvents( matches, events );
         
         const [startTime,endTime] = findTimeWindow( matches, this.filterEndTime, this.filterWindow );
         let graceperiod = 30 * 24 * 3600; // 1 month
         this.rankingContext.setTimeWindow( startTime, endTime - graceperiod );
         matches = filterMatchesByTime( matches, startTime, endTime );
-        
-        // initialize event list
-        let events = {};
-        dataJson.events.forEach( eventJson => events[eventJson.eventId] = new Event( eventJson ) );
 
         // link the prize pool of events that are connected (e.g., winning in event A qualifies a roster to participate in event B)        
         let getLinkedPrizePool = function( id, counter = 0, prizePool = 0 ) {
@@ -266,11 +270,6 @@ class DataLoader
                 event.accumulateMatch( match );
         } );
 
-        // Remove showmatches
-        matches = filterShowmatches( matches, events );  
-        
-        // Remove events that are in-progress
-        matches = filterInProgressEvents( matches, events );
 
         // Estimate the information content of each match (for example, recent matches may be considered
         // to have more accurate data about the current skill of players than old ones)

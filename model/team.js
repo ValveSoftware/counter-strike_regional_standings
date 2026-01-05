@@ -30,6 +30,7 @@ class TeamMatch {
         this.teamNumber = ( match.team1 === team ) ? 1 : 2;
         this.isWinner   = match.winningTeam === this.teamNumber;
         this.opponent   = ( this.teamNumber === 1 ) ? match.team2 : match.team1;
+        this.maps = match.maps;
     }
 }
 
@@ -180,6 +181,8 @@ class Team {
             team.lastPlayed = Math.max( ...team.teamMatches.map( teamMatch => teamMatch.match.matchStartTime ) );
             team.distinctTeamsDefeated = 0;
             team.scaledWinnings = 0;
+            team.roundsWon = 0;
+            team.roundsPlayed = 0;
 
             let winnings = [];
             let opponentMap = new Map();
@@ -205,6 +208,25 @@ class Team {
                 lanWins.push( { id: id, context: matchContext, base: lan, val: scaledLan } );  
             });
 
+            // Performance in matches
+            // Calculate the total number of rounds won and rounds played scaled to their recency
+
+            team.teamMatches.forEach( teamMatch => {
+                let matchTime = teamMatch.match.matchStartTime;
+                let timestampModifier = context.getTimestampModifier( matchTime );
+                teamMatch.maps.forEach(map => {
+                // determine which side this team was on
+                const teamIs1 = teamMatch.teamNumber === 1;
+                const teamScore = Number(teamIs1 ? map.team1Score : map.team2Score) || 0;
+                const oppScore  = Number(teamIs1 ? map.team2Score : map.team1Score) || 0;
+
+                if ((teamScore === 0 && oppScore === 0) || (teamScore < 0 || oppScore < 0) ) return;
+
+                team.roundsWon += Number(teamScore * timestampModifier) || 0;
+                team.roundsPlayed += Number(((teamScore + oppScore) * timestampModifier)) || 0;
+                }); 
+            });
+
             // A team's own 'network' is the sum of distinct opponents they defeated, scaled by how long it's been since they defeated them.
             opponentMap.forEach( ( lastWinTime, opp ) => {
                 team.distinctTeamsDefeated += context.getTimestampModifier( lastWinTime );
@@ -213,7 +235,7 @@ class Team {
             // The 'LAN' factor is similar to 'network,' the total number of wins on LAN (up to 'bucketSize'), scaled by how long ago the event took place. 
             lanWins.sort( (a,b) => b.val - a.val );
             team.lanWins = lanWins.slice(0,bucketSize);
-            team.scaledLanWins = team.lanWins.map( el => el.val).reduce( (a,b) => a + b, 0 ) / bucketSize; //a team's scaled LAN participation is the proportion of matches that were of maximum LAN context (maximum prizepool, LAN, occurred recently)
+            team.scaledLanWins = team.lanWins.map( el => el.val).reduce( (a,b) => a + b, 0 ) / bucketSize; //a team's scaled LAN participation is the proportion of matches that were of maximum LAN context ( LAN, occurred recently)
 
             // Also calculate top N winnings. Like 'network' and 'LAN,' Winnings are scaled by the age of the result.
             team.eventMap.forEach( teamEvent => {
@@ -236,11 +258,16 @@ class Team {
         let referenceWinnings     = nthHighest( teams.map( t => t.scaledWinnings ), context.getOutlierCount() );
         let referenceOpponentCount = nthHighest( teams.map( t => t.distinctTeamsDefeated ), context.getOutlierCount() );
         let referenceLanWins       = nthHighest( teams.map( t => t.scaledLanWins ), context.getOutlierCount() );
+        let referenceRoundWins = nthHighest( teams.map( t => t.roundsWon ), context.getOutlierCount() );
+        let referenceRoundsPlayed = nthHighest( teams.map( t => t.roundsPlayed ), context.getOutlierCount() );
 
         teams.forEach( team => {
             team.bountyOffered = Math.min( team.scaledWinnings / referenceWinnings, 1 );
             team.ownNetwork = Math.min( team.distinctTeamsDefeated / referenceOpponentCount, 1 );
             team.lanParticipation = Math.min( team.scaledLanWins / referenceLanWins, 1 );
+            team.roundSuccess = Math.min( team.roundsWon / referenceRoundWins, 1 );
+            team.roundsParticipation = curveFunction ( Math.min( Math.max ( team.roundsPlayed , 1) / referenceRoundsPlayed, 1 ) );
+            team.ownMatchPerformance = Math.min( team.roundSuccess / team.roundsParticipation , 1 );
         } );
 
         // Phase 3 looks at each team's opponents and rates each team highly if it can regularly win against other prestigous teams.
@@ -251,6 +278,7 @@ class Team {
             // We only consider the top N best outcomes, post-scaling. So there's never any harm in playing in a low-stakes match.
             let bounties = [];
             let network = [];
+            let performance = [];
 
             team.wonMatches.forEach( teamMatch => {
                 let id = teamMatch.match.umid;
@@ -261,9 +289,11 @@ class Team {
 
                 let scaledBounty = teamMatch.opponent.bountyOffered * matchContext;
                 let scaledNetwork = teamMatch.opponent.ownNetwork * matchContext;
+                let scaledPerformance = teamMatch.opponent.ownMatchPerformance * matchContext;
 
                 bounties.push( { id: id, context: stakesModifier, base: teamMatch.opponent.bountyOffered, val: scaledBounty } );
                 network.push(  { id: id, context: stakesModifier, base: teamMatch.opponent.ownNetwork   , val: scaledNetwork } );
+                performance.push(  { id: id, context: stakesModifier, base: teamMatch.opponent.ownMatchPerformance   , val: scaledPerformance } );
             } );
     
             bounties.sort( (a,b) => b.val - a.val );
@@ -273,6 +303,10 @@ class Team {
             network.sort( (a,b) => b.val - a.val );
             team.network = network.slice(0,bucketSize);
             team.opponentNetwork = team.network.map( el => el.val ).reduce( (a,b) => a + b, 0 ) / bucketSize;
+
+            performance.sort( (a,b) => b.val - a.val );
+            team.performance = performance.slice(0,bucketSize);
+            team.opponentPerformance = team.performance.map( el => el.val ).reduce( (a,b) => a + b, 0 ) / bucketSize;
         } );
 
         // Finally, build modifiers from calculated values
@@ -283,6 +317,8 @@ class Team {
             team.modifiers.opponentNetwork  = powerFunction( team.opponentNetwork );
             team.modifiers.ownNetwork       = powerFunction( team.ownNetwork );
             team.modifiers.lanFactor        = powerFunction( team.lanParticipation );
+            team.modifiers.ownMatchPerformance = powerFunction( team.ownMatchPerformance );
+            team.modifiers.opponentPerformance = curveFunction( team.opponentPerformance );
         } );        
     }
 }

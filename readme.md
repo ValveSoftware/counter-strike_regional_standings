@@ -8,9 +8,11 @@ We will use the Regional Standings to invite teams in future events, so the idea
 
 1.	Team’s
     -	Prize money earned
+    -   LAN matches won
 2.	Beaten opponent’s
     -	Prize money earned
-    - 	Number of teams beaten
+    - 	Number of distinct teams beaten
+    -   Performance
 3.	Head-to-head results
 
 We know you’re interested in more details. In the coming weeks, this repository will host the actual code used to generate the standings along with a sample dataset.
