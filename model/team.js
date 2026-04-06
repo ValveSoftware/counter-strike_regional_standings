@@ -156,6 +156,46 @@ class Team {
         let region = regionAssignment.map( (el, idx) => { return el === maxRegionalRepresentation ? Region.getRegionPriority( idx ) : 0; });
         region = region.map( el => { return el === Math.max( ...region) ? 1 : 0 } ) ;
 
+        // Calculate the region of the players that initiated the team via insertTeam and that sharesRoster runs off
+        let initiatedPlayers = this.players;
+        let initiatedTeamCountries = initiatedPlayers.map( el => el.countryIso );
+        let initiatedRegionAssignment = [0, 0, 0]; //EU, AMER, ROW
+        let initiatedLowPriority = 0;
+
+        initiatedTeamCountries.forEach( el => {         
+            if ( el !== 'world' ){
+                if ( Region.getCountryRegion(el) > -1 )   
+                    initiatedRegionAssignment[Region.getCountryRegion(el)]+=1;
+                else
+                    initiatedLowPriority += 1;
+            }
+        });
+
+        let initiatedLowestPriorityRepresented = 1;
+
+        if ( initiatedLowPriority < initiatedPlayers.length )
+            initiatedLowestPriorityRepresented = Math.min( ...initiatedRegionAssignment.map( (el, idx) => { return el > 0 ? Region.getRegionPriority(idx) : Infinity } ) );
+        
+        initiatedRegionAssignment[ Region.getRegionIdxFromPriority( initiatedLowestPriorityRepresented ) ] += initiatedLowPriority;
+
+        let initiatedMaxRegionalRepresentation = Math.max( ...initiatedRegionAssignment );
+        let initiatedRegion = initiatedRegionAssignment.map( (el, idx) => { return el === initiatedMaxRegionalRepresentation ? Region.getRegionPriority( idx ) : 0; });
+        initiatedRegion = initiatedRegion.map( el => { return el === Math.max( ...initiatedRegion) ? 1 : 0 } ) ;
+        
+
+        const activePriority = Region.getRegionPriority( region.indexOf( 1 ) );
+        const initiatedPriority = Region.getRegionPriority( initiatedRegion.indexOf( 1 ) );
+
+
+        // Only force region priority if there has been a > 2 player change in the activeRoster window.
+        const activeNicks = new Set(players.map(p => p.nick));
+        const initiatedNicks = new Set(initiatedPlayers.map(p => p.nick));
+        let nickDifference = 0;
+        initiatedNicks.forEach(n => { if (!activeNicks.has(n)) nickDifference += 1; });
+
+        if (nickDifference >= 2 && initiatedPriority > activePriority)
+            region = initiatedRegion;
+
         this.region = region;
     }
 
