@@ -165,7 +165,12 @@ function displayTeamRankingSummary( team, teams, strDate ){
     output += formatLine( `- Bounty Offered: ${ team.modifiers.bountyOffered.toFixed(3) }[<sup>1</sup>](#table2)`, true);
     output += formatLine( `- Bounty Collected: ${ team.modifiers.bountyCollected.toFixed(3) }[<sup>2</sup>](#table1)`, true);
     output += formatLine( `- Opponent Network: ${ team.modifiers.opponentNetwork.toFixed(3) }[<sup>2</sup>](#table1)`, true);
+    output += formatLine( `- Opponent Performance: ${ team.modifiers.opponentPerformance.toFixed(3) }[<sup>2</sup>](#table1)`, true);
     output += formatLine( `- LAN Wins: ${ team.modifiers.lanFactor.toFixed(3) }[<sup>2</sup>](#table1)`, true);
+    output += formatLine( '', true );
+    output += formatLine( `And hidden factors not included in the average:`);
+    output += formatLine( `- Own Network: ${ team.modifiers.ownNetwork.toFixed(3) }[<sup>2</sup>](#table1)`, true);
+    output += formatLine( `- Own Performance: ${ team.modifiers.ownMatchPerformance.toFixed(3) }[<sup>2</sup>](#table1)`, true);
     output += formatLine( '', true );
     output += formatLine( `The average of these factors is ${ team.seedValue.toFixed(3) }`);
     output += formatLine( '' );
@@ -178,8 +183,8 @@ function displayTeamRankingSummary( team, teams, strDate ){
     output += formatLine( `Below you can see a table of all of the matches that contributed to this roster's Final Rank Value.`);
     output += formatLine( `Note:`);
     output += formatLine( '', true );
-    output += formatLine( `- For Bounty Collected, Opponent Network, and LAN Wins, we consider only the ten best results over the past 6 months.`, true);
-    output += formatLine( `- Raw values for those factors are multiplied by Age Weight. Bounty and Opponent Network values are also multiplied by Event Weight. The adjusted value is shown in parenthesis.`, true);
+    output += formatLine( `- For Bounty Collected, Opponent Network, Opponent Performance, and LAN Wins, we consider only the ten best results over the past 6 months.`, true);
+    output += formatLine( `- Raw values for those factors are multiplied by Age Weight. Bounty, Opponent Network and Opponent Impact values are also multiplied by Event Weight. The adjusted value is shown in parenthesis.`, true);
     output += formatLine( `- The final value for a factor is the total of its adjusted values divided by 10. Bounty Collected is further scaled by the curve function[<sup>3</sup>](#curveFunction)`, true);
     output += formatLine( `- Head to head adjustments are based on rosters' starting rank values. The results shown below are adjusted by Age Weight and not Event Weight`, true);
     output += formatLine( '<span id="table1"></span>' );
@@ -194,6 +199,7 @@ function displayTeamRankingSummary( team, teams, strDate ){
     table.addColumn( 'Event Weight' );
     table.addColumn( 'Bounty Collected' );
     table.addColumn( 'Opponent Network' );
+    table.addColumn( 'Opponent Performance' );
     table.addColumn( 'LAN Wins' );
     table.addNumericColumn( 'H2H Adj.' ).setPrecision(2);
     table.addColumn( 'Roster' );
@@ -208,6 +214,7 @@ function displayTeamRankingSummary( team, teams, strDate ){
         let bounty = '-';
         let net = '-';
         let lanWin = '-';
+        let performance = '-';
         let eventWeight = '-';
 
         let roster = tm.match.team1.rosterId === team.rosterId ? tm.match.team1Players : tm.match.team2Players;
@@ -224,6 +231,12 @@ function displayTeamRankingSummary( team, teams, strDate ){
         if ( netEl.length > 0 ){
             net = netEl[0].base.toFixed(3).toString() + ' (' + netEl[0].val.toFixed(3).toString() + ')';
             eventWeight = netEl[0].context.toFixed(3).toString();
+        }
+
+        let performanceEl = team.performance.filter( el => {return el.id === umid } );
+        if ( performanceEl.length > 0 ){
+            performance = performanceEl[0].base.toFixed(3).toString() + ' (' + performanceEl[0].val.toFixed(3).toString() + ')';
+            eventWeight = performanceEl[0].context.toFixed(3).toString();
         }
 
         let lanWinEl = team.lanWins.filter( el => {return el.id === umid } );
@@ -243,6 +256,7 @@ function displayTeamRankingSummary( team, teams, strDate ){
         table.addElem( eventWeight ); 
         table.addElem( bounty );
         table.addElem( net );
+        table.addElem( performance );
         table.addElem( lanWin );
         table.addElem( glickoAdjustment );
         table.addElem( sortCaseInsensitive( roster.map( el=> el.nick ) ).join(', ') );
