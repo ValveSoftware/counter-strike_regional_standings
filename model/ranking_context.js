@@ -9,7 +9,6 @@ class RankingContext {
         this.timeWindowStart = null;
         this.timeWindowEnd = null;
         this.timeDecayFactor = 1;           // default to linear; <1 gives more weight to matches in the past, >1 gives less.
-        this.highValueEventModifier = 1;    // extra weight placed on RMR/major events.
     }
     
     // set window of times for getTimestampModifier
@@ -37,16 +36,6 @@ class RankingContext {
     getOutlierCount()
     {
         return this.topOutlierCount;
-    }
-
-    setHveMod( modifier )
-    {
-        this.highValueEventModifier = modifier;
-        return this;
-    }
-    getHveMod()
-    {
-        return this.highValueEventModifier;
     }
 }
 
