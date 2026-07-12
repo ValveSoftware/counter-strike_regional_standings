@@ -14,7 +14,7 @@ const SEED_MODIFIER_FACTORS = {
     bountyCollected: 1,
     bountyOffered: 1,
     opponentNetwork: 1,
-    ownNetwork: 0,
+    ownNetworkImpact: 0,
     lanFactor: 1
 };
 const MIN_SEEDED_RANK = 400;
