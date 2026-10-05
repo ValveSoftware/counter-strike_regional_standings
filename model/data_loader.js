@@ -106,7 +106,7 @@ class Event {
     }
 }
 
-function initTeams( matches, events, rankingContext ) {
+function initTeams( matches, events, rankingContext, rankingWindowCutoffTime = -1 ) {
     let teams = [];
 
     function insertTeam( name, players, isForfeitMatch ) {
@@ -149,7 +149,8 @@ function initTeams( matches, events, rankingContext ) {
 
     teams.forEach( team => { 
             team.setActiveRoster();
-            team.setPluralityRegion();
+            if ( !team.setEligibleRegion( rankingWindowCutoffTime ) )
+                team.setPluralityRegion();
         } );
 
     // Calculate seeding data for each team based on professional performance
@@ -287,7 +288,7 @@ class DataLoader
         // most recent match for a particular roster as the 'base' roster for that team.
         sortMatches( matches, 'desc' );
 
-        let teams = initTeams( matches, events, this.rankingContext );
+        let teams = initTeams( matches, events, this.rankingContext, endTime );
 
         // For processing the games and calculating ratings, we will go in forward order in time.  This
         // also has the effect of making sure that recent data is considered the most strongly, and also

@@ -1,9 +1,16 @@
 "use strict";
 
+
+var regionPriority = [ 3, 2, 1 ]; // [ Europe, Americas, Asia ] // Priority should follow the relative number of regional invitations in the Major Supplemental Rulebook
+var regionEligibilityWindow = 2 * 30 * 24 * 3600; // 2months
+var regionEligibilityThreshold = 10; // 10 matches 
+
 module.exports = {
     getCountryRegion : getCountryRegion
     ,getRegionPriority : getRegionPriority
     ,getRegionIdxFromPriority : getRegionIdxFromPriority
+    ,regionEligibilityWindow : regionEligibilityWindow
+    ,regionEligibilityThreshold : regionEligibilityThreshold
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -263,8 +270,6 @@ var regionMap = [
     { countrycode : 'uy', region : 'SA' },
     { countrycode : 've', region : 'SA' },    
 ];
-
-var regionPriority = [ 3, 2, 1 ]; // [ Europe, Americas, Asia ] // Priority should follow the relative number of regional invitations in the Major Supplemental Rulebook
 
 function getCountryRegion( playerCountry ){
 

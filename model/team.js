@@ -130,6 +130,70 @@ class Team {
         this.activeRoster = activeRoster;
     }
 
+    static regionIdxForPlayers ( players ) {
+        let regionAssignment = [ 0, 0, 0]; // EU, AM, ROW
+        let lowPriorityRepresentation = 0;
+        
+        players.forEach( el => {
+            if ( el.countryIso !== 'world' ){
+                if ( Region.getCountryRegion(el.countryIso) > -1 )   
+                    regionAssignment[Region.getCountryRegion(el.countryIso)]+=1;
+                else
+                    lowPriorityRepresentation += 1;
+            }
+        } );
+    
+        let lowestPriorityRepresented = 1; //Lowest priority region by default
+
+        if ( lowPriorityRepresentation < players.length )
+            lowestPriorityRepresented = Math.min( ...regionAssignment.map( (el, idx) => { return el > 0 ? Region.getRegionPriority(idx) : Infinity } ) );
+        
+        regionAssignment[ Region.getRegionIdxFromPriority( lowestPriorityRepresented ) ] += lowPriorityRepresentation;
+
+        let maxRepresentation = Math.max( ...regionAssignment );
+        let candidates = regionAssignment
+            .map( (el, idx) => el === maxRepresentation ? idx : -1 )
+            .filter( idx => idx !== -1 )
+        
+        candidates.sort( (a, b) => Region.getRegionPriority(b) - Region.getRegionPriority(a)  );
+        return candidates[0];
+    }
+
+    setEligibleRegion( rankingWindowCutoffTime = -1 ) {
+        if ( this.teamMatches.length === 0 )
+            return false;
+
+        const regionElgibilityCutoffTime = Number ( rankingWindowCutoffTime );
+        if ( !Number.isFinite( regionElgibilityCutoffTime ) || regionElgibilityCutoffTime <= 0 )
+            throw new Error( "ranking was generated without a found time window" );
+
+        const windowStart = regionElgibilityCutoffTime - Region.regionEligibilityWindow;
+
+        let matchRegionCounts = [0,0,0];
+        this.teamMatches.forEach ( tm => {
+            if ( tm.match.matchStartTime < windowStart )
+                return;
+
+            let players = tm.teamNumber === 1 ? tm.match.team1Players : tm.match.team2Players;
+            let regionIdx = Team.regionIdxForPlayers( players );
+            matchRegionCounts[regionIdx] += 1;
+        } );
+
+        let eligibleIdxs = matchRegionCounts
+            .map( (count, idx) => count >= Region.regionEligibilityThreshold ? idx : -1 )
+            .filter( idx => idx !== -1 );
+        
+        if ( eligibleIdxs.length === 0 )
+            return false;
+
+        eligibleIdxs.sort( (a, b) => Region.getRegionPriority(b) - Region.getRegionPriority(a) );
+        let winningIdx = eligibleIdxs[0];
+
+        this.region = [0,0,0];
+        this.region[winningIdx] = 1;
+        return true
+    }
+
     setPluralityRegion() {
         let players = this.activeRoster;
         let teamCountries = players.map( el => el.countryIso );
