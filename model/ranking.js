@@ -15,7 +15,9 @@ const SEED_MODIFIER_FACTORS = {
     bountyOffered: 1,
     opponentNetwork: 1,
     ownNetwork: 0,
-    lanFactor: 1
+    lanFactor: 1,
+    opponentPerformance: 1,
+    ownMatchPerformance: 0
 };
 const MIN_SEEDED_RANK = 400;
 const MAX_SEEDED_RANK = 2000;
@@ -24,7 +26,7 @@ function generateRanking( versionTimestamp = -1, filename )
 {
     // Parameters
     const rankingContext = new RankingContext;
-    rankingContext.setHveMod(1).setOutlierCount(5);
+    rankingContext.setOutlierCount(5);
 
     const dataLoader = new DataLoader( rankingContext );
     dataLoader.loadData( versionTimestamp, filename );
