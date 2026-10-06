@@ -14,8 +14,12 @@ function run()
     if ( process.argv[3] !== undefined )
         filename = process.argv[3];
 
+    let versionTimestamp = -1;
+    if ( process.argv[5] !== undefined )
+        versionTimestamp = Number(process.argv[5]);
+
     // Parse matches and generate standings
-    let [matches,teams] = Ranking.generateRanking( -1, filename );
+    let [matches,teams] = Ranking.generateRanking( versionTimestamp, filename );
 
     // Get date of most recent match
     let mostRecentMatch = Math.max( ...matches.map( m => m.matchStartTime ) );
