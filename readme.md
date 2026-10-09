@@ -19,10 +19,7 @@ We know you’re interested in more details. In the coming weeks, this repositor
 
 We will update the standings periodically up until the open qualifiers. These final standings will determine which teams get invited to the closed qualifiers. All other teams will need to compete in the open qualifiers to secure their spot.
 
-The current standings can be found here:
--   [Europe](standings_europe.md)
--   [Americas](standings_americas.md)
--   [Asia](standings_asia.md)
+The current standings for each region can be found [here](https://github.com/ValveSoftware/counter-strike_regional_standings/tree/main/live/2025).
 
 ## Evaluating the Model.
 
