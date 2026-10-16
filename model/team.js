@@ -52,6 +52,7 @@ class Team {
         this.regionalRank = [-1,-1,-1];
         this.isPendingUpdate = isPendingUpdate;
         this.satisfiesRankingCriteria = false;
+        this.recentWins = 0;
     }
 
     // A past team is considered as the same entity as a more recent one,
@@ -185,6 +186,17 @@ class Team {
             let opponentMap = new Map();
             let lanWins = [];
 
+            // Identify the teams recent form
+            // This is accomplished by populating a recent wins bucket, with their most recent 10 matches.
+            // A team with less than 10 ranked matches will be left with an unfilled bucket.
+
+            let recentMatches = team.teamMatches
+                .slice()
+                .sort((a, b) => b.match.matchStartTime - a.match.matchStartTime)
+                .slice(0, bucketSize); 
+
+            team.recentWins = recentMatches.filter(tm => tm.isWinner).length;
+
             // Calculate the most recent match against each opponent, and also the most recent LAN wins.
             team.wonMatches.forEach( wonMatch => {
                 // Network
@@ -206,6 +218,7 @@ class Team {
             });
 
             // A team's own 'network' is the sum of distinct opponents they defeated, scaled by how long it's been since they defeated them.
+            // ownNetwork is moved from being a team component to a weight for use in a compound component
             opponentMap.forEach( ( lastWinTime, opp ) => {
                 team.distinctTeamsDefeated += context.getTimestampModifier( lastWinTime );
             } );
@@ -241,6 +254,15 @@ class Team {
             team.bountyOffered = Math.min( team.scaledWinnings / referenceWinnings, 1 );
             team.ownNetwork = Math.min( team.distinctTeamsDefeated / referenceOpponentCount, 1 );
             team.lanParticipation = Math.min( team.scaledLanWins / referenceLanWins, 1 );
+            team.winRate = team.recentWins / bucketSize;
+            team.ownNetworkWeight = curveFunction(team.ownNetwork); // ownNetwork is now a weight for networkImpact when previously it was an individual component.
+            team.scaledOwnNetworkImpact = team.winRate * team.ownNetworkWeight; // impact is a teams recent form weighted by ownNetwork.
+        } );
+
+        // Calculate the relative network impact for all teams and then use this to scale the networkImpact accordingly.
+        let referenceOpponentNetworkImpact = nthHighest( teams.map( t => t.scaledOwnNetworkImpact ), context.getOutlierCount() );
+        teams.forEach( team => {
+            team.ownNetworkImpact = Math.min( team.scaledOwnNetworkImpact / referenceOpponentNetworkImpact, 1 );
         } );
 
         // Phase 3 looks at each team's opponents and rates each team highly if it can regularly win against other prestigous teams.
@@ -260,10 +282,10 @@ class Team {
                 let matchContext = timestampModifier * stakesModifier;
 
                 let scaledBounty = teamMatch.opponent.bountyOffered * matchContext;
-                let scaledNetwork = teamMatch.opponent.ownNetwork * matchContext;
+                let scaledNetwork = teamMatch.opponent.ownNetworkImpact * matchContext;
 
                 bounties.push( { id: id, context: stakesModifier, base: teamMatch.opponent.bountyOffered, val: scaledBounty } );
-                network.push(  { id: id, context: stakesModifier, base: teamMatch.opponent.ownNetwork   , val: scaledNetwork } );
+                network.push(  { id: id, context: stakesModifier, base: teamMatch.opponent.ownNetworkImpact   , val: scaledNetwork } );
             } );
     
             bounties.sort( (a,b) => b.val - a.val );
@@ -281,7 +303,7 @@ class Team {
             team.modifiers.bountyCollected  = curveFunction( team.opponentBounties );
             team.modifiers.bountyOffered    = curveFunction( team.bountyOffered );
             team.modifiers.opponentNetwork  = powerFunction( team.opponentNetwork );
-            team.modifiers.ownNetwork       = powerFunction( team.ownNetwork );
+            team.modifiers.ownNetworkImpact       = powerFunction( team.ownNetworkImpact );
             team.modifiers.lanFactor        = powerFunction( team.lanParticipation );
         } );        
     }
