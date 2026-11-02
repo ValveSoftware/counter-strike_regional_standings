@@ -1,6 +1,7 @@
 "use strict";
 
 const fs = require('fs');
+const path = require('path');
 const Region = require('./util/region');
 const Team = require('./team');
 const remapValueClamped = require('./util/remap_value_clamped');
@@ -93,8 +94,10 @@ class Event {
         eventJson.prizeDistribution.forEach( teamJson => {
             this.prizeDistributionByTeamId[teamJson.teamId] = new EventTeam( teamJson );
 
-            if ( teamJson.qualifiedEvents.length > 0 )
-                qualifiedEvents.push( teamJson.qualifiedEvents );
+            if (teamJson.qualifiedEvents !== null){
+                qualifiedEvents.push( teamJson.qualifiedEvents);
+            }
+                 
         } );
 
         this.qualifiedEvents = qualifiedEvents.length > 0 ?  qualifiedEvents[qualifiedEvents.length - 1 ] : -1;
@@ -212,9 +215,11 @@ class DataLoader
     // with the nth most prize winnings.
     setNthHighest( nth ) { this.rankingContext.setOutlierCount( nth ); }
 
-    loadData( versionTimestamp = -1, filename = '../data/matchdata.json' )
+    loadData( versionTimestamp = -1, filename)
     {
-        const data = fs.readFileSync( filename );
+        const pathToFile = path.join(__dirname, '..', 'data', filename);
+
+        const data = fs.readFileSync( pathToFile );
         const dataJson = JSON.parse( data );
 
         // initialize match list
