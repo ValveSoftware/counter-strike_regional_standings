@@ -1,0 +1,65 @@
+### Roster Details<br />
+Team Name: Julie&Cie<br />
+Roster: amanek, Empera, Joker, KIRADODO, Monkey D Julie<br />
+Global Rank: [371](../../standings_global_2026_11_02.md)<br />
+<br />
+Region: [Europe]( ../../standings_europe_2026_11_02.md)<br />
+Regional Rank: [242]( ../../standings_europe_2026_11_02.md)<br />
+<br />
+Final Rank Value:  393.0<br />
+<br />
+Final Rank Value (393.0) = Starting Rank Value (402.1) + Head To Head Adjustments (-9.1)<br />
+
+#### Starting Rank Value<br />
+To figure out a rosters's Starting Rank Value, first take the average of these four factors:<br />
+- Bounty Offered: 0.000[<sup>1</sup>](#table2)
+- Bounty Collected: 0.000[<sup>2</sup>](#table1)
+- Opponent Network: 0.004[<sup>2</sup>](#table1)
+- LAN Wins: 0.000[<sup>2</sup>](#table1)
+
+The average of these factors is 0.001<br />
+<br />
+Next, take the maximum and minimum average across all teams and compute the following:<br />
+- 400 + ( ( Roster_Average - Min_Average ) / ( Max_Average - Min_Average ) ) * 1600 = 402.1
+- 400 + ( ( 0.001 - 0.000 ) / ( 0.854 - 0.000 ) ) * 1600 = 402.1
+
+
+#### Factors<br />
+Below you can see a table of all of the matches that contributed to this roster's Final Rank Value.<br />
+Note:<br />
+
+- For Bounty Collected, Opponent Network, and LAN Wins, we consider only the ten best results over the past 6 months.
+- Raw values for those factors are multiplied by Age Weight. Bounty and Opponent Network values are also multiplied by Event Weight. The adjusted value is shown in parenthesis.
+- The final value for a factor is the total of its adjusted values divided by 10. Bounty Collected is further scaled by the curve function[<sup>3</sup>](#curveFunction)
+- Head to head adjustments are based on rosters' starting rank values. The results shown below are adjusted by Age Weight and not Event Weight
+<span id="table1"></span><br />
+
+
+| Match Played | Match ID | Date       | Opponent         | W/L | Age Weight | Event Weight | Bounty Collected | Opponent Network | LAN Wins  | H2H Adj. | Roster                                           |
+| -: | -: | :- | :- | :- | :- | :- | :- | :- | :- | -: | :- |
+|           13 |     4027 | 2026-07-22 | eternal premium  | L   | 0.511      | -            | -                | -                | -         |    -5.17 | amanek, CreZe, EmAa, Empera, Monkey D Julie      |
+|           12 |     4045 | 2026-07-21 | Honvéd           | L   | 0.505      | -            | -                | -                | -         |    -4.77 | amanek, CreZe, EmAa, Empera, Monkey D Julie      |
+|           11 |     4201 | 2026-07-15 | megoshort        | L   | 0.465      | -            | -                | -                | -         |    -2.17 | amanek, devoduvek, Empera, Joker, Monkey D Julie |
+|           10 |     4217 | 2026-07-14 | Mai Tai          | W   | 0.457      | 0.384        | 0.000 (0.000)    | 0.170 (0.030)    | 0 (0.000) |     9.94 | amanek, devoduvek, Empera, Joker, Monkey D Julie |
+|            9 |     4228 | 2026-07-13 | Honvéd           | L   | 0.452      | -            | -                | -                | -         |    -1.36 | amanek, devoduvek, Empera, Joker, Monkey D Julie |
+|            8 |     4426 | 2026-07-01 | overTIME         | L   | 0.373      | -            | -                | -                | -         |    -2.68 | amanek, Empera, Joker, KIRADODO, Monkey D Julie  |
+|            7 |     4444 | 2026-06-30 | Subtop De France | L   | 0.366      | -            | -                | -                | -         |    -4.49 | amanek, Empera, Joker, KIRADODO, Monkey D Julie  |
+|            6 |     4468 | 2026-06-29 | eternal premium  | L   | 0.358      | -            | -                | -                | -         |    -4.63 | amanek, CreZe, Empera, KIRADODO, Monkey D Julie  |
+|            5 |     4513 | 2026-06-27 | NEW VISION       | W   | 0.346      | 0.303        | 0.000 (0.000)    | 0.135 (0.014)    | 0 (0.000) |     7.76 | amanek, BOROS, Empera, KIRADODO, Monkey D Julie  |
+|            4 |     4553 | 2026-06-25 | Enjoy            | L   | 0.331      | -            | -                | -                | -         |    -1.42 | amanek, BOROS, Empera, KIRADODO, Monkey D Julie  |
+|            3 |     5237 | 2026-05-27 | Hashiras         | L   | 0.139      | -            | -                | -                | -         |    -1.59 | amanek, Empera, Joker, KIRADODO, Monkey D Julie  |
+|            2 |     5451 | 2026-05-22 | Subtop De France | W   | 0.105      | 0.344        | 0.000 (0.000)    | 0.000 (0.000)    | 0 (0.000) |     1.64 | amanek, Empera, Joker, KIRADODO, Monkey D Julie  |
+|            1 |     5483 | 2026-05-21 | SAW Youngsters   | L   | 0.099      | -            | -                | -                | -         |    -0.17 | amanek, Empera, Joker, KIRADODO, Monkey D Julie  |
+
+<br />
+<span id="table2"></span><br />
+To calculate a roster's Bounty Offered:<br />
+
+- First, take the sum of their top 10 scaled winnings ($0.00)
+- Divide that value by the 5th highest value among all rosters ($549,790.68)
+- The final value (0.00) is scaled by the curve function.[<sup>3</sup>](#curveFunction)
+
+<span id="curveFunction"></span>_The Curve Function: 1 / ( 1 + abs( log10( x ) ) )_<br />
+
+---
+_Event data for Regional Standings provided by HLTV.org_<br />
