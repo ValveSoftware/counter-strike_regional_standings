@@ -231,11 +231,20 @@ class DataLoader
         const [startTime,endTime] = findTimeWindow( matches, this.filterEndTime, this.filterWindow );
         let graceperiod = 30 * 24 * 3600; // 1 month
         this.rankingContext.setTimeWindow( startTime, endTime - graceperiod );
+
+        const matchesBeforeTimeFilter = matches;
+
         matches = filterMatchesByTime( matches, startTime, endTime );
         
         // initialize event list
         let events = {};
         dataJson.events.forEach( eventJson => events[eventJson.eventId] = new Event( eventJson ) );
+
+        matchesBeforeTimeFilter.forEach( match => {
+            if ( match.matchStartTime > endTime && events[match.eventId] !== undefined ) {
+                events[match.eventId].finished = false;
+            }
+        } );
 
         // link the prize pool of events that are connected (e.g., winning in event A qualifies a roster to participate in event B)        
         let getLinkedPrizePool = function( id, counter = 0, prizePool = 0 ) {
